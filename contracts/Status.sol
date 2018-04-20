@@ -28,7 +28,7 @@ library Status {
         Failure,
         Success,
         Acceptance,
-        AwaitingOthers,
+        Wait,
         ActionRequired,
 
         x05,
@@ -47,37 +47,41 @@ library Status {
         Info
     }
 
-    function toByte(Category _category, Reason _reason) private pure returns (byte code) {
-        return byte((uint(_category) << 4) + uint(_reason));
+    function toCode(Category _category, Reason _reason) public pure returns (byte code) {
+      return toCode(uint(_category), uint(_reason));
+    }
+
+    function toCode(uint _category, uint _reason) public pure returns (byte code) {
+        return byte((_category << 4) + _reason);
     }
 
     // Get nibbles
 
-    function categoryOf(byte _status) private pure returns (byte category) {
-        return _status >> 4;
+    function categoryOf(byte _status) public pure returns (uint category) {
+        return uint(_status >> 4);
     }
 
-    function reasonOf(byte _status) private pure returns (byte reason) {
-        return _status & hex"0F";
+    function reasonOf(byte _status) public pure returns (uint reason) {
+        return uint(_status & hex"0F");
     }
 
     // Check common statuses
 
-    function isFailure(byte _status) private pure returns (bool) {
+    function isFailure(byte _status) public pure returns (bool) {
         return reasonOf(_status) == 0;
     }
 
-    function isOk(byte _status) private pure returns (bool) {
+    function isOk(byte _status) public pure returns (bool) {
         return reasonOf(_status) == 1;
     }
 
     // `require`s
 
-    function requireOk(byte _status) private pure {
+    function requireOk(byte _status) public pure {
         require(isOk(_status));
     }
 
-    function requireOk(byte _status, string message) private pure {
+    function requireOk(byte _status, string message) public pure {
         require(isOk(_status), message);
     }
 }
