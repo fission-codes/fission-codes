@@ -1,7 +1,27 @@
-# Ethereum Status Codes
-Broadly applpicable status codes for Ethereum smart contracts
+# ESC
+## Ethereum Status Codes
+Broadly applicable status codes for Ethereum smart contracts
 
-## Hex / `byte1` Table Encoding
+[![CircleCI](https://circleci.com/gh/Finhaven/EthereumStatusCodes.svg?style=svg)](https://circleci.com/gh/Finhaven/EthereumStatusCodes)
+
+# Table of Contents
+
+* [Motivation](#motivation)
+* [Approach](#approach)
+* [Code Table](#code-table)
+* [Example Sequence Diagrams](#example-sequence-diagrams)
+
+# Motivation
+
+Communication between ___. Tracking the
+
+# Approach
+
+Similar to HTTP status codes, or Erlang/Elixir tagged tuples.
+
+While each machine is single threaded, Ethereum can be seen as an actor system.
+
+# Code Table
 
 | X. Low Nibble                     | 0. Generic              | 10. Permission                | 20. Find/Match/&c       | 30. Negotiation / Offers         | 40. Availability               | 50. | 60. | 70. | 80. | 90. | A0. | B0. | C0. | D0. | E0. Cryptography                    | F0. Off Chain                                     |
 |-----------------------------------|-------------------------|-------------------------------|-------------------------|----------------------------------|--------------------------------|-----|-----|-----|-----|-----|-----|-----|-----|-----|-------------------------------------|---------------------------------------------------|
@@ -23,7 +43,7 @@ Broadly applpicable status codes for Ethereum smart contracts
 | F. Meta/Info                      | 0x0F Metadata Only      |                               |                         |                                  |                                |     |     |     |     |     |     |     |     |     |                                     | 0xFF Data Source is Off Chain (ie: no guarantees) |
 
 * Unused regions are available for further extension or custom codes
-* On GitHub, yu may need to scroll the tables horizontally (they're pretty wide)
+* You may need to scroll the tables horizontally (they're pretty wide)
 
 # Example Sequence Diagrams
 

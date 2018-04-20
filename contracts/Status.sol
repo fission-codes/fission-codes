@@ -48,27 +48,27 @@ library Status {
     }
 
     function toByte(Category _category, Reason _reason) private pure returns (byte code) {
-        return (_category << 4) + _reason;
+        return byte((uint(_category) << 4) + uint(_reason));
     }
 
     // Get nibbles
 
-    function categoryOf(byte _status) private pure returns (uint8 category) {
+    function categoryOf(byte _status) private pure returns (byte category) {
         return _status >> 4;
     }
 
-    function reasonOf(byte _status) private pure returns (uint8 reason) {
+    function reasonOf(byte _status) private pure returns (byte reason) {
         return _status & hex"0F";
     }
 
     // Check common statuses
 
     function isFailure(byte _status) private pure returns (bool) {
-      return (reasonOf(_status) == 0);
+        return reasonOf(_status) == 0;
     }
 
     function isOk(byte _status) private pure returns (bool) {
-        return (reasonOf(_status) == 1);
+        return reasonOf(_status) == 1;
     }
 
     // `require`s
