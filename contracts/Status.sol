@@ -28,10 +28,10 @@ library Status {
         Failure,
         Success,
         Acceptance,
-        Wait,
+        Before,
         ActionRequired,
 
-        x05,
+        Expired,
         x06,
         x07,
         x08,
@@ -53,6 +53,10 @@ library Status {
 
     function toCode(uint _category, uint _reason) public pure returns (byte code) {
         return byte((_category << 4) + _reason);
+    }
+
+    function appCode(uint _appReason) public pure returns (byte code) {
+        return byte(160 + _appReason);
     }
 
     // Get nibbles

@@ -1,14 +1,14 @@
 pragma solidity ^0.4.23;
 
-import './../Status.sol';
-import './AgeValidator.sol';
-import './FinancialValidator.sol';
+import "./AgeValidator.sol";
+import "./FinancialValidator.sol";
+import "../Status.sol";
 
 contract InsuranceValidator {
     FinancialValidator financialValidator;
     AgeValidator ageValidator;
 
-    constructor(address _financialValidator, address _ageValidator) {
+    constructor(address _financialValidator, address _ageValidator) public {
         financialValidator = FinancialValidator(_financialValidator);
         ageValidator = AgeValidator(_ageValidator);
     }
