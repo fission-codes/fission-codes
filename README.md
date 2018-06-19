@@ -2,7 +2,7 @@
 ## Ethereum Status Codes
 Broadly applicable status codes for Ethereum smart contracts
 
-[![CircleCI](https://circleci.com/gh/Finhaven/EthereumStatusCodes.svg?style=svg)](https://circleci.com/gh/Finhaven/EthereumStatusCodes)
+[![CircleCI](https://circleci.com/gh/expede/ethereum-status-codes.svg?style=svg)](https://circleci.com/gh/expede/ethereum-status-codes)
 
 # Table of Contents
 
