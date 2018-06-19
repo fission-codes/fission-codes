@@ -39,7 +39,7 @@ contract Phone {
         return (toCode(Call.AnsweringMachine), "Your message has been recorded");
     }
 
-    function normalize(byte _code, string _response) internal returns (byte, string) {
+    function normalize(byte _code, string _response) internal pure returns (byte, string) {
         if (_code == toCode(Call.Started)) { return (_code, _response); }
         if (_code == toCode(Call.BusySignal)) { return (_code, "BUSY TONE"); }
         if (Status.isOk(_code)) { return (toCode(Call.Connected), ""); }
