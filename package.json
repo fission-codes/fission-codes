@@ -1,6 +1,6 @@
 {
   "name": "ethereum-status-codes",
-  "version": "1.0.0",
+  "version": "0.4.0",
   "description": "Ethereum status codes and helpers",
   "repository": {
     "type": "git",
