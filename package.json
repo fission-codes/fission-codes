@@ -48,6 +48,6 @@
     "truffle": "^4.1.11"
   },
   "dependencies": {
-    "solc": "^0.4.24"
+    "solc": "^0.4.22"
   }
 }
