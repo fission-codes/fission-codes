@@ -16,7 +16,7 @@
     "test:lint:fix": "eslint -c .eslintrc . --color=true --quiet --fix",
     "truffle:compile": "truffle compile",
     "truffle:migrate": "truffle migrate",
-    "start:testrpc": "ganache-cli -u 0 -s ethereum-status-codes",
+    "start:testrpc": "ganache-cli -u 0",
     "watch": "npm-watch"
   },
   "watch": {
@@ -35,7 +35,7 @@
     "node": "8.4"
   },
   "devDependencies": {
-        "chai": "^4.1.2",
+    "chai": "^4.1.2",
     "eslint": "^4.19.1",
     "eslint-config-airbnb-base": "^12.1.0",
     "eslint-plugin-chai-friendly": "^0.4.1",
