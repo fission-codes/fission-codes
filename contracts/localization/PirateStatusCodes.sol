@@ -6,7 +6,7 @@ contract PirateStatusCodes is StatusCodeLocalization {
   constructor() public {
     add(hex"00", "Nay!"); //
     add(hex"01", "Aye!"); //
-    add(hex"02", "Our jolly crew have begun");
+    add(hex"02", "Arr jolly crew have begun");
     add(hex"03", "Waitin' or afore");
     add(hex"04", "Ye need t' d' something");
     add(hex"05", "Has walked thar plank!");
@@ -20,26 +20,26 @@ contract PirateStatusCodes is StatusCodeLocalization {
     add(hex"14", "Awaiting Your Permission");
     add(hex"15", "No Longer Allowed");
 
-    add(hex"20", "Booty nay found"); //
-    add(hex"21", "Found thar booty");
+    add(hex"20", "Nay plunder found"); //
+    add(hex"21", "Plunder found");
     add(hex"22", "Match Request Sent");
-    add(hex"23", "Awaiting Match");
-    add(hex"24", "Match Request Received");
-    add(hex"25", "Out of Range");
+    add(hex"23", "Ye need t' wait fer yer match");
+    add(hex"24", "Thar jolly crew got yer message");
+    add(hex"25", "That be outta range");
 
-    add(hex"30", "Other Party Disagreed");
+    add(hex"30", "No deal, matey");
     add(hex"31", "Other Party Agreed");
     add(hex"32", "Sent Offer");
     add(hex"33", "Awaiting Their Ratification");
     add(hex"34", "Awaiting Your Ratification");
     add(hex"35", "Offer Expired");
 
-    add(hex"40", "Nay around");
-    add(hex"41", "Around");
-    add(hex"42", "You May Begin");
-    add(hex"43", "Not Yet Available");
-    add(hex"44", "Awaiting Your Availability/Signal");
-    add(hex"45", "No Longer Available");
+    add(hex"40", "Nay ready yet");
+    add(hex"41", "Ready matey");
+    add(hex"42", "Ye may start");
+    add(hex"43", "Nay yet ready");
+    add(hex"44", "We's waiting fer yer signal");
+    add(hex"45", "Nay available anymore");
 
     add(hex"E0", "Decrypt Failure");
     add(hex"E1", "Decrypt Success");
