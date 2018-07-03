@@ -1,24 +1,27 @@
 pragma solidity ^0.4.23;
 
+import "./StatusCodeLocalization.sol";
+
 contract LocalizationPrefs {
-  mapping(address => address) private _localization;
+  mapping(address => StatusCodeLocalization) private _localization;
 
-  address public defaultLocalization;
+  StatusCodeLocalization public defaultLocalization;
 
-  constructor(address _defaultLocalization) public {
+  constructor(StatusCodeLocalization _defaultLocalization) public {
     defaultLocalization = _defaultLocalization;
   }
 
-  function set(address _contract) public returns (byte _status) {
+  function set(StatusCodeLocalization _contract) public returns (byte _status) {
     _localization[msg.sender] = _contract;
+    return hex"01";
   }
 
-  function get(address _who) view public returns (byte _status, address _contract) {
+  function get(address _who) view public returns (byte _status, StatusCodeLocalization _localizer) {
     // Is 0x0 the default?
-    if (_localization[_who] == 0x0) {
-      return defaultLocalization;
+    if (_localization[_who] == StatusCodeLocalization(0x0)) { // MAY NOT WORK?
+      return (hex"00", defaultLocalization);
     } else {
-      return _localization[_who];
+      return (hex"01", _localization[_who]);
     }
   }
 
@@ -27,6 +30,7 @@ contract LocalizationPrefs {
   }
 
   function get(address _who, byte _code) public returns (byte _status, string _message) {
-    return get(_who).messages(_code);
+    (byte status, StatusCodeLocalization localizer) = get(_who);
+    return (status, localizer.message(_code));
   }
 }
