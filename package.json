@@ -1,18 +1,19 @@
 {
-  "name": "gatsby-starter-default",
-  "description": "Gatsby default starter",
+  "name": "esc-site",
+  "description": "Ethereum Status Codes website",
   "version": "1.0.0",
-  "author": "Kyle Mathews <mathews.kyle@gmail.com>",
+  "author": "Brooklyn Zelenka <hello@brooklynzelenka.com>",
   "dependencies": {
-    "gatsby": "^1.9.247",
-    "gatsby-link": "^1.6.40",
-    "gatsby-plugin-react-helmet": "^2.0.10",
+    "ajv": "^6.5.2",
+    "gatsby": "^1.9.277",
+    "gatsby-link": "^1.6.46",
+    "gatsby-plugin-netlify": "^1.0.21",
+    "gatsby-plugin-react-helmet": "^2.0.11",
     "react-helmet": "^5.2.0"
   },
   "keywords": [
     "gatsby"
   ],
-  "license": "MIT",
   "scripts": {
     "build": "gatsby build",
     "develop": "gatsby develop",
@@ -20,10 +21,12 @@
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "devDependencies": {
-    "prettier": "^1.12.0"
+    "prettier": "^1.13.7",
+    "webpack": "^1.4.0-beta6"
   },
   "repository": {
-    "type" : "git",
-    "url" : "https://github.com/gatsbyjs/gatsby-starter-default"
+    "type": "git",
+    "branch": "gh-pages",
+    "url": "https://github.com/expede/ethereum-status-codes/"
   }
 }
