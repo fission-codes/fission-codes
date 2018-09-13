@@ -5,10 +5,14 @@ import "./StatusCodeLocalization.sol";
 contract LocalizationPrefs {
   mapping(address => StatusCodeLocalization) private _localization;
 
-  StatusCodeLocalization public defaultLocalization;
+  StatusCodeLocalization private defaultLocalization_;
 
   constructor(StatusCodeLocalization _defaultLocalization) public {
-    defaultLocalization = _defaultLocalization;
+    defaultLocalization_ = _defaultLocalization;
+  }
+
+  function defaultLocalization() public view returns (StatusCodeLocalization) {
+    return defaultLocalization_;
   }
 
   function set(StatusCodeLocalization _contract) public returns (byte _status) {
