@@ -3,9 +3,13 @@
   "version": "0.4.1",
   "description": "Ethereum status codes and helpers",
   "keywords": [
-    "ethereum", "solidity",
-    "status", "code",
-    "eip", "erc", "1066"
+    "ethereum",
+    "solidity",
+    "status",
+    "code",
+    "eip",
+    "erc",
+    "1066"
   ],
   "repository": {
     "type": "git",

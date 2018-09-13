@@ -1,4 +1,4 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
 
 import "./localization/LocalizationPrefs.sol";
 import "./localization/StatusCodeLocalization.sol";
@@ -74,6 +74,17 @@ library Status {
     return uint(_status & hex"0F");
   }
 
+  // Localization
+
+  function localizeBy(byte _status, StatusCodeLocalization _localizer) view public returns (string _msg) {
+    return _localizer.message(_status);
+  }
+
+  // Does this one even make sense?
+  function localizeBy(byte _status, LocalizationPrefs _prefs) view public returns (string _msg) {
+    return localizeBy(_status, _prefs.get(tx.origin));
+  }
+
   // Check common statuses
 
   function isFailure(byte _status) public pure returns (bool) {
@@ -90,17 +101,7 @@ library Status {
     require(isOk(_status));
   }
 
-  function requireOk(byte _status, string message) public pure {
-    require(isOk(_status), prefs.get[msg.sender].message(_status));
-  }
-
-  // Localization
-
-  function localizeBy(byte _status, LocalizationPrefs _localizer) returns (string _msg){
-    return _localizer.message(_status);
-  }
-
-  function localizeBy(byte _status, StatusCodeLocalization _prefs) returns (string _msg){
-    return _localizeBy(_status, _prefs.get[msg.sender]);
+  function requireOk(byte _status, StatusCodeLocalization _prefs) public view {
+    require(isOk(_status), localizeBy(_status, _prefs));
   }
 }
