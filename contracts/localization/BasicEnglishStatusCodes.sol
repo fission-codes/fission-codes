@@ -1,4 +1,4 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 import "./StatusCodeLocalization.sol";
 
@@ -44,7 +44,7 @@ contract BasicEnglishStatusCodes is StatusCodeLocalization {
     add(hex"E0", "Decrypt Failure");
     add(hex"E1", "Decrypt Success");
     add(hex"E2", "Signed");
-    add(hex"E3", "Oter Party Signature Required");
+    add(hex"E3", "Other Party Signature Required");
     add(hex"E4", "Your Signature Expired");
     add(hex"E5", "Token Expired");
 

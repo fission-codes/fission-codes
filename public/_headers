@@ -1,0 +1,32 @@
+## Created with gatsby-plugin-netlify
+
+/*
+  X-Frame-Options: DENY
+  X-XSS-Protection: 1; mode=block
+  X-Content-Type-Options: nosniff
+/static/*
+  Cache-Control: max-age=31536000
+/ethereum-status-codes/404/
+  Link: </ethereum-status-codes/commons-baf99284bfa9fe0d66e6.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/app-6d3b7b88ac54e1e1d026.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/path---404-a0e39f21c11f6a62c5ab.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-pages-404-js-4503918ea3a16cfcdb75.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-layouts-index-js-8987d664e0a3a4f4803e.js>; rel=preload; as=script
+/ethereum-status-codes/
+  Link: </ethereum-status-codes/commons-baf99284bfa9fe0d66e6.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/app-6d3b7b88ac54e1e1d026.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/path---index-a0e39f21c11f6a62c5ab.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-pages-index-js-601f5646544ee5414f07.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-layouts-index-js-8987d664e0a3a4f4803e.js>; rel=preload; as=script
+/ethereum-status-codes/page-2/
+  Link: </ethereum-status-codes/commons-baf99284bfa9fe0d66e6.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/app-6d3b7b88ac54e1e1d026.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/path---page-2-a0e39f21c11f6a62c5ab.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-pages-page-2-js-1d4f0f19c1c44398ab65.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-layouts-index-js-8987d664e0a3a4f4803e.js>; rel=preload; as=script
+/ethereum-status-codes/404.html
+  Link: </ethereum-status-codes/commons-baf99284bfa9fe0d66e6.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/app-6d3b7b88ac54e1e1d026.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/path---404-html-a0e39f21c11f6a62c5ab.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-pages-404-js-4503918ea3a16cfcdb75.js>; rel=preload; as=script
+  Link: </ethereum-status-codes/component---src-layouts-index-js-8987d664e0a3a4f4803e.js>; rel=preload; as=script

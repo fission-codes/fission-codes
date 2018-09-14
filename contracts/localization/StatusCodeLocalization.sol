@@ -1,15 +1,13 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.4.24;
 
 contract StatusCodeLocalization {
-    mapping(byte => string) public messages;
+  mapping(byte => string) private messages_;
 
-    event StatusCode(byte indexed code, string indexed message);
+  function add(byte _code, string _msg) internal {
+    messages_[_code] = _msg;
+  }
 
-    function add(byte _code, string _msg) internal {
-        messages[_code] = _msg;
-    }
-
-    function log(byte _code) external {
-        emit StatusCode(_code, messages[_code]);
-    }
+  function message(byte _code) external view returns (string _message) {
+    return messages_[_code];
+  }
 }
