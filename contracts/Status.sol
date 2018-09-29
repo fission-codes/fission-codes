@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
-import "./localization/LocalizationPrefs.sol";
-import "./localization/StatusCodeLocalization.sol";
+import "../node_modules/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
+import "./localization/FissionLocalization.sol";
 
 // works with `using Status for byte`
 
@@ -76,13 +76,8 @@ library Status {
 
   // Localization
 
-  function localizeBy(byte _status, StatusCodeLocalization _localizer) view public returns (string _msg) {
-    return _localizer.message(_status);
-  }
-
-  // Does this one even make sense?
-  function localizeBy(byte _status, LocalizationPrefs _prefs) view public returns (string _msg) {
-    return localizeBy(_status, _prefs.get(tx.origin));
+  function localizeBy(byte _status, LocalizationPreferences _prefs) view public returns (bool found, string _msg) {
+    return _prefs.get(_status);
   }
 
   // Check common statuses
@@ -101,7 +96,8 @@ library Status {
     require(isOk(_status));
   }
 
-  function requireOk(byte _status, StatusCodeLocalization _prefs) public view {
-    require(isOk(_status), localizeBy(_status, _prefs));
+  function requireOk(byte _status, LocalizationPreferences _prefs) public view {
+    (bool found,) = localizeBy(_status, _prefs);
+    require(found);
   }
 }
