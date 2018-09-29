@@ -3,8 +3,8 @@ const { expectRevert } = require('./helpers');
 
 // eslint-disable no-undef
 const Status = artifacts.require('Status');
-const LocalizationPrefs = artifacts.require('LocalizationPrefs');
-const PirateStatusCodes = artifacts.require('PirateStatusCodes');
+const LocalizationPreferences = artifacts.require('LocalizationPreferences');
+const PirateLocalization = artifacts.require('PirateLocalization');
 // eslint-enable no-undef
 
 contract('Status', (accounts) => { // eslint-disable-line no-undef
@@ -86,16 +86,15 @@ contract('Status', (accounts) => { // eslint-disable-line no-undef
     let registry;
 
     before(async () => {
-      localization = await PirateStatusCodes.new();
+      localization = await PirateLocalization.new();
+      registry = await LocalizationPreferences.new(localization.address);
 
-        registry = await LocalizationPrefs.new(localization.address);
-        // registry = await LocalizationPrefs.deployed();
       await registry.set(localization.address);
     });
 
     context('lower nibble is 0x01', () => {
       it('does not throw', async () => {
-        const result = await status.requireOk.call('0x01', registry);
+        const result = await status.requireOk('0x01', registry);
         return expect(result).to.be.ok;
       });
     });
