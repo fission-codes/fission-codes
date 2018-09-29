@@ -57,6 +57,7 @@
     "truffle": "beta"
   },
   "dependencies": {
+    "ethereum-localized-messaging": "^0.1.0",
     "solc": "^0.4.24"
   }
 }
