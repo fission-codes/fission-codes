@@ -57,7 +57,10 @@ contract('Validators', async () => { // eslint-disable-line no-undef
 
     context('valid', () => {
       before(async () => {
-        [code, trace] = await insuranceValidator.check(2000, 20);
+        const result = await insuranceValidator.check(2000, 20);
+
+        code = result[0];
+        trace = result[1];
       });
 
       it('has the `App` category', async () => expect(Number(category)).to.be.equal(10));
@@ -70,7 +73,10 @@ contract('Validators', async () => { // eslint-disable-line no-undef
 
     context('invalid', async () => {
       before(async () => {
-        [code, trace] = await insuranceValidator.check(100, 20);
+        const result = await insuranceValidator.check(100, 20);
+
+        code = result[0];
+        trace = result[1];
 
         [isOk, category] = await Promise.all([
           status.isOk(code),

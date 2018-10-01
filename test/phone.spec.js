@@ -15,10 +15,10 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
     context('on contact list', () => {
       before(async () => {
         await alice.addContact(addresses[0]);
-        const [code, msg] = await alice.incoming.call('Hey');
+        const result = await alice.incoming.call('Hey');
 
-        message = msg;
-        reason = await status.reasonOf(code);
+        message = result[1];
+        reason = await status.reasonOf(result[0]);
       });
 
       it('starts the call', () => {
@@ -32,10 +32,10 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
 
     context('not on contact list', () => {
       before(async () => {
-        const [code, msg] = await bob.incoming.call('Hey');
+        const result = await bob.incoming.call('Hey');
 
-        message = msg;
-        reason = await status.reasonOf(code);
+        message = result[1];
+        reason = await status.reasonOf(result[0]);
       });
 
       it('goes to answering machine', () => {
@@ -51,10 +51,10 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
   describe('#outgoing', () => {
     context('not on contact list', () => {
       before(async () => {
-        const [code, msg] = await alice.outgoing.call(bob.address, 'hello');
+        const result = await alice.outgoing.call(bob.address, 'hello');
 
-        message = msg;
-        reason = await status.reasonOf(code);
+        message = result[1];
+        reason = await status.reasonOf(result[0]);
       });
 
       it('starts the call', () => {
@@ -69,10 +69,10 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
     context('on contact list', () => {
       before(async () => {
         await alice.addContact(alice.address);
-        const [code, msg] = await alice.outgoing.call(alice.address, 'hello');
+        const result = await alice.outgoing.call(alice.address, 'hello');
 
-        message = msg;
-        reason = await status.reasonOf(code);
+        message = result[1];
+        reason = await status.reasonOf(result[0]);
       });
 
 
