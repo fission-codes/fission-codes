@@ -1,14 +1,13 @@
 const { expect } = require('chai');
 const { expectRevert } = require('./helpers');
 
-// eslint-disable no-undef
+/* eslint-disable no-undef */
 const Status = artifacts.require('Status');
 const LocalizationPreferences = artifacts.require('LocalizationPreferences');
 const PirateLocalization = artifacts.require('PirateLocalization');
-// eslint-enable no-undef
+/* eslint-enable no-undef */
 
-contract('Status', (accounts) => { // eslint-disable-line no-undef
-  const [address, to] = accounts;
+contract('Status', () => { // eslint-disable-line no-undef
   let status;
 
   before(async () => {

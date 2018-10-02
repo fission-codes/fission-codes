@@ -49,18 +49,19 @@ contract('Validators', async () => { // eslint-disable-line no-undef
   describe('CombinedValidator', async () => {
     const financialValidator = await FinancialValidator.new();
 
-    const insuranceValidator =
-      await InsuranceValidator.new(financialValidator.address, ageValidator.address);
+    const insuranceValidator = await InsuranceValidator.new(
+      financialValidator.address, ageValidator.address
+    );
 
     let code;
     let trace;
 
     context('valid', () => {
       before(async () => {
-        const result = await insuranceValidator.check(2000, 20);
+        const { 0: c, 1: t } = await insuranceValidator.check(2000, 20);
 
-        code = result[0];
-        trace = result[1];
+        code = c;
+        trace = t;
       });
 
       it('has the `App` category', async () => expect(Number(category)).to.be.equal(10));
@@ -73,10 +74,10 @@ contract('Validators', async () => { // eslint-disable-line no-undef
 
     context('invalid', async () => {
       before(async () => {
-        const result = await insuranceValidator.check(100, 20);
+        const { 0: c, 1: t } = await insuranceValidator.check(100, 20);
 
-        code = result[0];
-        trace = result[1];
+        code = c;
+        trace = t;
 
         [isOk, category] = await Promise.all([
           status.isOk(code),
