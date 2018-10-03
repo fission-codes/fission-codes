@@ -4,12 +4,18 @@ const Phone = artifacts.require('Phone'); // eslint-disable-line no-undef
 const Status = artifacts.require('Status'); // eslint-disable-line no-undef
 
 contract('Phone', async (addresses) => { // eslint-disable-line no-undef
-  const status = await Status.new();
-  const alice = await Phone.new();
-  const bob = await Phone.new();
+  let status;
+  let alice;
+  let bob;
 
   let reason;
   let message;
+
+  before(async () => {
+    status = await Status.new();
+    alice = await Phone.new();
+    bob = await Phone.new();
+  });
 
   describe('#incoming', () => {
     context('on contact list', () => {
@@ -33,6 +39,8 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
     context('not on contact list', () => {
       before(async () => {
         const { 0: code, 1: msg } = await bob.incoming.call('Hey');
+        console.log(code);
+        console.log(msg);
 
         message = msg;
         reason = await status.reasonOf(code);
