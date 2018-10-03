@@ -4,7 +4,7 @@ const { expectRevert } = require('./helpers');
 /* eslint-disable no-undef */
 const Status = artifacts.require('Status');
 const LocalizationPreferences = artifacts.require('LocalizationPreferences');
-const PirateLocalization = artifacts.require('PirateLocalization');
+const BasicEnglishLocalization = artifacts.require('BasicEnglishLocalization');
 /* eslint-enable no-undef */
 
 contract('Status', () => { // eslint-disable-line no-undef
@@ -85,7 +85,7 @@ contract('Status', () => { // eslint-disable-line no-undef
     let registry;
 
     before(async () => {
-      localization = await PirateLocalization.new();
+      localization = await BasicEnglishLocalization.new();
       registry = await LocalizationPreferences.new(localization.address);
 
       await registry.set(localization.address);
