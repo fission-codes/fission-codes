@@ -96,8 +96,12 @@ library Status {
         require(isOk(_status));
     }
 
+    function requireOk(byte _status, string message) public pure {
+        require(isOk(_status), message);
+    }
+
     function requireOk(byte _status, LocalizationPreferences _prefs) public view {
-        (bool found,) = localizeBy(_status, _prefs);
-        require(found);
+        (bool _, string memory message) = localizeBy(_status, _prefs);
+        requireOk(_status, message);
     }
 }
