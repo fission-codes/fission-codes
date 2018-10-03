@@ -4,12 +4,12 @@ const { expect } = require('chai');
 const FissionLocalization = artifacts.require('FissionLocalization');
 /* eslint-enable no-undef */
 
-contract('Status', () => { // eslint-disable-line no-undef
+contract('FissionLocalization', async () => { // eslint-disable-line no-undef
   let fissionLocalizationInstance;
 
   before(async () => {
     fissionLocalizationInstance = await FissionLocalization.new();
-    fissionLocalizationInstance.set('0x01', 'message');
+    await fissionLocalizationInstance.set('0x01', 'message');
   });
 
   describe('#log', () => {
