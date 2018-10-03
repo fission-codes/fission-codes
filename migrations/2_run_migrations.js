@@ -1,11 +1,11 @@
 /* eslint-disable no-undef */
 const Status = artifacts.require('Status');
 const LocalizationPreferences = artifacts.require('LocalizationPreferences');
-const FissionLocalization = artifacts.require('FissionLocalization');
+const BasicEnglishLocalization = artifacts.require('BasicEnglishLocalization');
 /* eslint-enable no-undef */
 
 module.exports = async (deployer) => {
   await deployer.deploy(Status);
-  const msgr = await deployer.deploy(FissionLocalization);
-  await deployer.deploy(LocalizationPreferences, msgr.address);
+  const localization = await deployer.deploy(BasicEnglishLocalization);
+  await deployer.deploy(LocalizationPreferences, localization.address);
 };
