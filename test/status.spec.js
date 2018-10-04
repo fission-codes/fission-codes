@@ -1,7 +1,11 @@
 const { expect } = require('chai');
 const { expectRevert } = require('./helpers');
 
-const Status = artifacts.require('Status'); // eslint-disable-line no-undef
+/* eslint-disable no-undef */
+const Status = artifacts.require('Status');
+const LocalizationPreferences = artifacts.require('LocalizationPreferences');
+const BasicEnglishLocalization = artifacts.require('BasicEnglishLocalization');
+/* eslint-enable no-undef */
 
 contract('Status', () => { // eslint-disable-line no-undef
   let status;
@@ -77,16 +81,26 @@ contract('Status', () => { // eslint-disable-line no-undef
   });
 
   describe('#requireOk/2', () => {
+    let localization;
+    let registry;
+
+    before(async () => {
+      localization = await BasicEnglishLocalization.new();
+      registry = await LocalizationPreferences.new(localization.address);
+
+      await registry.set(localization.address);
+    });
+
     context('lower nibble is 0x01', () => {
       it('does not throw', async () => {
-        const result = await status.requireOk('0x01', 'boom');
+        const result = await status.requireOk('0x01', registry);
         return expect(result).to.be.ok;
       });
     });
 
     context('lower nibble is not 0x01', () => {
       it('reverts with message', () => expectRevert(async () => {
-        await status.requireOk('0x00', 'boom');
+        await status.requireOk('0x00', registry);
       }));
     });
   });

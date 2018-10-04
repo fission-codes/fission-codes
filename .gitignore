@@ -1,6 +1,7 @@
 yarn.lock
 .idea/
 build/
+public/
 
 # Created by https://www.gitignore.io/api/node,macos,linux,windows,solidity
 
@@ -53,6 +54,7 @@ logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
 
 # Runtime data
 pids
@@ -106,6 +108,9 @@ typings/
 # dotenv environment variables file
 .env
 
+### Tests ###
+
+.cache
 
 ### Solidity ###
 # Logs

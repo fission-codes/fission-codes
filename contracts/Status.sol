@@ -1,4 +1,9 @@
-pragma solidity ^0.4.21;
+pragma solidity ^0.4.24;
+
+import "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
+import "./localization/FissionLocalization.sol";
+
+// works with `using Status for byte`
 
 library Status {
     enum Category {
@@ -48,7 +53,7 @@ library Status {
     }
 
     function toCode(Category _category, Reason _reason) public pure returns (byte code) {
-      return toCode(uint(_category), uint(_reason));
+        return toCode(uint(_category), uint(_reason));
     }
 
     function toCode(uint _category, uint _reason) public pure returns (byte code) {
@@ -69,6 +74,12 @@ library Status {
         return uint(_status & hex"0F");
     }
 
+    // Localization
+
+    function localizeBy(byte _status, LocalizationPreferences _prefs) view public returns (bool found, string _msg) {
+        return _prefs.get(_status);
+    }
+
     // Check common statuses
 
     function isFailure(byte _status) public pure returns (bool) {
@@ -87,5 +98,10 @@ library Status {
 
     function requireOk(byte _status, string message) public pure {
         require(isOk(_status), message);
+    }
+
+    function requireOk(byte _status, LocalizationPreferences _prefs) public view {
+        (bool _, string memory message) = localizeBy(_status, _prefs);
+        requireOk(_status, message);
     }
 }

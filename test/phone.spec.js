@@ -4,18 +4,24 @@ const Phone = artifacts.require('Phone'); // eslint-disable-line no-undef
 const Status = artifacts.require('Status'); // eslint-disable-line no-undef
 
 contract('Phone', async (addresses) => { // eslint-disable-line no-undef
-  const status = await Status.new();
-  const alice = await Phone.new();
-  const bob = await Phone.new();
+  let status;
+  let alice;
+  let bob;
 
   let reason;
   let message;
+
+  before(async () => {
+    status = await Status.new();
+    alice = await Phone.new();
+    bob = await Phone.new();
+  });
 
   describe('#incoming', () => {
     context('on contact list', () => {
       before(async () => {
         await alice.addContact(addresses[0]);
-        const [code, msg] = await alice.incoming.call('Hey');
+        const { 0: code, 1: msg } = await alice.incoming.call('Hey');
 
         message = msg;
         reason = await status.reasonOf(code);
@@ -32,7 +38,9 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
 
     context('not on contact list', () => {
       before(async () => {
-        const [code, msg] = await bob.incoming.call('Hey');
+        const { 0: code, 1: msg } = await bob.incoming.call('Hey');
+        console.log(code);
+        console.log(msg);
 
         message = msg;
         reason = await status.reasonOf(code);
@@ -51,7 +59,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
   describe('#outgoing', () => {
     context('not on contact list', () => {
       before(async () => {
-        const [code, msg] = await alice.outgoing.call(bob.address, 'hello');
+        const { 0: code, 1: msg } = await alice.outgoing.call(bob.address, 'hello');
 
         message = msg;
         reason = await status.reasonOf(code);
@@ -69,7 +77,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
     context('on contact list', () => {
       before(async () => {
         await alice.addContact(alice.address);
-        const [code, msg] = await alice.outgoing.call(alice.address, 'hello');
+        const { 0: code, 1: msg } = await alice.outgoing.call(alice.address, 'hello');
 
         message = msg;
         reason = await status.reasonOf(code);

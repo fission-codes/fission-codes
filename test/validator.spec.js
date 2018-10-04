@@ -8,11 +8,16 @@ const InsuranceValidator = artifacts.require('InsuranceValidator');
 /* eslint-enable no-undef */
 
 contract('Validators', async () => { // eslint-disable-line no-undef
-  const status = await Status.new();
-  const ageValidator = await AgeValidator.new();
+  let status;
+  let ageValidator;
 
   let isOk;
   let category;
+
+  before(async () => {
+    status = await Status.new();
+    ageValidator = await AgeValidator.new();
+  });
 
   describe('AgeValidator', () => {
     let validAge;
@@ -47,17 +52,26 @@ contract('Validators', async () => { // eslint-disable-line no-undef
   });
 
   describe('CombinedValidator', async () => {
-    const financialValidator = await FinancialValidator.new();
-
-    const insuranceValidator =
-      await InsuranceValidator.new(financialValidator.address, ageValidator.address);
+    let financialValidator;
+    let insuranceValidator;
 
     let code;
     let trace;
 
+    before(async () => {
+      financialValidator = await FinancialValidator.new();
+
+      insuranceValidator = await InsuranceValidator.new(
+        financialValidator.address, ageValidator.address
+      );
+    });
+
     context('valid', () => {
       before(async () => {
-        [code, trace] = await insuranceValidator.check(2000, 20);
+        const { 0: c, 1: t } = await insuranceValidator.check(2000, 20);
+
+        code = c;
+        trace = t;
       });
 
       it('has the `App` category', async () => expect(Number(category)).to.be.equal(10));
@@ -70,7 +84,10 @@ contract('Validators', async () => { // eslint-disable-line no-undef
 
     context('invalid', async () => {
       before(async () => {
-        [code, trace] = await insuranceValidator.check(100, 20);
+        const { 0: c, 1: t } = await insuranceValidator.check(100, 20);
+
+        code = c;
+        trace = t;
 
         [isOk, category] = await Promise.all([
           status.isOk(code),

@@ -3,9 +3,14 @@
   "version": "0.4.1",
   "description": "Ethereum status codes and helpers",
   "keywords": [
-    "ethereum", "solidity",
-    "status", "code",
-    "eip", "erc", "1066"
+    "ethereum",
+    "solidity",
+    "status",
+    "code",
+    "eip",
+    "erc",
+    "erc-1066",
+    "erc-1444"
   ],
   "repository": {
     "type": "git",
@@ -41,18 +46,18 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint": "^4.19.1",
-    "eslint-config-airbnb-base": "^12.1.0",
+    "eslint": "^5.5.0",
+    "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-chai-friendly": "^0.4.1",
-    "eslint-plugin-import": "^2.12.0",
-    "ganache-cli": "^6.1.3",
+    "eslint-plugin-import": "^2.14.0",
+    "ganache-cli": "^6.1.8",
     "mocha": "^5.2.0",
     "npm-watch": "^0.3.0",
     "solhint": "^1.2.1",
-    "solidity-coverage": "^0.5.4",
-    "truffle": "^4.1.11"
+    "solidity-coverage": "^0.5.11",
+    "truffle": "^5.0.0-beta.00"
   },
   "dependencies": {
-    "solc": "^0.4.24"
+    "ethereum-localized-messaging": "^0.1.0"
   }
 }
