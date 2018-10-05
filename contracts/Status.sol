@@ -77,7 +77,7 @@ library Status {
     // Localization
 
     function localizeBy(byte _status, LocalizationPreferences _prefs) view public returns (bool found, string _msg) {
-        return _prefs.get(_status);
+        return _prefs.textFor(_status);
     }
 
     // Check common statuses
