@@ -14,7 +14,7 @@ Broadly applicable status codes and human-readable localizations for Ethereum sm
 * [Code Table](#code-table)
 * [Example Sequence Diagrams](#example-sequence-diagrams)
 * [Resources](#Resources)
-    * [ERCs](#ERCs)
+    * [Ethereum Improvement Proposals](#Ethereum-Improvement-Proporals)
     * [Ethereum Magicians](#Ethereum-Magicians)
     * [Articles](#Articles)
     * [Contact](#Contact)
@@ -177,10 +177,12 @@ AwesomeCoin                 DEX                     TraderBot
 
 # Resources
 
-## ERCs
+## Ethereum Improvement Proposals
 
-* [1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
-* [1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
+This library contains implementations of these EIPs:
+
+* [ERC1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
+* [ERC1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
 
 ## Ethereum Magicians
 
