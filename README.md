@@ -13,11 +13,11 @@ Broadly applicable status codes and human-readable localizations for Ethereum sm
 * [Approach](#approach)
 * [Code Table](#code-table)
 * [Example Sequence Diagrams](#example-sequence-diagrams)
-* [Resources](#Resources)
-    * [Ethereum Improvement Proposals](#Ethereum-Improvement-Proporals)
-    * [Ethereum Magicians](#Ethereum-Magicians)
-    * [Articles](#Articles)
-    * [Contact](#Contact)
+* [Resources](#resources)
+    * [Ethereum Improvement Proposals](#ethereum-improvement-proposals)
+    * [Ethereum Magicians](#ethereum-magicians)
+    * [Articles](#articles)
+    * [Contact](#contact)
 
 # Motivation
 
