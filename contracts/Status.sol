@@ -1,7 +1,7 @@
 pragma solidity ^0.4.24;
 
-import "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
 import "./localization/FissionLocalization.sol";
+import "../node_modules/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
 
 // works with `using Status for byte`
 

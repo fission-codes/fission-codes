@@ -1,6 +1,6 @@
 pragma solidity ^0.4.24;
 
-import "/ethereum-localized-messaging/contracts/Localization.sol";
+import "../../node_modules/ethereum-localized-messaging/contracts/Localization.sol";
 
 contract FissionLocalization is Localization {
     event FissionCode(bytes32 indexed code, string message);
