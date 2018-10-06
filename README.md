@@ -2,7 +2,7 @@
 ## Ethereum Status Codes
 Broadly applicable status codes for Ethereum smart contracts
 
-[![CircleCI](https://circleci.com/gh/expede/ethereum-status-codes.svg?style=svg)](https://circleci.com/gh/expede/ethereum-status-codes) [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
+[![CircleCI](https://circleci.com/gh/fission-suite/fission-codes.svg?style=svg)](https://circleci.com/gh/fission-suite/fission-codes) [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
 [![](https://img.shields.io/badge/built%20with%20%F0%9F%92%96%20by-SPADE%20Co-purple.svg)](https://spade.builders)
 
 # Table of Contents
