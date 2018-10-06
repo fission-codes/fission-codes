@@ -1,5 +1,5 @@
 {
-  "name": "ethereum-status-codes",
+  "name": "fission-codes",
   "version": "0.4.1",
   "description": "Ethereum status codes and helpers",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/expede/ethereum-status-codes.git"
+    "url": "git+https://github.com/fission-suite/fission-codes.git"
   },
   "main": "lib/status.js",
   "license": "Apache-2.0",
@@ -27,6 +27,7 @@
     "truffle:compile": "truffle compile",
     "truffle:migrate": "truffle migrate",
     "start:testrpc": "ganache-cli -u 0",
+    "coverage": "./node_modules/.bin/solidity-coverage",
     "watch": "npm-watch"
   },
   "watch": {
@@ -39,10 +40,10 @@
     }
   },
   "bugs": {
-    "url": "https://github.com/expede/ethereum-status-codes/issues"
+    "url": "https://github.com/fission-suite/fission-codes/issues"
   },
   "engines": {
-    "node": "8.4"
+    "node": "10.11"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -50,12 +51,13 @@
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-chai-friendly": "^0.4.1",
     "eslint-plugin-import": "^2.14.0",
+    "ethereum-localized-messaging": "^1.1.1",
     "ganache-cli": "^6.1.8",
     "mocha": "^5.2.0",
     "npm-watch": "^0.3.0",
     "solhint": "^1.2.1",
     "solidity-coverage": "^0.5.11",
-    "truffle": "^5.0.0-beta.00"
+    "truffle": "^5.0.0-beta.1"
   },
   "dependencies": {
     "ethereum-localized-messaging": "^1.1.0"
