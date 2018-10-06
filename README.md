@@ -16,6 +16,8 @@ Broadly applicable status codes and human-readable localizations for Ethereum sm
     * [Ethereum Magicians](#ethereum-magicians)
     * [Articles](#articles)
     * [Contact](#contact)
+* [Sponsors](#sponsors)
+* [Featured On](#featured-on)
 
 # Motivation
 
