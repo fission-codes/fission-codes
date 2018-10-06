@@ -170,6 +170,22 @@ AwesomeCoin                 DEX                     TraderBot
              +                          +                         +                         +                   +
 ```
 
+# Resources
+
+## Ethereum Magicians
+
+* [Tag: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
+* [Tag: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
+
+## Articles
+
+* [A Smarter Contract Protocol](https://spade.builders/esc/)
+* [Introducing FISSION Translate](https://medium.com/spadebuilders/introducing-fission-translate-a-global-translation-layer-for-smart-contract-communication-bacd61110e82)
+
+## Contact
+
+* [SPADE's FISSION Discord](https://discord.gg/hQfgyz2)
+
 # Sponsors
 
 [<img src="/static/sponsors/Tachyon.png" height="200" />](https://tachyoncv.vc/)
