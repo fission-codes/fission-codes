@@ -2,7 +2,10 @@
 ## Ethereum Status Codes
 Broadly applicable status codes for Ethereum smart contracts
 
-[![CircleCI](https://circleci.com/gh/expede/ethereum-status-codes.svg?style=svg)](https://circleci.com/gh/expede/ethereum-status-codes) [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
+[![CircleCI](https://circleci.com/gh/fission-suite/fission-codes.svg?style=svg)](https://circleci.com/gh/fission-suite/fission-codes) [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
+[![](https://img.shields.io/badge/built%20with%20%F0%9F%92%96%20by-SPADE%20Co-purple.svg)](https://spade.builders)
+[![](https://img.shields.io/badge/ERC-1066-42A.svg)](https://eips.ethereum.org/EIPS/eip-1066)
+[![](https://img.shields.io/badge/ERC-1444-414.svg)](https://github.com/ethereum/EIPs/blob/56f86922bbd3777174cdbf2e0d01d38c6306b9c0/EIPS/eip-1444.md)
 
 # Table of Contents
 
@@ -183,3 +186,12 @@ AwesomeCoin                 DEX                     TraderBot
              |                          |                         |                         |                   |
              +                          +                         +                         +                   +
 ```
+
+# Sponsors
+
+[<img src="/static/sponsors/Tachyon.png" height="200" />](https://tachyoncv.vc/)
+[<img src="/static/sponsors/Robot-Overlord.png" height="200" />](http://robotoverlord.io)
+
+# Featured On
+
+[<img src="/static/sponsors/Tech-Crunch-Logo-@2x.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
