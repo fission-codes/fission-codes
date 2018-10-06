@@ -188,7 +188,7 @@ AwesomeCoin                 DEX                     TraderBot
 
 * RO
 
-[![](/fission-codes/static/sponsors/Tachyon.png)](https://tachyoncv.vc/)
+[![](/static/sponsors/Tachyon.png)](https://tachyoncv.vc/)
 
 # Featured On
 
