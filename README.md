@@ -187,10 +187,9 @@ AwesomeCoin                 DEX                     TraderBot
 
 # Sponsors
 
-[![](/static/sponsors/Tachyon.png | height=200)](https://tachyoncv.vc/)
-[![](/static/sponsors/Robot-Overlord.png | height=200)](https://robotoverlord.io/)
+[<img src="/static/sponsors/Robot-Overlord.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
+[<img src="/static/sponsors/Tachyon.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
 
 # Featured On
 
-[![](/static/sponsors/Tech-Crunch-Logo-@2x.png | height=200)](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
 [<img src="/static/sponsors/Tech-Crunch-Logo-@2x.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
