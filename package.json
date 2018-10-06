@@ -1,5 +1,5 @@
 {
-  "name": "ethereum-status-codes",
+  "name": "fission-codes",
   "version": "0.4.1",
   "description": "Ethereum status codes and helpers",
   "keywords": [
@@ -14,7 +14,7 @@
   ],
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/expede/ethereum-status-codes.git"
+    "url": "git+https://github.com/fission-suite/fission-codes.git"
   },
   "main": "lib/status.js",
   "license": "Apache-2.0",
@@ -40,10 +40,10 @@
     }
   },
   "bugs": {
-    "url": "https://github.com/expede/ethereum-status-codes/issues"
+    "url": "https://github.com/fission-suite/fission-codes/issues"
   },
   "engines": {
-    "node": "8.4"
+    "node": "10.11"
   },
   "devDependencies": {
     "chai": "^4.1.2",
@@ -56,7 +56,7 @@
     "npm-watch": "^0.3.0",
     "solhint": "^1.2.1",
     "solidity-coverage": "^0.5.11",
-    "truffle": "^5.0.0-beta.00"
+    "truffle": "^5.0.0-beta.1"
   },
   "dependencies": {
     "ethereum-localized-messaging": "^1.1.0"
