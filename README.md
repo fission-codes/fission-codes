@@ -2,7 +2,7 @@
 
 Broadly applicable status codes and human-readable localizations for Ethereum smart contracts
 
-[![CircleCI](https://circleci.com/gh/fission-suite/fission-codes.svg?style=svg)](https://circleci.com/gh/fission-suite/fission-codes)
+[![Build Status](https://travis-ci.org/fission-suite/fission-codes.svg?branch=master)](https://travis-ci.org/fission-suite/fission-codes)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/fission-suite/fission-codes/badge.svg)](https://coveralls.io/github/fission-suite/fission-codes)
 [![Built with ❤ by SPADE Co](https://img.shields.io/badge/built%20with%20%F0%9F%92%96%20by-SPADE%20Co-purple.svg)](https://spade.builders)
