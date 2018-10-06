@@ -180,7 +180,7 @@ AwesomeCoin                 DEX                     TraderBot
 ## ERCs
 
 * [1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
-* [1444: Signal Translations]()https://github.com/ethereum/EIPs/pull/1444
+* [1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
 
 ## Ethereum Magicians
 
