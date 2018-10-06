@@ -1,6 +1,6 @@
-# ESC `. ... -.-.`
-## Ethereum Status Codes
-Broadly applicable status codes for Ethereum smart contracts
+# FISSION
+
+Broadly applicable status codes and human-readable localizations for Ethereum smart contracts
 
 [![CircleCI](https://circleci.com/gh/fission-suite/fission-codes.svg?style=svg)](https://circleci.com/gh/fission-suite/fission-codes) [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
 [![](https://img.shields.io/badge/built%20with%20%F0%9F%92%96%20by-SPADE%20Co-purple.svg)](https://spade.builders)
@@ -18,54 +18,37 @@ Broadly applicable status codes for Ethereum smart contracts
 
 ## Autonomy
 
-Smart contracts are largely intended to be autonomous. While each contract may
-define a specific interface, having a common set of semantic codes can help
-developers write code that can react appropriately to various situations.
+Smart contracts are largely intended to be autonomous. While each contract may define a specific interface, having a common set of semantic codes can help developers write code that can react appropriately to various situations.
 
 ## Semantically Rich
 
-HTTP status codes are widely used for this purpose. BEAM languages use atoms
-and tagged tuples to signify much the same information. Both provide a lot of
-information both to the programmer (debugging for instance), and to the program
-that needs to decide what to do next.
+HTTP status codes are widely used for this purpose. BEAM languages use atoms and tagged tuples to signify much the same information. Both provide a lot of information both to the programmer (debugging for instance), and to the program that needs to decide what to do next.
 
-ESCs convey a much richer set of information than booleans,
-and are able to be reacted to autonomously unlike arbitrary strings.
+FISSIONs convey a much richer set of information than booleans, and are able to be reacted to autonomously unlike arbitrary strings.
 
 ## User Feedback
 
-Since status codes are finite and known in advance, we can provide global,
-human-readable sets of status messages. These may also be translated into any language,
-differing levels of technical detail, added as `revert` messages, natspecs, and so on.
+Since status codes are finite and known in advance, we can provide global, human-readable sets of status messages. These may also be translated into any language, differing levels of technical detail, added as `revert` messages, natspecs, and so on.
 
-We also see a desire for this [in transactions](http://eips.ethereum.org/EIPS/eip-658),
-and there's no reason that ESCs couldn't be used by the EVM itself.
+We also see a desire for this [in transactions](http://eips.ethereum.org/EIPS/eip-658), and there's no reason that FISSIONs couldn't be used by the EVM itself.
 
 # Approach
 
 ## Encoding
 
-ESCs are encoded as a `byte`. Hex values break nicely into high and low nibbles:
-`category` and `reason`. For instance, `hex"01"` stands for general success
-and `hex"00"` for general failure.
+FISSIONs are encoded as a `byte`. Hex values break nicely into high and low nibbles: `category` and `reason`. For instance, `hex"01"` stands for general success and `hex"00"` for general failure.
 
-`byte` is quite lightweight, and can be easily packed with multiple codes into
-a `bytes32` (or similar) if desired. It is also easily interoperable with `uint8`,
-cast from `enum`s, and so on.
+`byte` is quite lightweight, and can be easily packed with multiple codes into a `bytes32` (or similar) if desired. It is also easily interoperable with `uint8`, cast from `enum`s, and so on.
 
 ## Human Readable
 
-Developers should not be required to memorize 256 codes. However, they break nicely into a table.
-Cognitive load is lowered by organizing the table into categories and reasons.
-`0x10` and `0x11` belong to the same category, and `0x04` shares a reason with `0x24`
+Developers should not be required to memorize 256 codes. However, they break nicely into a table. Cognitive load is lowered by organizing the table into categories and reasons. `0x10` and `0x11` belong to the same category, and `0x04` shares a reason with `0x24`.
 
-While this repository includes helper enums, we have found working directly in
-the hex values to be quite natural. ESC `0x10` is just as comfortable as HTTP 401, for example.
+While this repository includes helper enums, we have found working directly in the hex values to be quite natural. FISSION `0x10` is just as comfortable as HTTP 401, for example.
 
 ## Extensiblilty
 
-The `0xA` category is reserved for application-specific statuses.
-In the case that 256 codes become insufficient, `bytes1` my be embedded in larger byte arrays.
+The `0xA` category is reserved for application-specific statuses. In the case that 256 codes become insufficient, `bytes1` my be embedded in larger byte arrays.
 
 # Code Table
 
