@@ -186,9 +186,8 @@ AwesomeCoin                 DEX                     TraderBot
 
 # Sponsors
 
-* RO
-
 [![](/static/sponsors/Tachyon.png)](https://tachyoncv.vc/)
+[![](/static/sponsors/Robot-Overlord.png)](https://robotoverlord.io/)
 
 # Featured On
 
