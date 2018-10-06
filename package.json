@@ -27,6 +27,7 @@
     "truffle:compile": "truffle compile",
     "truffle:migrate": "truffle migrate",
     "start:testrpc": "ganache-cli -u 0",
+    "coverage": "./node_modules/.bin/solidity-coverage",
     "watch": "npm-watch"
   },
   "watch": {

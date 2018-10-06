@@ -1,5 +1,4 @@
 language: node_js
-
 sudo: required
 
 node_js:
@@ -18,4 +17,4 @@ script:
   - truffle compile
   - ganache-cli -p 8545 > /dev/null &
   - truffle migrate
-- npm run coverage && cat coverage/lcov.info | coveralls
+  - npm run coverage && cat coverage/lcov.info | coveralls
