@@ -191,5 +191,4 @@ AwesomeCoin                 DEX                     TraderBot
 
 # Featured On
 
-* TechCrunch
 [![](/static/sponsors/Tech-Crunch-Logo-@2x.png)](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
