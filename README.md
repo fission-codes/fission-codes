@@ -183,3 +183,13 @@ AwesomeCoin                 DEX                     TraderBot
              |                          |                         |                         |                   |
              +                          +                         +                         +                   +
 ```
+
+# Sponsors
+
+* RO
+
+[![](https://cdn-images-1.medium.com/max/1600/1*z8uzXvdHUG7Q4hwUYvDvIg.png)](https://tachyoncv.vc/)
+
+# Featured On
+
+* TechCrunch
