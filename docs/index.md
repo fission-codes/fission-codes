@@ -1,4 +1,4 @@
-# Ethereum Status Codes
+# ERC-1066: FISSION Codes
 ## Broadly applicable status codes for Ethereum smart contracts.
 
 [![CircleCI](https://circleci.com/gh/expede/ethereum-status-codes.svg?style=svg)](https://circleci.com/gh/expede/ethereum-status-codes) [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
