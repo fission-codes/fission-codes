@@ -1,3 +1,6 @@
-site_name: ERC-1066 Docs
+site_name: FISSION Suite Docs
+nav:
+    - ERC-1066: index.md
+    - ERC-1444: ERC1444.md
 theme:
   name: 'material'
