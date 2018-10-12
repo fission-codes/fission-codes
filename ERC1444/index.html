@@ -1,0 +1,937 @@
+
+
+
+
+<!DOCTYPE html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      <meta http-equiv="x-ua-compatible" content="ie=edge">
+      
+      
+      
+      
+        <meta name="lang:clipboard.copy" content="Copy to clipboard">
+      
+        <meta name="lang:clipboard.copied" content="Copied to clipboard">
+      
+        <meta name="lang:search.language" content="en">
+      
+        <meta name="lang:search.pipeline.stopwords" content="True">
+      
+        <meta name="lang:search.pipeline.trimmer" content="True">
+      
+        <meta name="lang:search.result.none" content="No matching documents">
+      
+        <meta name="lang:search.result.one" content="1 matching document">
+      
+        <meta name="lang:search.result.other" content="# matching documents">
+      
+        <meta name="lang:search.tokenizer" content="[\s\-]+">
+      
+      <link rel="shortcut icon" href="../assets/images/favicon.png">
+      <meta name="generator" content="mkdocs-1.0.4, mkdocs-material-3.0.4">
+    
+    
+      
+        <title>ERC-1444 - FISSION Suite Docs</title>
+      
+    
+    
+      <link rel="stylesheet" href="../assets/stylesheets/application.451f80e5.css">
+      
+      
+    
+    
+      <script src="../assets/javascripts/modernizr.1aa3b519.js"></script>
+    
+    
+      
+        <link href="https://fonts.gstatic.com" rel="preconnect" crossorigin>
+        <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Roboto:300,400,400i,700|Roboto+Mono">
+        <style>body,input{font-family:"Roboto","Helvetica Neue",Helvetica,Arial,sans-serif}code,kbd,pre{font-family:"Roboto Mono","Courier New",Courier,monospace}</style>
+      
+    
+    <link rel="stylesheet" href="../assets/fonts/material-icons.css">
+    
+    
+  </head>
+  
+    <body dir="ltr">
+  
+    <svg class="md-svg">
+      <defs>
+        
+        
+      </defs>
+    </svg>
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" data-md-component="overlay" for="__drawer"></label>
+    
+      <a href="../#erc-1444" tabindex="1" class="md-skip">
+        Skip to content
+      </a>
+    
+    
+      <header class="md-header" data-md-component="header">
+  <nav class="md-header-nav md-grid">
+    <div class="md-flex">
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <a href=".." title="FISSION Suite Docs" class="md-header-nav__button md-logo">
+          
+            <i class="md-icon"></i>
+          
+        </a>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        <label class="md-icon md-icon--menu md-header-nav__button" for="__drawer"></label>
+      </div>
+      <div class="md-flex__cell md-flex__cell--stretch">
+        <div class="md-flex__ellipsis md-header-nav__title" data-md-component="title">
+          
+            
+              <span class="md-header-nav__topic">
+                FISSION Suite Docs
+              </span>
+              <span class="md-header-nav__topic">
+                ERC-1444
+              </span>
+            
+          
+        </div>
+      </div>
+      <div class="md-flex__cell md-flex__cell--shrink">
+        
+          
+            <label class="md-icon md-icon--search md-header-nav__button" for="__search"></label>
+            
+<div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="query" data-md-state="active">
+      <label class="md-icon md-search__icon" for="__search"></label>
+      <button type="reset" class="md-icon md-search__icon" data-md-component="reset" tabindex="-1">
+        &#xE5CD;
+      </button>
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="result">
+          <div class="md-search-result__meta">
+            Type to start searching
+          </div>
+          <ol class="md-search-result__list"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+          
+        
+      </div>
+      
+    </div>
+  </nav>
+</header>
+    
+    <div class="md-container">
+      
+        
+      
+      
+      <main class="md-main">
+        <div class="md-main__inner md-grid" data-md-component="container">
+          
+            
+              <div class="md-sidebar md-sidebar--primary" data-md-component="navigation">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    <nav class="md-nav md-nav--primary" data-md-level="0">
+  <label class="md-nav__title md-nav__title--site" for="__drawer">
+    <a href=".." title="FISSION Suite Docs" class="md-nav__button md-logo">
+      
+        <i class="md-icon"></i>
+      
+    </a>
+    FISSION Suite Docs
+  </label>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+      
+
+
+  <li class="md-nav__item">
+    <a href=".." title="ERC-1066" class="md-nav__link">
+      ERC-1066
+    </a>
+  </li>
+
+    
+      
+      
+      
+
+  
+
+
+  <li class="md-nav__item md-nav__item--active">
+    
+    <input class="md-toggle md-nav__toggle" data-md-toggle="toc" type="checkbox" id="__toc">
+    
+      
+    
+    
+      <label class="md-nav__link md-nav__link--active" for="__toc">
+        ERC-1444
+      </label>
+    
+    <a href="./" title="ERC-1444" class="md-nav__link md-nav__link--active">
+      ERC-1444
+    </a>
+    
+      
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-method-of-converting-machine-codes-to-human-readable-text-in-any-language-and-phrasing" title="A method of converting machine codes to human-readable text in any language and phrasing." class="md-nav__link">
+    A method of converting machine codes to human-readable text in any language and phrasing.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" title="Motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" title="Specification" class="md-nav__link">
+    Specification
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-architecture" title="Contract Architecture" class="md-nav__link">
+    Contract Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localization" title="Localization" class="md-nav__link">
+    Localization
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#textfor" title="textFor" class="md-nav__link">
+    textFor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localizationpreferences" title="LocalizationPreferences" class="md-nav__link">
+    LocalizationPreferences
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set" title="set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textfor_1" title="textFor" class="md-nav__link">
+    textFor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-format" title="String Format" class="md-nav__link">
+    String Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templates" title="Templates" class="md-nav__link">
+    Templates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale" title="Rationale" class="md-nav__link">
+    Rationale
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bytes32-keys" title="bytes32 Keys" class="md-nav__link">
+    bytes32 Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-vs-globals-and-singletons" title="Local vs Globals and Singletons" class="md-nav__link">
+    Local vs Globals and Singletons
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#off-chain-storage" title="Off Chain Storage" class="md-nav__link">
+    Off Chain Storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascii-vs-utf-8-vs-utf-16" title="ASCII vs UTF-8 vs UTF-16" class="md-nav__link">
+    ASCII vs UTF-8 vs UTF-16
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-no-text-is-found" title="When No Text is Found" class="md-nav__link">
+    When No Text is Found
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generic-option" title="Generic Option" class="md-nav__link">
+    Generic Option
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallback-option" title="Fallback Option" class="md-nav__link">
+    Fallback Option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decentralized-text-crowdsourcing" title="Decentralized Text Crowdsourcing" class="md-nav__link">
+    Decentralized Text Crowdsourcing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf-style-format-strings" title="printf-style Format Strings" class="md-nav__link">
+    printf-style Format Strings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-fields" title="Parameter Fields" class="md-nav__link">
+    Parameter Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplified-localizations" title="Simplified Localizations" class="md-nav__link">
+    Simplified Localizations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-strategy" title="Interpolation Strategy" class="md-nav__link">
+    Interpolation Strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unspecified-behaviour" title="Unspecified Behaviour" class="md-nav__link">
+    Unspecified Behaviour
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" title="Implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+    
+  </li>
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="toc">
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+<nav class="md-nav md-nav--secondary">
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">Table of contents</label>
+    <ul class="md-nav__list" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#a-method-of-converting-machine-codes-to-human-readable-text-in-any-language-and-phrasing" title="A method of converting machine codes to human-readable text in any language and phrasing." class="md-nav__link">
+    A method of converting machine codes to human-readable text in any language and phrasing.
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#motivation" title="Motivation" class="md-nav__link">
+    Motivation
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#specification" title="Specification" class="md-nav__link">
+    Specification
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#contract-architecture" title="Contract Architecture" class="md-nav__link">
+    Contract Architecture
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localization" title="Localization" class="md-nav__link">
+    Localization
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#textfor" title="textFor" class="md-nav__link">
+    textFor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#localizationpreferences" title="LocalizationPreferences" class="md-nav__link">
+    LocalizationPreferences
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#set" title="set" class="md-nav__link">
+    set
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#textfor_1" title="textFor" class="md-nav__link">
+    textFor
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#string-format" title="String Format" class="md-nav__link">
+    String Format
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#templates" title="Templates" class="md-nav__link">
+    Templates
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#rationale" title="Rationale" class="md-nav__link">
+    Rationale
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#bytes32-keys" title="bytes32 Keys" class="md-nav__link">
+    bytes32 Keys
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#local-vs-globals-and-singletons" title="Local vs Globals and Singletons" class="md-nav__link">
+    Local vs Globals and Singletons
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#off-chain-storage" title="Off Chain Storage" class="md-nav__link">
+    Off Chain Storage
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ascii-vs-utf-8-vs-utf-16" title="ASCII vs UTF-8 vs UTF-16" class="md-nav__link">
+    ASCII vs UTF-8 vs UTF-16
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#when-no-text-is-found" title="When No Text is Found" class="md-nav__link">
+    When No Text is Found
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#generic-option" title="Generic Option" class="md-nav__link">
+    Generic Option
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#fallback-option" title="Fallback Option" class="md-nav__link">
+    Fallback Option
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#decentralized-text-crowdsourcing" title="Decentralized Text Crowdsourcing" class="md-nav__link">
+    Decentralized Text Crowdsourcing
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#printf-style-format-strings" title="printf-style Format Strings" class="md-nav__link">
+    printf-style Format Strings
+  </a>
+  
+    <nav class="md-nav">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#parameter-fields" title="Parameter Fields" class="md-nav__link">
+    Parameter Fields
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#simplified-localizations" title="Simplified Localizations" class="md-nav__link">
+    Simplified Localizations
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interpolation-strategy" title="Interpolation Strategy" class="md-nav__link">
+    Interpolation Strategy
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unspecified-behaviour" title="Unspecified Behaviour" class="md-nav__link">
+    Unspecified Behaviour
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#implementation" title="Implementation" class="md-nav__link">
+    Implementation
+  </a>
+  
+</li>
+      
+      
+      
+      
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          <div class="md-content">
+            <article class="md-content__inner md-typeset">
+              
+                
+                
+                <h1 id="erc-1444">ERC-1444</h1>
+<h2 id="a-method-of-converting-machine-codes-to-human-readable-text-in-any-language-and-phrasing">A method of converting machine codes to human-readable text in any language and phrasing.</h2>
+<p>An on-chain system for providing user feedback by converting machine-efficient codes into human-readable strings in any language or phrasing. The system does not impose a list of languages, but rather lets users create, share, and use the localizated text of their choice.</p>
+<h2 id="motivation">Motivation</h2>
+<p>There are many cases where an end user needs feedback or instruction from a smart contact. Directly exposing numeric codes does not make for good UX or DX. If Ethereum is to be a truly global system usable by experts and lay persons alike, systems to provide feedback on what happened during a transaction are needed in as many languages as possible.</p>
+<p>Returning a hard-coded string (typically in English) only serves a small segment of the global population. This standard proposes a method to allow users to create, register, share, and use a decentralized collection of translations, enabling richer messaging that is more culturally and linguistically diverse.</p>
+<p>There are several machine efficient ways of representing intent, status, state transition, and other semantic signals including booleans, enums and <a href="https://eips.ethereum.org/EIPS/eip-1066">ERC-1066 codes</a>. By providing human-readable messages for these signals, the developer experience is enhanced by returning easier to consume information with more context (ex. <code>revert</code>). End user experience is enhanced by providing text that can be propagated up to the UI.</p>
+<h2 id="specification">Specification</h2>
+<h3 id="contract-architecture">Contract Architecture</h3>
+<p>Two types of contract: <code>LocalizationPreferences</code>, and <code>Localization</code>s.</p>
+<p>The <code>LocalizationPreferences</code> contract functions as a proxy for <code>tx.origin</code>.</p>
+<pre><code class="diagram">                                                                   +--------------+
+                                                                   |              |
+                                                          +------&gt; | Localization |
+                                                          |        |              |
+                                                          |        +--------------+
+                                                          |
+                                                          |
++-----------+          +-------------------------+        |        +--------------+
+|           |          |                         | &lt;------+        |              |
+| Requestor | &lt;------&gt; | LocalizationPreferences | &lt;-------------&gt; | Localization |
+|           |          |                         | &lt;------+        |              |
++-----------+          +-------------------------+        |        +--------------+
+                                                          |
+                                                          |
+                                                          |        +--------------+
+                                                          |        |              |
+                                                          +------&gt; | Localization |
+                                                                   |              |
+                                                                   +--------------+
+</code></pre>
+
+<h3 id="localization"><code>Localization</code></h3>
+<p>A contract that holds a simple mapping of codes to their text representations.</p>
+<pre><code class="solidity">interface Localization {
+  function textFor(bytes32 _code) external view returns (string _text);
+}
+</code></pre>
+
+<h4 id="textfor"><code>textFor</code></h4>
+<p>Fetches the localized text representation.</p>
+<pre><code class="solidity">function textFor(bytes32 _code) external view returns (string _text);
+</code></pre>
+
+<h3 id="localizationpreferences"><code>LocalizationPreferences</code></h3>
+<p>A proxy contract that allows users to set their preferred <code>Localization</code>. Text lookup is delegated to the user's preferred contract.</p>
+<p>A fallback <code>Localization</code> with all keys filled MUST be available. If the user-specified <code>Localization</code> has not explicitly set a loalization (ie. <code>textFor</code> returns <code>""</code>), the <code>LocalizationPreferences</code> MUST redelegate to the fallback <code>Localization</code>.</p>
+<pre><code class="solidity">interface LocalizationPreferences {
+  function set(Localization _localization) external returns (bool);
+  function textFor(bytes32 _code) external view returns (bool _wasFound, string _text);
+}
+</code></pre>
+
+<h4 id="set"><code>set</code></h4>
+<p>Registers a user's preferred <code>Localization</code>. The registering user SHOULD be considered <code>tx.origin</code>.</p>
+<pre><code class="solidity">function set(Localization _localization) external;
+</code></pre>
+
+<h4 id="textfor_1"><code>textFor</code></h4>
+<p>Retrieve text for a code found at the user's preferred <code>Localization</code> contract.</p>
+<p>The first return value (<code>bool _wasFound</code>) represents if the text is available from that <code>Localization</code>, or if a fallback was used. If the fallback was used in this context, the <code>textFor</code>'s first return value MUST be set to <code>false</code>, and is <code>true</code> otherwise.</p>
+<pre><code class="solidity">function textFor(bytes32 _code) external view returns (bool _wasFound, string _text);
+</code></pre>
+
+<h3 id="string-format">String Format</h3>
+<p>All strings MUST be encoded as <a href="http://www.ietf.org/rfc/rfc3629.txt">UTF-8</a>.</p>
+<pre><code class="solidity">&quot;Špeĉiäl chârãçtérs are permitted&quot;
+&quot;As are non-Latin characters: アルミ缶の上にあるみかん。&quot;
+&quot;Emoji are legal: 🙈🙉🙊🎉&quot;
+&quot;Feel free to be creative: (ﾉ◕ヮ◕)ﾉ*:･ﾟ✧&quot;
+</code></pre>
+
+<h3 id="templates">Templates</h3>
+<p>Template strings are allowed, and MUST follow the <a href="http://pubs.opengroup.org/onlinepubs/009696799/utilities/printf.html">ANSI C <code>printf</code></a> conventions.</p>
+<pre><code class="solidity">&quot;Satoshi's true identity is %s&quot;
+</code></pre>
+
+<p>Text with 2 or more arguments SHOULD use the POSIX parameter field extension.</p>
+<pre><code class="solidity">&quot;Knock knock. Who's there? %1$s. %1$s who? %2$s!&quot;
+</code></pre>
+
+<h2 id="rationale">Rationale</h2>
+<h3 id="bytes32-keys"><code>bytes32</code> Keys</h3>
+<p><code>bytes32</code> is very efficient since it is the EVM's base word size. Given the enormous number of elements (|A| &gt; 1.1579 × 10<sup>77</sup>), it can embed nearly any practical signal, enum, or state. In cases where an application's key is longer than <code>bytes32</code>, hashing that long key can map that value into the correct width.</p>
+<p>Designs that use datatypes with small widths than <code>bytes32</code> (such as <code>bytes1</code> in <a href="https://eips.ethereum.org/EIPS/eip-1066">ERC-1066</a>) can be directly embedded into the larger width. This is a trivial one-to-one mapping of the smaller set into the the larger one.</p>
+<h3 id="local-vs-globals-and-singletons">Local vs Globals and Singletons</h3>
+<p>This spec has opted to not <em>force</em> a single global registry, and rather allow any contract and use case deploy their own system. This allows for more flexibility, and does not restrict the community for opting to use singleton <code>LocalizationPreference</code> contracts for common use cases, share <code>Localization</code>s between different proxys, delegate translations between <code>Localization</code>s, and so on.</p>
+<p>There are many practical uses of agreed upon singletons. For instance, translating codes that aim to be fairly universal and integrated directly into the broader ecosystem (wallets, frameworks, debuggers, and the like) will want to have a single <code>LocalizationPreference</code>.</p>
+<p>Rather the dispersing several <code>LocalizationPreference</code>s for different use cases and codes, one could imagine a global "registry of registries". While this approach allows for a unified lookups of all translations in all use cases, it is antithetical to the spirit of decentralization and freedom. Such a system also increases the lookup complexity, places an onus on getting the code right the first time (or adding the overhead of an upgradable contract), and need to account for use case conflicts with a "unified" or centralized numbering system. Further, lookups should be lightweight (especially in cases like looking up revert text).</p>
+<p>For these reasons, this spec chooses the more decentralized, lightweight, free approach, at the cost of on-chain discoverability. A registry could still be compiled, but would be difficult to enforce, and is out of scope of this spec.</p>
+<h3 id="off-chain-storage">Off Chain Storage</h3>
+<p>A very viable alternative is to store text off chain, with a pointer to the translations on-chain, and emit or return a <code>bytes32</code> code for another party to do the lookup. It is difficult to guarantee that off-chain resources will be available, and requires coordination from some other system like a web server to do the code-to-text matching. This is also not compatible with <code>revert</code> messages.</p>
+<h3 id="ascii-vs-utf-8-vs-utf-16">ASCII vs UTF-8 vs UTF-16</h3>
+<p>UTF-8 is the most widely used encoding at time of writing. It contains a direct embedding of ASCII, while providing characters for most natural languages, emoji, and special characters.</p>
+<p>Please see the <a href="http://utf8everywhere.org/">UTF-8 Everywhere Manifesto</a> for more information.</p>
+<h3 id="when-no-text-is-found">When No Text is Found</h3>
+<p>Returning a blank string to the requestor fully defeats the purpose of a localization system. The two options for handling missing text are:</p>
+<ol>
+<li>A generic "text not found" message in the preferred language</li>
+<li>The actual message, in a different language</li>
+</ol>
+<h4 id="generic-option">Generic Option</h4>
+<p>This designed opted to not use generic fallback text. It does not provide any useful information to the user other than to potentially contact the <code>Localization</code> maintainer (if one even exists and updating is even possible).</p>
+<h4 id="fallback-option">Fallback Option</h4>
+<p>The design outlined in this proposal is to providing text in a commonly used language (ex. English or Mandarin). First, this is the language that will be routed to if the user has yet to set a preference. Second, there is a good chance that a user may have <em>some</em> proficiency with the language, or at least be able to use an automated translation service.</p>
+<p>Knowing that the text fell back via <code>textFor</code>s first return field boolean is <em>much</em> simpler than attempting language detection after the fact. This information is useful for certain UI cases. for example where there may be a desire to explain why localization fell back.</p>
+<h3 id="decentralized-text-crowdsourcing">Decentralized Text Crowdsourcing</h3>
+<p>In order for Ethereum to gain mass adoption, users must be able to interact with it in the language, phrasing, and level of detail that they are most comfortable with. Rather than imposing a fixed set of translations as in a traditional, centralized application, this EIP provides a way for anyone to create, curate, and use translations. This empowers the crowd to supply culturally and linguistically diverse messaging, leading to broader and more distributed access to information.</p>
+<h3 id="printf-style-format-strings"><code>printf</code>-style Format Strings</h3>
+<p>C-style <code>printf</code> templates have been the de facto standard for some time. They have wide compatibility across most languages (either in standard or third-party libraries). This makes it much easier for the consuming program to interpolate strings with low developer overhead.</p>
+<h4 id="parameter-fields">Parameter Fields</h4>
+<p>The POSIX parameter field extension is important since languages do not share a common word order. Parameter fields enable the reuse and rearrangement of arguments in different localizations.</p>
+<pre><code class="solidity">(&quot;%1$s is an element with the atomic number %2$d!&quot;, &quot;Mercury&quot;, 80);
+// =&gt; &quot;Mercury is an element with the atomic number 80!&quot;
+</code></pre>
+
+<h4 id="simplified-localizations">Simplified Localizations</h4>
+<p>Localization text does not require use of all parameters, and may simply ignore values. This can be useful for not exposing more technical information to users that would otherwise find it confusing.</p>
+<pre><code class="ruby">#!/usr/bin/env ruby
+
+sprintf(&quot;%1$s é um elemento&quot;, &quot;Mercurio&quot;, 80)
+# =&gt; &quot;Mercurio é um elemento&quot;
+</code></pre>
+
+<pre><code class="clojure">#!/usr/bin/env clojure
+
+(format &quot;Element #%2$s&quot; &quot;Mercury&quot; 80)
+;; =&gt; Element #80
+</code></pre>
+
+<h3 id="interpolation-strategy">Interpolation Strategy</h3>
+<p>Please note that it is highly advisable to return the template string <em>as is</em>, with arguments as multiple return values or fields in an <code>event</code>, leaving the actual interpolation to be done off chain.</p>
+<pre><code class="solidity">event AtomMessage {
+  bytes32 templateCode;
+  bytes32 atomCode;
+  uint256 atomicNumber;
+}
+</code></pre>
+
+<pre><code class="javascript">#!/usr/bin/env node
+
+var printf = require('printf');
+
+const { returnValues: { templateCode, atomCode, atomicNumber } } = eventResponse;
+
+const template = await AppText.textFor(templateCode);
+// =&gt; &quot;%1$s ist ein Element mit der Ordnungszahl %2$d!&quot;
+
+const atomName = await PeriodicTableText.textFor(atomCode);
+// =&gt; &quot;Merkur&quot;
+
+printf(template, atomName, 80);
+// =&gt; &quot;Merkur ist ein Element mit der Ordnungszahl 80!&quot;
+</code></pre>
+
+<h3 id="unspecified-behaviour">Unspecified Behaviour</h3>
+<p>This spec does not specify:</p>
+<ul>
+<li>Public or private access to the default <code>Localization</code></li>
+<li>Who may set text</li>
+<li>Deployer</li>
+<li><code>onlyOwner</code></li>
+<li>Anyone</li>
+<li>Whitelisted users</li>
+<li>and so on</li>
+<li>When text is set</li>
+<li><code>constructor</code></li>
+<li>Any time</li>
+<li>Write to empty slots, but not overwrite existing text</li>
+<li>and so on</li>
+</ul>
+<p>These are intentionally left open. There are many cases for each of these, and restricting any is fully beyond the scope of this proposal.</p>
+<h2 id="implementation">Implementation</h2>
+<p>Reference cases and helper libraries (Solidity and JS) can be found at:</p>
+<ul>
+<li><a href="https://www.npmjs.com/package/ethereum-localized-messaging">Package on npm</a></li>
+<li><a href="https://github.com/fission-suite/fission-translate">FISSION Translate</a></li>
+</ul>
+                
+                  
+                
+              
+              
+                
+
+
+              
+            </article>
+          </div>
+        </div>
+      </main>
+      
+        
+<footer class="md-footer">
+  
+    <div class="md-footer-nav">
+      <nav class="md-footer-nav__inner md-grid">
+        
+          <a href=".." title="ERC-1066" class="md-flex md-footer-nav__link md-footer-nav__link--prev" rel="prev">
+            <div class="md-flex__cell md-flex__cell--shrink">
+              <i class="md-icon md-icon--arrow-back md-footer-nav__button"></i>
+            </div>
+            <div class="md-flex__cell md-flex__cell--stretch md-footer-nav__title">
+              <span class="md-flex__ellipsis">
+                <span class="md-footer-nav__direction">
+                  Previous
+                </span>
+                ERC-1066
+              </span>
+            </div>
+          </a>
+        
+        
+      </nav>
+    </div>
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-footer-copyright">
+        
+        powered by
+        <a href="https://www.mkdocs.org">MkDocs</a>
+        and
+        <a href="https://squidfunk.github.io/mkdocs-material/">
+          Material for MkDocs</a>
+      </div>
+      
+        
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    
+      <script src="../assets/javascripts/application.583bbe55.js"></script>
+      
+      <script>app.initialize({version:"1.0.4",url:{base:".."}})</script>
+      
+    
+    
+      
+    
+  </body>
+</html>
