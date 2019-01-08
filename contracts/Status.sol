@@ -9,17 +9,17 @@ library Status {
     enum Category {
         Generic,
         Permission,
-        Match,
-        Offer,
+        Find,
+        Negotiation,
         Availability,
 
-        x50,
+        Finance,
         x60,
         x70,
         x80,
         x90,
 
-        AppCategory,
+        ApplicationSpecific,
 
         xB0,
         xC0,
@@ -32,24 +32,26 @@ library Status {
     enum Reason {
         Failure,
         Success,
-        Acceptance,
-        Before,
-        ActionRequired,
 
-        Expired,
+        Awaiting Others,
+        Accepted,
+        LowerLimit,
+        RecieverActionRequested,
+        UpperLimit,
+
         x06,
         x07,
-        x08,
+
+        Inapplicable,
+
         x09,
-
-        AppReason,
-
+        x0A,
         x0B,
         x0C,
         x0D,
         x0E,
 
-        Info
+        MetaInfo
     }
 
     function toCode(Category _category, Reason _reason) public pure returns (byte code) {
