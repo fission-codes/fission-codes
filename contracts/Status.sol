@@ -1,5 +1,4 @@
 pragma solidity ^0.5.0;
-pragma experimental SMTChecker;
 
 import "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
 import "./localization/FissionLocalization.sol";
