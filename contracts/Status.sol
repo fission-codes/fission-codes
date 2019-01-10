@@ -114,7 +114,7 @@ library Status {
     }
 
     function requireSuccess(byte _status) public pure {
-        require(iSsuccess(_status));
+        require(isSuccess(_status));
     }
 
     function requireSuccess(byte _status, string message) public pure {
