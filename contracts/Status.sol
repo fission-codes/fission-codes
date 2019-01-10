@@ -1,9 +1,8 @@
-pragma solidity ^0.4.24;
+pragma solidity ^0.5.0;
+pragma experimental SMTChecker;
 
 import "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
 import "./localization/FissionLocalization.sol";
-
-// works with `using Status for byte`
 
 library Status {
     enum Category {
@@ -33,10 +32,10 @@ library Status {
         Failure,
         Success,
 
-        Awaiting Others,
+        AwaitingOthers,
         Accepted,
         LowerLimit,
-        RecieverActionRequested,
+        ActionRequested,
         UpperLimit,
 
         x06,
@@ -84,12 +83,20 @@ library Status {
 
     // Check common statuses
 
-    function isFailure(byte _status) public pure returns (bool) {
-        return reasonOf(_status) == 0;
+    function isOk(byte _status) public pure returns (bool) {
+        return mod(_status, 2) == 0;
     }
 
-    function isOk(byte _status) public pure returns (bool) {
+    function isBlocking(byte _status) public pure returns (bool) {
+        return !isOk(_status);
+    }
+
+    function isSuccess(byte _status) public pure returns (bool) {
         return reasonOf(_status) == 1;
+    }
+
+    function isFailure(byte _status) public pure returns (bool) {
+        return reasonOf(_status) == 0;
     }
 
     // `require`s
@@ -105,5 +112,18 @@ library Status {
     function requireOk(byte _status, LocalizationPreferences _prefs) public view {
         (bool _, string memory message) = localizeBy(_status, _prefs);
         requireOk(_status, message);
+    }
+
+    function requireSuccess(byte _status) public pure {
+        require(iSsuccess(_status));
+    }
+
+    function requireSuccess(byte _status, string message) public pure {
+        require(isSuccess(_status), message);
+    }
+
+    function requireSuccess(byte _status, LocalizationPreferences _prefs) public view {
+        (bool _, string memory message) = localizeBy(_status, _prefs);
+        requireSuccess(_status, message);
     }
 }
