@@ -19,13 +19,11 @@ contract('Status', () => { // eslint-disable-line no-undef
     registry = await LocalizationPreferences.new(localization.address);
   });
 
-  // Failing with useless stack trace
+  // Having issues with overloaded functions
   //
   // describe('#toCode', () => {
   //   it('constructs a code out of numbers', async () => {
-  //     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
   //     const code = await status.toCode(10, 6);
-  //     console.log("***************************");
   //     expect(Number(code)).to.equal(0xA6);
   //   });
   // });
@@ -61,7 +59,7 @@ contract('Status', () => { // eslint-disable-line no-undef
     });
   });
 
-  // Failing with useless stack trace
+  // Having issues with overloaded functions
   //
   // describe('#localizeBy', () => {
   //   it('looks up a translation', async () => {
