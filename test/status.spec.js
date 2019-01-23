@@ -9,11 +9,18 @@ const BasicEnglishLocalization = artifacts.require('BasicEnglishLocalization');
 
 contract('Status', () => { // eslint-disable-line no-undef
   let status;
+  let localization;
+  let registry;
 
   before(async () => {
     status = await Status.new();
+
+    localization = await BasicEnglishLocalization.new();
+    registry = await LocalizationPreferences.new(localization.address);
   });
 
+  // Failing with useless stack trace
+  //
   // describe('#toCode', () => {
   //   it('constructs a code out of numbers', async () => {
   //     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
@@ -54,12 +61,12 @@ contract('Status', () => { // eslint-disable-line no-undef
     });
   });
 
+  // Failing with useless stack trace
+  //
   // describe('#localizeBy', () => {
   //   it('looks up a translation', async () => {
-  //     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
-  //     const code = await status.toCode(10, 6);
-  //     console.log("***************************");
-  //     expect(Number(code)).to.equal(0xA6);
+  //     const [found, text] = await status.localizeBy('0x14', registry.address);
+  //     expect(text).to.equal('');
   //   });
   // });
 
@@ -143,26 +150,40 @@ contract('Status', () => { // eslint-disable-line no-undef
   });
 
   describe('#requireOk/2', () => {
-    let localization;
-    let registry;
-
-    before(async () => {
-      localization = await BasicEnglishLocalization.new();
-      registry = await LocalizationPreferences.new(localization.address);
-
-      await registry.set(localization.address);
-    });
-
-    context('lower nibble is 0x01', () => {
-      it('does not throw', async () => {
+    context('lower nibble is odd', () => {
+      it('does not throw on 0x01', async () => {
         const result = await status.requireOk('0x01', registry);
+        return expect(result).to.be.ok;
+      });
+
+      it('does not throw on 0xA5', async () => {
+        const result = await status.requireOk('0xA5', registry);
         return expect(result).to.be.ok;
       });
     });
 
-    context('lower nibble is not 0x01', () => {
-      it('reverts with message', () => expectRevert(async () => {
+    context('lower nibble is even', () => {
+      it('reverts with message on 0x00', () => expectRevert(async () => {
         await status.requireOk('0x00', registry);
+      }));
+
+      it('reverts with message on 0xA2', () => expectRevert(async () => {
+        await status.requireOk('0xA2', registry);
+      }));
+    });
+  });
+
+  describe('#requireSuccess/2', () => {
+    context('lower nibble is 1', () => {
+      it('does not throw', async () => {
+        const result = await status.requireSuccess('0x01', registry);
+        return expect(result).to.be.ok;
+      });
+    });
+
+    context('lower nibble is not 1', () => {
+      it('reverts with message', () => expectRevert(async () => {
+        await status.requireSuccess('0x00', registry);
       }));
     });
   });

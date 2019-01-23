@@ -4,15 +4,15 @@ import "../Status.sol";
 
 contract Phone {
     enum Call {
-      Disconnected,        // Failure
-      Connected,           // Success
+      Disconnected, // Failure
+      Connected,    // Success
 
-      AnsweringMachine,    // AwatingOthers
-      Ringing,             // Accepted
+      Voicemail,    // AwatingOthers
+      Ringing,      // Accepted
 
-      BusySignal,          // LowerLimit
-      IncomingCall,        // ActionRequested
-      AnsweringMachineFull // UpperLimit
+      BusySignal,   // LowerLimit
+      IncomingCall, // ActionRequested
+      VoicemailFull // UpperLimit
     }
 
     string[] internal messages;
@@ -38,7 +38,7 @@ contract Phone {
         }
 
         messages.push(_message);
-        return (toCode(Call.AnsweringMachine), "Your message has been recorded");
+        return (toCode(Call.Voicemail), "Your message has been recorded");
     }
 
     function normalize(bytes1 _code, string memory _response) internal pure returns (bytes1, string memory) {
