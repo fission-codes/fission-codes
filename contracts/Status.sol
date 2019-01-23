@@ -83,7 +83,7 @@ library Status {
     // Check common statuses
 
     function isOk(bytes1 _status) public pure returns (bool) {
-      return (uint8(_status) % 2) == 0;
+      return (uint8(_status) % 2) == 1;
     }
 
     function isBlocking(bytes1 _status) public pure returns (bool) {

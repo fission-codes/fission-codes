@@ -4,11 +4,15 @@ import "../Status.sol";
 
 contract Phone {
     enum Call {
-        Disconnected,
-        Connected,
-        Started,
-        BusySignal,
-        AnsweringMachine
+      Disconnected,        // Failure
+      Connected,           // Success
+
+      AnsweringMachine,    // AwatingOthers
+      Ringing,             // Accepted
+
+      BusySignal,          // LowerLimit
+      IncomingCall,        // ActionRequested
+      AnsweringMachineFull // UpperLimit
     }
 
     string[] internal messages;
@@ -24,15 +28,13 @@ contract Phone {
     }
 
     function outgoing(Phone _contact, string memory _message) public returns (bytes1, string memory) {
-        byte code;
-        string memory response;
-        (code, response) = _contact.incoming(_message);
+        (bytes1 code, string memory response) = _contact.incoming(_message);
         return normalize(code, response);
     }
 
     function incoming(string calldata _message) external returns (bytes1, string memory) {
         if (contacts[msg.sender]) {
-            return (toCode(Call.Started), "Hi. Can I help you?");
+            return (toCode(Call.Connected), "Hi. Can I help you?");
         }
 
         messages.push(_message);
@@ -40,7 +42,7 @@ contract Phone {
     }
 
     function normalize(bytes1 _code, string memory _response) internal pure returns (bytes1, string memory) {
-        if (_code == toCode(Call.Started)) { return (_code, _response); }
+        if (_code == toCode(Call.Connected)) { return (_code, _response); }
         if (_code == toCode(Call.BusySignal)) { return (_code, "BUSY TONE"); }
         if (Status.isOk(_code)) { return (toCode(Call.Connected), ""); }
         return (toCode(Call.Disconnected), "click");
