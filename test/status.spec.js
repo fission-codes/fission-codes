@@ -14,6 +14,22 @@ contract('Status', () => { // eslint-disable-line no-undef
     status = await Status.new();
   });
 
+  // describe('#toCode', () => {
+  //   it('constructs a code out of numbers', async () => {
+  //     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  //     const code = await status.toCode(10, 6);
+  //     console.log("***************************");
+  //     expect(Number(code)).to.equal(0xA6);
+  //   });
+  // });
+
+  describe('#appCode', () => {
+    it('prepends "A" to the reason', async () => {
+      const code = await status.appCode('0x06');
+      expect(Number(code)).to.equal(0xA6);
+    });
+  });
+
   describe('#categoryOf', () => {
     it('retuns the upper nibble', async () => {
       const cat = await status.categoryOf('0x01');
@@ -38,6 +54,73 @@ contract('Status', () => { // eslint-disable-line no-undef
     });
   });
 
+  // describe('#localizeBy', () => {
+  //   it('looks up a translation', async () => {
+  //     console.log(">>>>>>>>>>>>>>>>>>>>>>>>>>>");
+  //     const code = await status.toCode(10, 6);
+  //     console.log("***************************");
+  //     expect(Number(code)).to.equal(0xA6);
+  //   });
+  // });
+
+  describe('#isOk', () => {
+    context('lower nibble is odd', () => {
+      it('is true', async () => {
+        const result = await status.isOk('0x05');
+        return expect(result).to.be.true;
+      });
+
+      it('is insensitive to the upper nibble', async () => {
+        const result = await status.isOk('0x41');
+        return expect(result).to.be.true;
+      });
+    });
+
+    context('lower nibble is even', () => {
+      it('is false', async () => {
+        const result = await status.isOk('0x0A');
+        return expect(result).to.be.false;
+      });
+    });
+  });
+
+  describe('#isBlocking', () => {
+    context('lower nibble is even', () => {
+      it('is blocking', async () => {
+        const result = await status.isBlocking('0x14');
+        return expect(result).to.be.true;
+      });
+    });
+
+    context('lower nibble is odd', () => {
+      it('is not blocking', async () => {
+        const result = await status.isBlocking('0xE7');
+        return expect(result).to.be.false;
+      });
+    });
+  });
+
+  describe('#isSuccess', () => {
+    context('lower nibble is 1', () => {
+      it('is blocking', async () => {
+        const result = await status.isSuccess('0xD1');
+        return expect(result).to.be.true;
+      });
+
+      it('is insensitive to the upper nibble', async () => {
+        const result = await status.isSuccess('0x41');
+        return expect(result).to.be.true;
+      });
+    });
+
+    context('lower nibble is not 1', () => {
+      it('is not blocking', async () => {
+        const result = await status.isSuccess('0xE7');
+        return expect(result).to.be.false;
+      });
+    });
+  });
+
   describe('#isFailure', () => {
     context('lower nibble is 0x00', () => {
       it('is true', async () => {
@@ -54,27 +137,6 @@ contract('Status', () => { // eslint-disable-line no-undef
     context('lower nibble is not 0x00', () => {
       it('is false', async () => {
         const result = await status.isFailure('0x02');
-        return expect(result).to.be.false;
-      });
-    });
-  });
-
-  describe('#isOk', () => {
-    context('lower nibble is 0x01', () => {
-      it('is true', async () => {
-        const result = await status.isOk('0x01');
-        return expect(result).to.be.true;
-      });
-
-      it('is insensitive to the upper nibble', async () => {
-        const result = await status.isOk('0x41');
-        return expect(result).to.be.true;
-      });
-    });
-
-    context('lower nibble is not 0x01', () => {
-      it('is false', async () => {
-        const result = await status.isOk('0x02');
         return expect(result).to.be.false;
       });
     });

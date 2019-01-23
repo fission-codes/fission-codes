@@ -24,6 +24,7 @@
     "test:lint": "eslint -c .eslintrc . --color=true --quiet",
     "test:lint:fix": "eslint -c .eslintrc . --color=true --quiet --fix",
     "truffle:compile": "truffle compile",
+    "truffle:debug": "truffle debug",
     "truffle:migrate": "truffle migrate",
     "start:testrpc": "ganache-cli -u 0",
     "coverage": "./node_modules/.bin/solidity-coverage"
