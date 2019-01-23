@@ -10,8 +10,8 @@ library Status {
         Find,
         Negotiation,
         Availability,
-
         Finance,
+
         x60,
         x70,
         x80,
@@ -49,7 +49,7 @@ library Status {
         x0D,
         x0E,
 
-        MetaInfo
+        Informational
     }
 
     function toCode(Category _category, Reason _reason) public pure returns (byte code) {
@@ -76,7 +76,7 @@ library Status {
 
     // Localization
 
-    function localizeBy(byte _status, LocalizationPreferences _prefs) view public returns (bool found, string _msg) {
+    function localizeBy(byte _status, LocalizationPreferences _prefs) view public returns (bool found, string memory _msg) {
         return _prefs.textFor(_status);
     }
 
