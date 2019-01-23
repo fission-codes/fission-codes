@@ -1,5 +1,5 @@
 const { expect } = require('chai');
-const { expectRevert } = require('./helpers');
+const { expectRevert } = require('../helpers');
 
 /* eslint-disable no-undef */
 const Status = artifacts.require('Status');
