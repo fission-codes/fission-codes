@@ -22,12 +22,12 @@ contract AgeValidator {
         Status.Reason reason = Status.Reason.Success;
 
         if (_ageStatus == AgeStatus.TooOld) {
-            reason = Status.Reason.Expired;
+            reason = Status.Reason.UpperLimit;
         } else if (_ageStatus == AgeStatus.TooYoung) {
-            reason = Status.Reason.Before;
+            reason = Status.Reason.LowerLimit;
         }
 
-        return Status.toCode(Status.Category.AppCategory, reason);
+        return Status.toCode(Status.Category.ApplicationSpecific, reason);
     }
 
     function check(int _age) public pure returns (byte) {
