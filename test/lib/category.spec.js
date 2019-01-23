@@ -5,6 +5,9 @@ const { CATEGORY, toHexString, toId, toNumber } = require('../../lib/category');
 const hexRegex = /0x[0-9A-F]0/;
 
 describe('category', () => {
+  const index = randomInRange(0, 15);
+  const cat = CATEGORY[index];
+
   describe('#toHexString', () => {
     context('with hex value 0-9', () => {
       it('places the value into the template 0x_0', () => {
@@ -46,9 +49,6 @@ describe('category', () => {
   });
 
   describe('#toId', () => {
-    const index = randomInRange(0, 15);
-    const cat = CATEGORY[index];
-
     it('translates the category name into its uint8 enum equivalent', () => {
       expect(toId(cat)).to.equal(index);
     });
@@ -73,8 +73,26 @@ describe('category', () => {
   });
 
   describe('#toNumber', () => {
-    it('translates the category name into its number equivalent', () => {
+    it('translates the category name into its numeric prefix equivalent', () => {
+      expect(toNumber(cat)).to.equal(index * 16);
+    });
 
+    context('not a valid category', () => {
+      it('throws', () => {
+        expect(() => toNumber('foo')).to.throw();
+      });
+    });
+
+    context('not a string', () => {
+      it('throws', () => {
+        expect(() => toNumber(42)).to.throw();
+      });
+    });
+
+    context('downcased', () => {
+      it('throws', () => {
+        expect(() => toNumber(cat.toLowerCase())).to.throw();
+      });
     });
   });
 });
