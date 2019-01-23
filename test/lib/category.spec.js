@@ -1,5 +1,6 @@
 const { expect } = require('chai');
-const { toHexString, toNumber } = require('../../lib/category');
+const { randomInRange } = require('../helpers');
+const { CATEGORY, toHexString, toId, toNumber } = require('../../lib/category');
 
 const hexRegex = /0x[0-9A-F]0/;
 
@@ -25,14 +26,55 @@ describe('category', () => {
       });
     });
 
-    context('with non-hexable value', () => {
+    context('with value > 15', () => {
       it('throws', () => {
         expect(() => toHexString(123456789)).to.throw();
+      });
+    });
+
+    context('with negative value', () => {
+      it('throws', () => {
+        expect(() => toHexString(-1)).to.throw();
+      });
+    });
+
+    context('with decimal', () => {
+      it('throws', () => {
+        expect(() => toHexString(3.14159)).to.throw();
+      });
+    });
+  });
+
+  describe('#toId', () => {
+    const index = randomInRange(0, 15);
+    const cat = CATEGORY[index];
+
+    it('translates the category name into its uint8 enum equivalent', () => {
+      expect(toId(cat)).to.equal(index);
+    });
+
+    context('not a valid category', () => {
+      it('throws', () => {
+        expect(() => toId('foo')).to.throw();
+      });
+    });
+
+    context('not a string', () => {
+      it('throws', () => {
+        expect(() => toId(42)).to.throw();
+      });
+    });
+
+    context('downcased', () => {
+      it('throws', () => {
+        expect(() => toId(cat.toLowerCase())).to.throw();
       });
     });
   });
 
   describe('#toNumber', () => {
+    it('translates the category name into its number equivalent', () => {
 
+    });
   });
 });

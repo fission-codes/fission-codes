@@ -9,6 +9,9 @@ const expectRevert = async (func, msg = 'revert') => {
   }
 };
 
+const randomInRange = (min, max) => Math.round(Math.random() * (max - min) + min);
+
 module.exports = {
-  expectRevert
+  expectRevert,
+  randomInRange
 };
