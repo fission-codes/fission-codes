@@ -66,9 +66,9 @@ describe('category', () => {
       });
     });
 
-    context('downcased', () => {
+    context('wrong case', () => {
       it('throws', () => {
-        expect(() => toId(cat.toLowerCase())).to.throw();
+        expect(() => toId('generic')).to.throw();
       });
     });
   });
@@ -90,9 +90,9 @@ describe('category', () => {
       });
     });
 
-    context('downcased', () => {
+    context('wrong case', () => {
       it('throws', () => {
-        expect(() => toNumber(cat.toLowerCase())).to.throw();
+        expect(() => toNumber('find')).to.throw();
       });
     });
   });
