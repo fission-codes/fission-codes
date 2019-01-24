@@ -28,7 +28,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
       });
 
       it('starts the call', () => {
-        expect(Number(reason)).to.equal(2);
+        expect(Number(reason)).to.equal(1);
       });
 
       it('returns a friendly message', () => {
@@ -46,11 +46,11 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         reason = await status.reasonOf(code);
       });
 
-      it('goes to answering machine', () => {
-        expect(Number(reason)).to.equal(4);
+      it('goes to voicemail', () => {
+        expect(Number(reason)).to.equal(2);
       });
 
-      it('includes the asnwering machine message', () => {
+      it('includes the voicemail message', () => {
         expect(message).to.equal('Your message has been recorded');
       });
     });
@@ -65,11 +65,11 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         reason = await status.reasonOf(code);
       });
 
-      it('starts the call', () => {
+      it('does not start the call', () => {
         expect(Number(reason)).to.equal(0);
       });
 
-      it('returns a friendly message', () => {
+      it('records a message', () => {
         expect(message).to.equal('click');
       });
     });
@@ -85,7 +85,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
 
 
       it('starts the call', () => {
-        expect(Number(reason)).to.equal(2);
+        expect(Number(reason)).to.equal(1);
       });
 
       it('returns a friendly message', () => {
