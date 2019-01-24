@@ -1,5 +1,7 @@
 # FISSION
 
+![](/brand/FISSION-logo.svg)
+
 Broadly applicable status codes and human-readable localizations for Ethereum smart contracts
 
 [![Build Status](https://travis-ci.org/fission-suite/fission-codes.svg?branch=master)](https://travis-ci.org/fission-suite/fission-codes)
