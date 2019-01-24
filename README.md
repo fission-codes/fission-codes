@@ -1,8 +1,8 @@
-![](./brand/FISSION-logomark.svg)
+![](./static/FISSION-logomark.svg)
 
 ## Powering Mircoservices for Web3
 
-[FISSION](https://fission.codes) is a set of useful status codes and automated messages for smart contracts of all kinds
+[`FISSION`](https://fission.codes) is a set of useful status codes and translated messages to connect smart contracts of all kinds 🔌
 
 [![Build Status](https://travis-ci.org/fission-suite/fission-codes.svg?branch=master)](https://travis-ci.org/fission-suite/fission-codes)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
@@ -87,9 +87,9 @@ This library contains implementations of these EIPs:
 
 # Sponsors
 
-[<img src="/static/sponsors/Tachyon.png" height="200" />](https://tachyoncv.vc/)
-[<img src="/static/sponsors/Robot-Overlord.png" height="200" />](http://robotoverlord.io)
+[<img src="./static/sponsors/Tachyon.png" height="200" />](https://tachyoncv.vc/)
+[<img src="./static/sponsors/Robot-Overlord.png" height="200" />](http://robotoverlord.io)
 
 # Featured On
 
-[<img src="/static/sponsors/Tech-Crunch-Logo-@2x.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
+[<img src="./static/sponsors/Tech-Crunch-Logo-@2x.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
