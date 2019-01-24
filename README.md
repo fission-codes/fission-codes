@@ -2,6 +2,8 @@
 
 [FISSION](https://fission.codes) is a set of broadly applicable status codes and human-readable localizations for smart contracts of all kinds
 
+_Enabling mircoservices for web3_
+
 [![Build Status](https://travis-ci.org/fission-suite/fission-codes.svg?branch=master)](https://travis-ci.org/fission-suite/fission-codes)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/fission-suite/fission-codes/badge.svg)](https://coveralls.io/github/fission-suite/fission-codes)
