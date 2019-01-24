@@ -1,8 +1,6 @@
-# FISSION
-
 ![](./brand/FISSION-logomark.svg)
 
-Broadly applicable status codes and human-readable localizations for Ethereum smart contracts
+[FISSION](https://fission.codes) is a set of broadly applicable status codes and human-readable localizations for smart contracts of all kinds
 
 [![Build Status](https://travis-ci.org/fission-suite/fission-codes.svg?branch=master)](https://travis-ci.org/fission-suite/fission-codes)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
