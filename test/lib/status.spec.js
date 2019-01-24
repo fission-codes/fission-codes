@@ -6,12 +6,14 @@ const {
   CATEGORY,
   REASON,
   combine,
-  hexify,
+  hexifyCode,
   humanize,
   split,
   toHexString,
   toNumber
 } = require('../../lib/status');
+
+const hexFormat = /0x[0-9A-F]{2}/;
 
 describe('status.js', () => {
   describe('#combine', () => {
@@ -104,40 +106,66 @@ describe('status.js', () => {
     });
 
     context('invalid category', () => {
-      const badCat = Object.assign(decomposed, { category: 'bad!' });
+      const badCat = Object.assign({}, decomposed, { category: 'bad!' });
       it('throws', () => expect(() => toNumber(badCat)).to.throw(Error));
     });
 
     context('invalid reason', () => {
-      const badReason = Object.assign(decomposed, { reason: 'bad!' });
+      const badReason = Object.assign({}, decomposed, { reason: 'bad!' });
       it('throws', () => expect(() => toNumber(badReason)).to.throw(Error));
     });
   });
 
   describe('#toHexString', () => {
-    const categoryId = randomInRange(0, 15);
-    const reasonId = randomInRange(0, 15);
-
     const decomposed = {
-      category: CATEGORY[categoryId],
-      reason: REASON[reasonId]
+      category: CATEGORY[randomInRange(0, 15)],
+      reason: REASON[randomInRange(0, 15)]
     };
 
     it('formats correctly', () => {
-      expect(toHexString(decomposed)).to.match(/0x[0-9A-F]{2}/);
+      expect(toHexString(decomposed)).to.match(hexFormat);
     });
 
-
     context('invalid category', () => {
-      const badCat = Object.assign(decomposed, { category: 'bad!' });
+      const badCat = Object.assign({}, decomposed, { category: 'bad!' });
       it('throws', () => expect(() => toHexString(badCat)).to.throw(Error));
     });
 
     context('invalid reason', () => {
-      const badReason = Object.assign(decomposed, { reason: 'bad!' });
+      const badReason = Object.assign({}, decomposed, { reason: 'bad!' });
       it('throws', () => expect(() => toHexString(badReason)).to.throw(Error));
     });
   });
 
-  // describe('#hexify');
+  describe('#hexifyCode', () => {
+    const code = randomInRange(0, 255);
+
+    it('formats correctly', () => {
+      expect(hexifyCode(code)).to.match(hexFormat);
+    });
+
+    context('negative code', () => {
+      it('throws', () => expect(() => hexifyCode(-1)).to.throw(RangeError));
+    });
+
+    context('code above 0xFF', () => {
+      it('throws', () => expect(() => hexifyCode(256)).to.throw(RangeError));
+    });
+
+    context('decimal', () => {
+      it('throws', () => {
+        expect(() => hexifyCode(-1)).to.throw(RangeError);
+      });
+    });
+
+    context('non-numeric', () => {
+      it('throws', () => {
+        expect(() => hexifyCode(true)).to.throw(TypeError);
+      });
+
+      it('throws', () => {
+        expect(() => hexifyCode('3')).to.throw(TypeError);
+      });
+    });
+  });
 });
