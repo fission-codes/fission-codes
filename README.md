@@ -1,6 +1,6 @@
 # FISSION
 
-![](/brand/FISSION-logo.svg)
+![](./brand/FISSION-logo.svg)
 
 Broadly applicable status codes and human-readable localizations for Ethereum smart contracts
 
