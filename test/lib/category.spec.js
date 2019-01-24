@@ -32,19 +32,19 @@ describe('category', () => {
 
     context('with value > 15', () => {
       it('throws', () => {
-        expect(() => toHexString(123456789)).to.throw();
+        expect(() => toHexString(123456789)).to.throw(RangeError);
       });
     });
 
     context('with negative value', () => {
       it('throws', () => {
-        expect(() => toHexString(-1)).to.throw();
+        expect(() => toHexString(-1)).to.throw(RangeError);
       });
     });
 
     context('with decimal', () => {
       it('throws', () => {
-        expect(() => toHexString(3.14159)).to.throw();
+        expect(() => toHexString(3.14159)).to.throw(TypeError);
       });
     });
   });
@@ -56,19 +56,19 @@ describe('category', () => {
 
     context('not a valid category', () => {
       it('throws', () => {
-        expect(() => toId('foo')).to.throw();
+        expect(() => toId('foo')).to.throw(Error);
       });
     });
 
     context('not a string', () => {
       it('throws', () => {
-        expect(() => toId(42)).to.throw();
+        expect(() => toId(42)).to.throw(Error);
       });
     });
 
     context('wrong case', () => {
       it('throws', () => {
-        expect(() => toId('generic')).to.throw();
+        expect(() => toId('generic')).to.throw(Error);
       });
     });
   });
@@ -80,19 +80,19 @@ describe('category', () => {
 
     context('not a valid category', () => {
       it('throws', () => {
-        expect(() => toNumber('foo')).to.throw();
+        expect(() => toNumber('foo')).to.throw(Error);
       });
     });
 
     context('not a string', () => {
       it('throws', () => {
-        expect(() => toNumber(42)).to.throw();
+        expect(() => toNumber(42)).to.throw(Error);
       });
     });
 
     context('wrong case', () => {
       it('throws', () => {
-        expect(() => toNumber('find')).to.throw();
+        expect(() => toNumber('find')).to.throw(Error);
       });
     });
   });

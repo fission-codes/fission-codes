@@ -5,9 +5,9 @@ const { REASON, toHexString, toId, toNumber } = require('../../lib/reason');
 
 const hexRegex = /0x0[0-9A-F]/;
 
-describe('category', () => {
+describe('reason', () => {
   const index = randomInRange(0, 15);
-  const cat = REASON[index];
+  const rsn = REASON[index];
 
   describe('#toHexString', () => {
     context('with hex value 0-9', () => {
@@ -32,67 +32,67 @@ describe('category', () => {
 
     context('with value > 15', () => {
       it('throws', () => {
-        expect(() => toHexString(123456789)).to.throw();
+        expect(() => toHexString(123456789)).to.throw(RangeError);
       });
     });
 
     context('with negative value', () => {
       it('throws', () => {
-        expect(() => toHexString(-1)).to.throw();
+        expect(() => toHexString(-1)).to.throw(RangeError);
       });
     });
 
     context('with decimal', () => {
       it('throws', () => {
-        expect(() => toHexString(3.14159)).to.throw();
+        expect(() => toHexString(3.14159)).to.throw(TypeError);
       });
     });
   });
 
   describe('#toId', () => {
-    it('translates the category name into its uint8 enum equivalent', () => {
-      expect(toId(cat)).to.equal(index);
+    it('translates the reason name into its uint8 enum equivalent', () => {
+      expect(toId(rsn)).to.equal(index);
     });
 
-    context('not a valid category', () => {
+    context('not a valid reason', () => {
       it('throws', () => {
-        expect(() => toId('foo')).to.throw();
+        expect(() => toId('foo')).to.throw(Error);
       });
     });
 
     context('not a string', () => {
       it('throws', () => {
-        expect(() => toId(42)).to.throw();
+        expect(() => toId(42)).to.throw(Error);
       });
     });
 
-    context('downcased', () => {
+    context('wrong case', () => {
       it('throws', () => {
-        expect(() => toId(cat.toLowerCase())).to.throw();
+        expect(() => toId('success')).to.throw(Error);
       });
     });
   });
 
   describe('#toNumber', () => {
-    it('translates the category name into its uint8 enum equivalent', () => {
-      expect(toNumber(cat)).to.equal(index);
+    it('translates the reason name into its uint8 enum equivalent', () => {
+      expect(toNumber(rsn)).to.equal(index);
     });
 
-    context('not a valid category', () => {
+    context('not a valid reason', () => {
       it('throws', () => {
-        expect(() => toNumber('foo')).to.throw();
+        expect(() => toNumber('foo')).to.throw(Error);
       });
     });
 
     context('not a string', () => {
       it('throws', () => {
-        expect(() => toNumber(42)).to.throw();
+        expect(() => toNumber(42)).to.throw(Error);
       });
     });
 
-    context('downcased', () => {
+    context('wrong case', () => {
       it('throws', () => {
-        expect(() => toNumber(cat.toLowerCase())).to.throw();
+        expect(() => toNumber('success')).to.throw(Error);
       });
     });
   });

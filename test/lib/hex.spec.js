@@ -28,29 +28,29 @@ describe('hex.js', () => {
     describe('invalid input validation', () => {
       context('negative number', () => {
         it('throws', () => {
-          expect(() => toHexDigit(-1)).to.throw();
+          expect(() => toHexDigit(-1)).to.throw(RangeError);
         });
       });
 
       context('number above 15', () => {
         it('throws', () => {
-          expect(() => toHexDigit(16)).to.throw();
+          expect(() => toHexDigit(16)).to.throw(RangeError);
         });
       });
 
       context('decimal', () => {
         it('throws', () => {
-          expect(() => toHexDigit(-1)).to.throw();
+          expect(() => toHexDigit(-1)).to.throw(RangeError);
         });
       });
 
       context('non-numeric', () => {
         it('throws', () => {
-          expect(() => toHexDigit(true)).to.throw();
+          expect(() => toHexDigit(true)).to.throw(TypeError);
         });
 
         it('throws', () => {
-          expect(() => toHexDigit('3')).to.throw();
+          expect(() => toHexDigit('3')).to.throw(TypeError);
         });
       });
     });
