@@ -52,6 +52,80 @@ library Status {
         Informational
     }
 
+    enum Code {
+               GenericFailure,
+               GenericSuccess,
+               GenericAwatingOthers,
+               GenericAccepted,
+               GenericLowerLimit,
+               GenericRecieverActionRequested,
+               GenericUpperLimit,
+               RESERVEDx07,
+               Generic_Duplicate_Unnessesary_Inapplicable,
+               RESERVEDx09,
+               RESERVEDx0A,
+               RESERVEDx0B,
+               RESERVEDx0C,
+               RESERVEDx0D,
+               RESERVEDx0E,
+               GenericInformational,
+
+               Disallowed_Stop,
+               Allowed_Go,
+               AwaitingOthersPermission,
+               PermissionRequested,
+               TooOpen_Insecure,
+               NeedsYourPermission_RequestForContinuation,
+               Revoked_Banned,
+               RESERVEDx17,
+               NotApplicatableToCurrentState,
+               RESERVEDx19,
+               RESERVEDx1A,
+               RESERVEDx1B,
+               RESERVEDx1C,
+               RESERVEDx1D,
+               RESERVEDx1E,
+               PermissionDetails_ControlConditions,
+
+               NotFound_Unequal_OutOfRange,
+               FoundOrAEqualOrInRange,
+               AwaitingMatch,
+               MatchRequestSent,
+               BelowRange_Underflow,
+               RequestForMatch,
+               Above_Range_Overflow,
+               RESERVEDx27,
+               Duplicate_Conflict_Collision,
+               RESERVEDx29,
+               RESERVEDx2A,
+               RESERVEDx2B,
+               RESERVEDx2C,
+               RESERVEDx2D,
+               RESERVEDx2E,
+               MatchingInformation,
+
+               SenderDisagrees_Nay,
+               SenderAgrees_Yea,
+               AwaitingRatification,
+               OfferSent_Voted,
+               QuorumNotReached,
+               ReceiversRatificationRequested,
+               OfferOrVoteLimitReached,
+               RESERVEDx37,
+               AlreadyVoted,
+               RESERVEDx39,
+               RESERVEDx3A,
+               RESERVEDx3B,
+               RESERVEDx3C,
+               RESERVEDx3D,
+               RESERVEDx3E,
+               NegotiationRules_ParticipationInformation
+    }
+
+    function toCode(bytes1 category, bytes1 reason) public pure returns (bytes1 code) {
+        return (category << 4) | (bytes1(0x0F) & reason);
+    }
+
     function toCode(uint8 category, uint8 reason) public pure returns (bytes1 code) {
         return bytes1(uint8((category << 4) + reason));
     }
@@ -71,7 +145,7 @@ library Status {
     }
 
     function reasonOf(bytes1 status) public pure returns (uint8 reason) {
-        return uint8(status & hex"0F");
+        return uint8(status & 0x0F);
     }
 
     // Localization

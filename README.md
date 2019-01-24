@@ -30,6 +30,7 @@ const fission = require('fission-codes');
 
 # Table of Contents
 
+* [Example](#example)
 * [Motivation](#motivation)
 * [Ethereum Improvement Proposals](#ethereum-improvement-proposals)
 * [Resources](#resources)
@@ -39,6 +40,24 @@ const fission = require('fission-codes');
     * [Contact](#contact)
 * [Sponsors](#sponsors)
 * [Featured On](#featured-on)
+
+# Example
+
+```solidity
+contract Foo {
+  constructor () {
+  }
+
+  function {
+  }
+}
+
+contract Bar {
+}
+
+contract Baz {
+}
+```
 
 # Motivation
 
