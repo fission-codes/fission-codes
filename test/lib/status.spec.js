@@ -13,8 +13,6 @@ const {
   toNumber
 } = require('../../lib/status');
 
-const format = /0x[0-9A-F]{2}/;
-
 describe('status.js', () => {
   describe('#combine', () => {
     it('generates a number', () => {
@@ -117,7 +115,28 @@ describe('status.js', () => {
   });
 
   describe('#toHexString', () => {
+    const categoryId = randomInRange(0, 15);
+    const reasonId = randomInRange(0, 15);
 
+    const decomposed = {
+      category: CATEGORY[categoryId],
+      reason: REASON[reasonId]
+    };
+
+    it('formats correctly', () => {
+      expect(toHexString(decomposed)).to.match(/0x[0-9A-F]{2}/);
+    });
+
+
+    context('invalid category', () => {
+      const badCat = Object.assign(decomposed, { category: 'bad!' });
+      it('throws', () => expect(() => toHexString(badCat)).to.throw(Error));
+    });
+
+    context('invalid reason', () => {
+      const badReason = Object.assign(decomposed, { reason: 'bad!' });
+      it('throws', () => expect(() => toHexString(badReason)).to.throw(Error));
+    });
   });
 
   // describe('#hexify');
