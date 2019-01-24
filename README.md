@@ -9,6 +9,23 @@ Broadly applicable status codes and human-readable localizations for Ethereum sm
 [![ERC1066](https://img.shields.io/badge/ERC-1066-42A.svg)](https://eips.ethereum.org/EIPS/eip-1066)
 [![ERC1444](https://img.shields.io/badge/ERC-1444-414.svg)](https://github.com/ethereum/EIPs/blob/56f86922bbd3777174cdbf2e0d01d38c6306b9c0/EIPS/eip-1444.md)
 
+# Quickstart
+
+```bash
+npm install --save fission-codes
+```
+
+```solidity
+// Solidity
+pragma solidity ^0.5.0;
+import "/fission-codes/contracts/Status.sol";
+```
+
+```js
+// JS
+const fission = require('fission-codes');
+```
+
 # Table of Contents
 
 * [Motivation](#motivation)
