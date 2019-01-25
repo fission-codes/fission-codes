@@ -38,7 +38,8 @@ const * as fission = require('fission-codes');
 * [Ethereum Improvement Proposals](#ethereum-improvement-proposals)
 * [Resources](#resources)
     * [Documentation](#documentation)
-    * [Ethereum Magicians](#ethereum-magicians)
+    * [Presentations](#presentations)
+    * [Discussions](#discussions)
     * [Articles](#articles)
 * [Badge](#badge)
 * [Sponsors](#sponsors)
@@ -134,6 +135,8 @@ contract Portfolio {
 
 # Name
 
+Fluid Interface for Scalable Smart contract InterOperable Networks
+
 # Ethereum Improvement Proposals
 
 This library contains implementations of these EIPs:
@@ -147,10 +150,15 @@ This library contains implementations of these EIPs:
 
 * [Official Website](https://fission.codes)
 
-## Ethereum Magicians
+## Presentations
 
-* [Tag: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
-* [Tag: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
+* [devcon iv](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
+* [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
+
+## Discussions
+
+* [Ethereum Magicians: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
+* [Ethereum Magicians: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
 
 ## Articles
 
