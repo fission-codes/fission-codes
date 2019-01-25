@@ -54,7 +54,7 @@ const fission = require('fission-codes');
 
 # TL;DR
 
-FISSION helps us understand and build interoperable smart contract communication. It establishes a common vocabulary for smart contracts to interact with a rich set of messages to tag data and common situations. It has applications in state transfer, development tooling, instrumentation, and user messaging.
+FISSION helps developers understand and build interoperable smart contracts. It establishes a common vocabulary for smart contracts to interact with a rich set of messages to tag data and common situations. It has applications in state transfer, development tooling, instrumentation, and user messaging.
 
 1. Improved feedback for humans (end users and developers alike)
 2. Helping developers understand their code at runtime
@@ -171,12 +171,12 @@ contract Portfolio {
 
     function isHeld(address token) external view returns (byte status, bool held) {
         byte permission = auth.min(SimpleAuth.Level.Unregistered);
-        if (isBlocking(permission)) { return (permission, false); }
+        if (FISSION.isBlocking(permission)) { return (permission, false); }
         return (FISSION.code(FISSION.Status.Found_Equal_InRange), holdings[token]);
     }
 
     function setTracking(address token, bool track) external returns (byte status) {
-        requireSuccess(auth.min(SimpleAuth.Level.Member));
+        FISSION.requireSuccess(auth.min(SimpleAuth.Level.Member));
         holdings[token] = track;
         return FISSION.code(FISSION.Status.Success);
     }
