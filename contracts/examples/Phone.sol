@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "../Status.sol";
+import { FISSION } from "../FISSION.sol";
 
 contract Phone {
     enum Call {
@@ -18,33 +18,33 @@ contract Phone {
     string[] internal messages;
     mapping(address => bool) internal contacts;
 
-    function toCode(Call _status) public pure returns (bytes1) {
-        return Status.appCode(uint8(_status));
-    }
-
-    function addContact(address _who) public returns (bytes1) {
+    function addContact(address _who) public returns (byte status) {
         contacts[_who] = true;
-        return bytes1(uint8(Status.Reason.Success));
+        return byte(uint8(FISSION.Reason.Success));
     }
 
-    function outgoing(Phone _contact, string memory _message) public returns (bytes1, string memory) {
-        (bytes1 code, string memory response) = _contact.incoming(_message);
-        return normalize(code, response);
+    function outgoing(Phone _contact, string memory _message) public returns (byte status, string memory) {
+        (byte _status, string memory response) = _contact.incoming(_message);
+        return normalize(_status, response);
     }
 
-    function incoming(string calldata _message) external returns (bytes1, string memory) {
+    function incoming(string calldata _message) external returns (byte status, string memory) {
         if (contacts[msg.sender]) {
-            return (toCode(Call.Connected), "Hi. Can I help you?");
+            return (code(Call.Connected), "Hi. Can I help you?");
         }
 
         messages.push(_message);
-        return (toCode(Call.Voicemail), "Your message has been recorded");
+        return (code(Call.Voicemail), "Your message has been recorded");
     }
 
-    function normalize(bytes1 _code, string memory _response) internal pure returns (bytes1, string memory) {
-        if (_code == toCode(Call.Connected)) { return (_code, _response); }
-        if (_code == toCode(Call.BusySignal)) { return (_code, "BUSY TONE"); }
-        if (Status.isOk(_code)) { return (toCode(Call.Connected), ""); }
-        return (toCode(Call.Disconnected), "click");
+    function normalize(byte _code, string memory _response) internal pure returns (byte status, string memory) {
+        if (_code == code(Call.Connected)) { return (_code, _response); }
+        if (_code == code(Call.BusySignal)) { return (_code, "BUSY TONE"); }
+        if (FISSION.isOk(_code)) { return (code(Call.Connected), ""); }
+        return (code(Call.Disconnected), "click");
+    }
+
+    function code(Call _status) private pure returns (byte status) {
+      return FISSION.appCode(uint8(_status));
     }
 }

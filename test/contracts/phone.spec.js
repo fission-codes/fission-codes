@@ -1,10 +1,10 @@
 const { expect } = require('chai');
 
 const Phone = artifacts.require('Phone'); // eslint-disable-line no-undef
-const Status = artifacts.require('Status'); // eslint-disable-line no-undef
+const FISSION = artifacts.require('FISSION'); // eslint-disable-line no-undef
 
 contract('Phone', async (addresses) => { // eslint-disable-line no-undef
-  let status;
+  let fission;
   let alice;
   let bob;
 
@@ -12,7 +12,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
   let message;
 
   before(async () => {
-    status = await Status.new();
+    fission = await FISSION.new();
     alice = await Phone.new();
     bob = await Phone.new();
   });
@@ -24,7 +24,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         const { 0: code, 1: msg } = await alice.incoming.call('Hey');
 
         message = msg;
-        reason = await status.reasonOf(code);
+        reason = await fission.reasonOf(code);
       });
 
       it('starts the call', () => {
@@ -43,7 +43,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         console.log(msg);
 
         message = msg;
-        reason = await status.reasonOf(code);
+        reason = await fission.reasonOf(code);
       });
 
       it('goes to voicemail', () => {
@@ -62,7 +62,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         const { 0: code, 1: msg } = await alice.outgoing.call(bob.address, 'hello');
 
         message = msg;
-        reason = await status.reasonOf(code);
+        reason = await fission.reasonOf(code);
       });
 
       it('does not start the call', () => {
@@ -80,7 +80,7 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         const { 0: code, 1: msg } = await alice.outgoing.call(alice.address, 'hello');
 
         message = msg;
-        reason = await status.reasonOf(code);
+        reason = await fission.reasonOf(code);
       });
 
 

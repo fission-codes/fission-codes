@@ -11,7 +11,7 @@ const {
   split,
   toHexString,
   toNumber
-} = require('../../lib/status');
+} = require('../../lib/fission');
 
 const hexFormat = /0x[0-9A-F]{2}/;
 

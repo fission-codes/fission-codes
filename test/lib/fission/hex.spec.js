@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 
-const { randomInRange } = require('../helpers');
-const { toHexDigit } = require('../../lib/hex');
+const { randomInRange } = require('../../helpers');
+const { toHexDigit } = require('../../../lib/fission/hex');
 
 const format = /[0-9A-F]/;
 
