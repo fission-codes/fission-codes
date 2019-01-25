@@ -230,9 +230,7 @@ They're similar! FISSION is more structured and designed for smart contract use 
 
 **Does this replace `revert`-with-reason?**
 
-Not at all! FISSION _fully supports_ `revert` and `revert`-with-reason, and this library has several functions that make it easy to combine the two.
-
-Sometimes it makes sense to return a regular status code, and let the caller decide if it should `revert**. Of course you should immediately revert if there’s an overflow, or find ourselves with nonsensical state.
+Not at all! FISSION _fully supports_ `revert` and `revert`-with-reason, and this library has several functions that make it easy to combine the two. Sometimes it makes sense to return a regular status code, and let the caller decide if it should `revert`. Of course you should immediately revert if there’s an overflow, or find ourselves with nonsensical state.
 
 **Is FISSION an acronym? What does "FISSION" stand for?**
 
