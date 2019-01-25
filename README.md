@@ -8,8 +8,9 @@
 [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
 [![Coverage Status](https://coveralls.io/repos/github/fission-suite/fission-codes/badge.svg)](https://coveralls.io/github/fission-suite/fission-codes)
 [![Built with ❤ by SPADE Co](https://img.shields.io/badge/built%20with%20%F0%9F%92%96%20by-SPADE%20Co-purple.svg)](https://spade.builders)
-[![ERC1066](https://img.shields.io/badge/ERC-1066-42A.svg)](https://eips.ethereum.org/EIPS/eip-1066)
-[![ERC1444](https://img.shields.io/badge/ERC-1444-414.svg)](https://github.com/ethereum/EIPs/blob/56f86922bbd3777174cdbf2e0d01d38c6306b9c0/EIPS/eip-1444.md)
+[![ERC-1066](https://img.shields.io/badge/ERC-1066-42A.svg)](https://eips.ethereum.org/EIPS/eip-1066)
+[![ERC-1444](https://img.shields.io/badge/ERC-1444-414.svg)](https://github.com/ethereum/EIPs/blob/56f86922bbd3777174cdbf2e0d01d38c6306b9c0/EIPS/eip-1444.md)
+[![ECIP-1050](https://img.shields.io/badge/ERC-1050-41A.svg)](https://github.com/ethereumclassic/ECIPs/blob/1562567351ee0c2f163beac65b73fc6872313c6b/ECIPs/ECIP-1050.md)
 
 # Quickstart
 
@@ -35,8 +36,8 @@ const * as fission = require('fission-codes');
     * [Scenario](#scenario)
     * [Smart Contracts](#smart-contracts)
 * [Name](#name)
-* [Ethereum Improvement Proposals](#ethereum-improvement-proposals)
 * [Resources](#resources)
+    * [Standards](#standards)
     * [Documentation](#documentation)
     * [Presentations](#presentations)
     * [Articles](#articles)
@@ -137,14 +138,20 @@ contract Portfolio {
 
 Fluid Interface for Scalable Smart contract InterOperable Networks
 
-# Ethereum Improvement Proposals
-
-This library contains implementations of these EIPs:
-
-* [ERC1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
-* [ERC1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
-
 # Resources
+
+## Standards
+
+This library contains implementations of these standards:
+
+### Ethereum Improvement Proposal (EIP)
+
+* [ERC-1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
+* [ERC-1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
+
+### Ethereum Classic Improvement Proposal (ECIP)
+
+* [ECIP-1050: Status Codes](https://github.com/ethereumclassic/ECIPs/blob/master/ECIPs/ECIP-1050.md)
 
 ## Documentation
 
