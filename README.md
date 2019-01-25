@@ -32,7 +32,7 @@ const * as fission = require('fission-codes');
 
 # Table of Contents
 
-* [TL;DR](#tl-dr)
+* [TL;DR](#tldr)
 * [Motivation](#motivation)
     * [Contract Autonomy](#contract-autonomy)
     * [Semantically Rich](#semantically-rich)
