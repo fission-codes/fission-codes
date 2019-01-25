@@ -199,7 +199,8 @@ This library contains implementations of these standards:
 * [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
 <img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.jpg?raw=true" />
-> Devcon IV
+
+> [@expede](https://github.com/expede) presenting FISSION at Devcon IV
 
 ## Articles
 
