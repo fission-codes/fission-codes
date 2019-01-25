@@ -32,14 +32,18 @@ const * as fission = require('fission-codes');
 
 # Table of Contents
 
+* [TL;DR](#tl-dr)
 * [Motivation](#motivation)
+    * [Contract Autonomy](#contract-autonomy)
+    * [Semantically Rich](#semantically-rich)
+    * [User Feedback](#user-feedback)
+    * [Distributed Data](#distributed-data)
 * [Example](#example)
     * [Scenario](#scenario)
     * [Smart Contracts](#smart-contracts)
-* [Name](#name)
 * [Resources](#resources)
-    * [Standards](#standards)
     * [Documentation](#documentation)
+    * [Standards](#standards)
     * [Presentations](#presentations)
     * [Articles](#articles)
     * [Discussions](#discussions)
@@ -47,9 +51,27 @@ const * as fission = require('fission-codes');
 * [Featured On](#featured-on)
 * [Sponsors](#sponsors)
 
+# TL;DR
+
+FISSION helps us understand and build interoperable smart contract communication. It establishes a common vocabulary for smart contracts to interact with a rich set of messages to tag data and common situations. It has applications in state transfer, development tooling, instrumentation, and user messaging.
+
+1. Improved feedback for humans (end users and developers alike)
+2. Helping developers understand their code at runtime
+3. Enhanced smart contract interoperability and autonomy
+
 # Motivation
 
-## Autonomy
+The very essence and power of having a shared platform like a programmable blockchain is how it facilitates the flow of information. We pay for this abstraction with a speed penalty, but at the application layer there is no need to worry about the common issues in distributed systems: availability, stale state, locked data, and so on. This is an oft-overlooked advantage of this technology, so let’s make the most of it!
+
+"FISSION" stands for the **F**luid **I**nterface for **S**calable **S**mart Contract **I**nter**o**perable **N**etworks. Not to be confused with a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface), FISSION can be seen as a _fluid_ interface — an common interface flowing between nodes. This stands in contrast to the concrete interfaces that we commonly see today on Ethereum: method signatures. These are not mutually exclusive concepts, but rather two halves of a very powerful whole!
+
+The core of the FISSION is status codes. These provide the common interface to build messages, flows, and protocols from. This strategy isn’t limited projects under the FISSION umbrella; everyone is encouraged to build robust protocols from these building blocks!
+
+The idea is very simple: [256 codes](https://fission.codes/fission-codes/codes) organized as a [16x16 table](https://fission.codes/fission-codes/grid). The columns are categories (ex. [permissions](https://fission.codes/fission-codes/codes#0x1-permission--control), [time](https://fission.codes/fission-codes/codes#0x4-availability--time), [off-chain](https://fission.codes/fission-codes/codes#0xf-off-chain), etc), and the rows are reasons (ex. [failure, success, informational, required action](https://fission.codes/fission-codes/codes#0x0-generic)). They are passed around as the first value in a multi-value return, or as an argument to a function.
+
+This library makes it easy to construct codes, inspect them for conditions, automatically revert on failures, retrieve human-readable localizations, and so on.
+
+## Contract Autonomy
 
 Smart contracts are largely intended to be autonomous. While each contract may define a specific interface, having a common set of semantic codes can help developers write code that can react appropriately to various situations.
 
@@ -65,6 +87,18 @@ Since status codes are finite and known in advance, we can provide global, human
 
 We also see a desire for this [in transactions](http://eips.ethereum.org/EIPS/eip-658), and there's no reason that FISSIONs couldn't be used by the EVM itself.
 
+## Distributed Data
+
+Shared multi-user systems like Ethereum should lend themselves to easily sharing data. Data is decentralized in the sense that we don’t have one giant database with open access. Unlike how we can use on-chain libraries to share functionality (rather than redeploying the same classes over and over), the true value of most applications is the data that they contain. Unfortunately, the majority of bespoke architectures silo data behind access control and programmatic interfaces with only brittle and limited options for requesting this data. We need a way to help data flow between these silos.
+
+The current state of the art is to use concrete interfaces and keep as much functionality contained in our single contract as possible. Overriding inherited contract functions may lead to unexpected behaviour to an external caller, not to mention that long inheritance chains being one of the most confusing forms of indirection.
+
+This is complementary to concrete interfaces (like ERC20). method interfaces are primarily mechanical (the “how”), data and status codes are primarily semantic (the “what”).
+
+![](./static/diagrams/fission-network.png)
+
+In the above diagram, the dotted arrows are requests (or calls). The rest are responses (or returns) that contain FISSION codes; green arrows are success responses, and orange arrows are neither successes nor errors. By convention, the code is the first value in a request or multiple return.
+
 # Example
 
 ## Scenario
@@ -75,7 +109,7 @@ For instance, if a teammate is promoted to admin status, this should be reflecte
 
 ## Smart Contracts
 
-Here we create a contract `Auth` which consolodates this information. It returns a common set of permissions codes from FISSION as a simple way of communicating with other contracts.
+Here is a contract that consolidates member rights in one place for this group of users. It returns a common set codes from FISSION as a simple way of communicating with other contracts (primarily about permissions).
 
 ```solidity
 pragma solidity ^0.5.0;
@@ -113,11 +147,16 @@ contract SimpleAuth {
 There may be many collaborator contracts. Below is a portfolio controlled by the `SimpleAuth` members.
 
 ```solidity
+pragma solidity ^0.5.0;
+
+import { FISSION } from "fission-codes/contracts/FISSION.sol";
+import { SimpleAuth } from "./SimpleAuth.sol";
+
 contract Portfolio {
-    address private auth;
+    SimpleAuth private auth;
     mapping (address => bool) private holdings;
 
-    constructor (address control) public {
+    constructor (SimpleAuth control) public {
         auth = control;
     }
 
@@ -135,28 +174,24 @@ contract Portfolio {
 }
 ```
 
-# Name
-
-Fluid Interface for Scalable Smart contract InterOperable Networks
-
 # Resources
+
+## Documentation
+
+* [Official Website](https://fission.codes)
 
 ## Standards
 
 This library contains implementations of these standards:
 
-### Ethereum Improvement Proposal (EIP)
+### Ethereum Improvement Proposals (EIP)
 
 * [ERC-1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
 * [ERC-1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
 
-### Ethereum Classic Improvement Proposal (ECIP)
+### Ethereum Classic Improvement Proposals (ECIP)
 
 * [ECIP-1050: Status Codes](https://github.com/ethereumclassic/ECIPs/blob/master/ECIPs/ECIP-1050.md)
-
-## Documentation
-
-* [Official Website](https://fission.codes)
 
 ## Presentations
 
@@ -165,8 +200,9 @@ This library contains implementations of these standards:
 
 ## Articles
 
-* [A Smarter Contract Protocol](https://spade.builders/esc/)
+* [A Vision of FISSION](https://medium.com/spadebuilders/vision-of-fission-b4f9e00c6cb3)
 * [Introducing FISSION Translate](https://medium.com/spadebuilders/introducing-fission-translate-a-global-translation-layer-for-smart-contract-communication-bacd61110e82)
+* [A Smarter Contract Protocol](https://spade.builders/esc/)
 
 ## Discussions
 
