@@ -30,16 +30,6 @@ import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 const * as fission = require('fission-codes');
 ```
 
-# TL;DR
-
-FISSION helps us understand and build interoperable smart contract communication. It establishes a common vocabulary for smart contracts to interact with a rich set of messages to tag data and common situations. It has applications in state transfer, development tooling, instrumentation, and user messaging.
-
-1. Improved feedback for humans (end users and developers alike)
-2. Helping developers understand their code at runtime
-3. Enhanced smart contract interoperability and autonomy
-
-![](./static/diagrams/http-fission.png)
-
 # Table of Contents
 
 * [Motivation](#motivation)
@@ -59,6 +49,16 @@ FISSION helps us understand and build interoperable smart contract communication
 * [Badge](#badge)
 * [Featured On](#featured-on)
 * [Sponsors](#sponsors)
+
+# TL;DR
+
+FISSION helps us understand and build interoperable smart contract communication. It establishes a common vocabulary for smart contracts to interact with a rich set of messages to tag data and common situations. It has applications in state transfer, development tooling, instrumentation, and user messaging.
+
+1. Improved feedback for humans (end users and developers alike)
+2. Helping developers understand their code at runtime
+3. Enhanced smart contract interoperability and autonomy
+
+![](./static/diagrams/http-fission.png)
 
 # Motivation
 
