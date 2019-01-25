@@ -198,6 +198,8 @@ This library contains implementations of these standards:
 * [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
 * [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
+![](https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.png?sanitize=true)
+
 ## Articles
 
 * [A Vision of FISSION](https://medium.com/spadebuilders/vision-of-fission-b4f9e00c6cb3)
@@ -210,6 +212,8 @@ This library contains implementations of these standards:
 * [Ethereum Magicians: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
 
 # Badge
+
+Feel free to put this badge on your FISSION-compatible projects to let others know that they can interop easily with your contracts!
 
 [![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
 
