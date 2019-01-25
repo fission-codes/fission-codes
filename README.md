@@ -39,11 +39,11 @@ const * as fission = require('fission-codes');
 * [Resources](#resources)
     * [Documentation](#documentation)
     * [Presentations](#presentations)
-    * [Discussions](#discussions)
     * [Articles](#articles)
+    * [Discussions](#discussions)
 * [Badge](#badge)
-* [Sponsors](#sponsors)
 * [Featured On](#featured-on)
+* [Sponsors](#sponsors)
 
 # Motivation
 
@@ -155,15 +155,15 @@ This library contains implementations of these EIPs:
 * [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
 * [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
-## Discussions
-
-* [Ethereum Magicians: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
-* [Ethereum Magicians: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
-
 ## Articles
 
 * [A Smarter Contract Protocol](https://spade.builders/esc/)
 * [Introducing FISSION Translate](https://medium.com/spadebuilders/introducing-fission-translate-a-global-translation-layer-for-smart-contract-communication-bacd61110e82)
+
+## Discussions
+
+* [Ethereum Magicians: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
+* [Ethereum Magicians: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
 
 # Badge
 
@@ -179,11 +179,12 @@ This library contains implementations of these EIPs:
 <a href="https://fission.codes"><img alt="FISSION compatible" src="https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true"/></a>
 ```
 
+# Featured On
+
+[<img src="./static/sponsors/Tech-Crunch-Logo-@2x.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
+
 # Sponsors
 
 [<img src="./static/sponsors/Tachyon.png" height="200" />](https://tachyoncv.vc/)
 [<img src="./static/sponsors/Robot-Overlord.png" height="200" />](http://robotoverlord.io)
-
-# Featured On
-
-[<img src="./static/sponsors/Tech-Crunch-Logo-@2x.png" height="75" />](https://techcrunch.com/2018/09/07/consensys-details-the-first-cohort-of-companies-to-enter-its-new-accelerator-tachyon/)
+[<img src="./static/sponsors/SPADE-Co.png" height="200" />](http://spade.builders)
