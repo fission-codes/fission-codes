@@ -366,7 +366,7 @@ library FISSION {
     // Check common statuses
 
     function isOk(byte status) public pure returns (bool) {
-      return (uint8(status) % 2) == 1;
+        return (uint8(status) % 2) == 1;
     }
 
     function isBlocking(byte status) public pure returns (bool) {
