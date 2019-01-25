@@ -47,6 +47,7 @@ const fission = require('fission-codes');
     * [Articles](#articles)
     * [Discussions](#discussions)
     * [Presentations](#presentations)
+* [FAQ](#faq)
 * [Badge](#badge)
 * [Featured On](#featured-on)
 * [Sponsors](#sponsors)
@@ -219,7 +220,19 @@ This library contains implementations of these standards:
 
 <img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.jpg?raw=true" />
 
-> [@expede](https://github.com/expede) presenting FISSION at Devcon IV
+> [@expede](https://github.com/expede** presenting FISSION at Devcon IV
+
+# FAQ
+
+**Is this HTTP status codes?**
+
+They're similar, but more structured, and designed for smart contract use cases. Blockchains have different constraints than the web, and the design of FISSION reflects that!
+
+**Does this replace `revert`-with-reason?**
+
+Not at all! FISSION _fully supports_ `revert` and `revert`-with-reason, and this library has several functions that make it easy to combine the two.
+
+Sometimes it makes sense to return a regular status code, and let the caller decide if it should `revert`. Of course you should immediately revert if there’s an overflow, or find ourselves with nonsensical state.
 
 # Badge
 
