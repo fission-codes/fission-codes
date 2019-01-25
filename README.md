@@ -101,7 +101,7 @@ The current state of the art is to use concrete interfaces and keep as much func
 
 This is complementary to concrete interfaces (like ERC20). method interfaces are primarily mechanical (the “how”), data and status codes are primarily semantic (the “what”).
 
-![](./static/diagrams/web3-microservices.png)
+<img style="max-height: 100px;" src="./static/diagrams/web3-microservices.png">
 
 This has been described as "microservices for web3"
 
