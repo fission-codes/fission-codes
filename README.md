@@ -25,7 +25,7 @@ import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 
 ```js
 // JS
-const * as FISSION = require('fission-codes');
+const * as fission = require('fission-codes');
 ```
 
 # Table of Contents
