@@ -224,9 +224,9 @@ This library contains implementations of these standards:
 
 # FAQ
 
-**Is this HTTP status codes?**
+**Is this like HTTP status codes?**
 
-They're similar, but more structured, and designed for smart contract use cases. Blockchains have different constraints than the web, and the design of FISSION reflects that!
+They're similar! FISSION is more structured and designed for smart contract use cases. Blockchains have different constraints than the web, and the design of FISSION reflects that!
 
 **Does this replace `revert`-with-reason?**
 
