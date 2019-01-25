@@ -198,7 +198,7 @@ This library contains implementations of these standards:
 * [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
 * [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
-![](https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.png?sanitize=true)
+![](https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.png?raw=true)
 
 ## Articles
 
