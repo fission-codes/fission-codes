@@ -59,6 +59,8 @@ FISSION helps us understand and build interoperable smart contract communication
 2. Helping developers understand their code at runtime
 3. Enhanced smart contract interoperability and autonomy
 
+![](./static/diagrams/http-fission.png)
+
 # Motivation
 
 The very essence and power of having a shared platform like a programmable blockchain is how it facilitates the flow of information. We pay for this abstraction with a speed penalty, but at the application layer there is no need to worry about the common issues in distributed systems: availability, stale state, locked data, and so on. This is an oft-overlooked advantage of this technology, so let’s make the most of it!
@@ -74,6 +76,10 @@ This library makes it easy to construct codes, inspect them for conditions, auto
 ## Contract Autonomy
 
 Smart contracts are largely intended to be autonomous. While each contract may define a specific interface, having a common set of semantic codes can help developers write code that can react appropriately to various situations.
+
+![](./static/diagrams/fission-network.png)
+
+In the above diagram, the dotted arrows are requests (or calls). The rest are responses (or returns) that contain FISSION codes: green arrows are success responses, and orange arrows are neither successes nor errors. By convention, the code is the first value in a request or multiple return.
 
 ## Semantically Rich
 
@@ -95,9 +101,9 @@ The current state of the art is to use concrete interfaces and keep as much func
 
 This is complementary to concrete interfaces (like ERC20). method interfaces are primarily mechanical (the “how”), data and status codes are primarily semantic (the “what”).
 
-![](./static/diagrams/fission-network.png)
+![](./static/diagrams/web3-microservices.png)
 
-In the above diagram, the dotted arrows are requests (or calls). The rest are responses (or returns) that contain FISSION codes: green arrows are success responses, and orange arrows are neither successes nor errors. By convention, the code is the first value in a request or multiple return.
+This has been described as "microservices for web3"
 
 # Example
 
