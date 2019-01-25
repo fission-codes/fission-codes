@@ -99,11 +99,17 @@ Shared multi-user systems like Ethereum should lend themselves to easily sharing
 
 The current state of the art is to use concrete interfaces and keep as much functionality contained in our single contract as possible. Overriding inherited contract functions may lead to unexpected behaviour to an external caller, not to mention that long inheritance chains being one of the most confusing forms of indirection.
 
+Smart contracts decompose into two parts that may be of interest to others: behaviour and data. Behaviour on its own may be deployed to the network as a library. They are very flexible chunks of code that may be verified by the community as safe to use. In fact, this is arguably safer than even redeploying it from your own contract, since you have certainty about that exact bytecode.
+
+Unlike behaviour, data is owned by particular contracts, and depends on a program to get and set values. The data itself may be valuable to other contracts (ex. a token balance or authorization). Rather than duplicating this data, a single home is both efficient and convenient. For any stateful data, this is obviously something that must live on chain rather than being redeployed.
+
+Requesting data comes with its own set of use cases: access control, a missing value, expiration, out of range, and so on. Any smart contract that needs to request data from a collaborator (ie: lots of contracts) can leverage FISSION helpers to make it easy to autonomously handle these use cases without writing reams of code, or demanding human intervention.
+
+This has been described as "microservices for web3".
+
+![](./static/diagrams/web3-microservices.png)
+
 This is complementary to concrete interfaces (like ERC20). method interfaces are primarily mechanical (the “how”), data and status codes are primarily semantic (the “what”).
-
-<img style="max-height: 100px;" src="./static/diagrams/web3-microservices.png">
-
-This has been described as "microservices for web3"
 
 # Example
 
