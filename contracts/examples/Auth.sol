@@ -19,7 +19,7 @@ contract Auth {
     // Anyone
 
     function minAuth(address who, Level minLevel) public view returns (byte status) {
-      if (auth[who] == Level.Banned) { return FISSION.code(FISSION.Status.Revoked_Banned); }
+      if (auth[who] == Level.Banned) { return FISSION.code(FISSION.Status.Revoked); }
       if (auth[who] < minLevel) { return FISSION.code(FISSION.Status.Disallowed_Stop); }
       return FISSION.code(FISSION.Status.Allowed_Go);
     }
