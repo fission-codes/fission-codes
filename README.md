@@ -28,61 +28,19 @@ import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 const FISSION = require('fission-codes');
 ```
 
-## Badge
-
-### Markdown
-
-[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
-
-```markdown
-<!-- README.md -->
-[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
-```
-
-### HTML
-
-<a href="https://fission.codes" rel="nofollow"><img alt="FISSION compatible" style="max-width:100%;" src="https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true"></a>
-
-```html
-<!-- website.html -->
-<a href="https://fission.codes">
-  <img alt="FISSION compatible"
-       style="max-width:100%;"
-       src="https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true"
-  />
-</a>
-```
-
 # Table of Contents
 
-* [Example](#example)
 * [Motivation](#motivation)
+* [Example](#example)
+    * [Group Authorization](#group-authorization)
 * [Ethereum Improvement Proposals](#ethereum-improvement-proposals)
 * [Resources](#resources)
     * [Documentation](#documentation)
     * [Ethereum Magicians](#ethereum-magicians)
     * [Articles](#articles)
-    * [Contact](#contact)
+* [Badge](#badge)
 * [Sponsors](#sponsors)
 * [Featured On](#featured-on)
-
-# Example
-
-```solidity
-contract Foo {
-  constructor () {
-  }
-
-  function {
-  }
-}
-
-contract Bar {
-}
-
-contract Baz {
-}
-```
 
 # Motivation
 
@@ -101,6 +59,72 @@ FISSIONs convey a much richer set of information than booleans, and are able to 
 Since status codes are finite and known in advance, we can provide global, human-readable sets of status messages. These may also be translated into any language, differing levels of technical detail, added as `revert` messages, natspecs, and so on.
 
 We also see a desire for this [in transactions](http://eips.ethereum.org/EIPS/eip-658), and there's no reason that FISSIONs couldn't be used by the EVM itself.
+
+# Example
+
+## Group Authorization
+
+### Scenario
+
+It's common for one group of users to make use of several contracts. It would be useful to register this information once, and share it among many different contracts, rather than duplicating this information across many places (with potential inconsistencies).
+
+For instance, if a teammate is promoted to admin status, this should be reflected across all of the shared contracts. Likewise, if someone is banned, it is much easier to make this change once and rest assured that it covers all of our contracts.
+
+### Contract
+
+Here we create a contract `Auth` which consolodates this information. It returns a common set of permissions codes from FISSION as a simple way of communicating with other contracts.
+
+```solidity
+pragma solidity ^0.5.0;
+import { FISSION } from "/fission-codes/contracts/FISSION.sol";
+
+contract Auth {
+    enum Authority {
+        Banned,
+        Unregistered,
+        Member,
+        Admin
+    }
+
+    mapping(address => Authority) public auth;
+
+    constructor() public {
+        auth[msg.sender] = Authority.Admin;
+    }
+
+    function ban(address who) external returns (byte status) {
+        auth[who] = Authority.Banned;
+        return FISSION.code(FISSION.Status.GenericSuccess);
+    }
+
+    function induct(address who) external returns (byte status) {
+        FISSION.requireSuccess(minAuth(who, Authority.Member));
+        auth[who] = Authority.Member;
+        return FISSION.code(FISSION.Status.GenericSuccess);
+    }
+
+    function promote(address who) external returns (byte status) {
+        if (FISSION.isSuccess(minAuth(who, Authority.Admin))) {
+            return FISSION.code(FISSION.Status.Revoked_Banned);
+        }
+
+        auth[who] = Authority.Admin;
+        return FISSION.code(FISSION.Status.GenericSuccess);
+    }
+
+    function minAuth(address who, Authority minLevel) public view returns (byte status) {
+        if (auth[who] == Authority.Banned) { return FISSION.code(FISSION.Status.Revoked_Banned); }
+        if (auth[who] < minLevel) { return FISSION.code(FISSION.Status.Disallowed_Stop); }
+        return FISSION.code(FISSION.Status.Allowed_Go);
+    }
+}
+```
+
+### Upshot
+
+
+
+## DeferredETH (DETH)
 
 # Ethereum Improvement Proposals
 
@@ -125,9 +149,19 @@ This library contains implementations of these EIPs:
 * [A Smarter Contract Protocol](https://spade.builders/esc/)
 * [Introducing FISSION Translate](https://medium.com/spadebuilders/introducing-fission-translate-a-global-translation-layer-for-smart-contract-communication-bacd61110e82)
 
-## Contact
+# Badge
 
-* [SPADE's FISSION Discord](https://discord.gg/hQfgyz2)
+[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
+
+```markdown
+<!-- README.md -->
+[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
+```
+
+```html
+<!-- website.html -->
+<a href="https://fission.codes"><img alt="FISSION compatible" src="https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true"/></a>
+```
 
 # Sponsors
 
