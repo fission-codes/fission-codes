@@ -32,7 +32,8 @@ const * as fission = require('fission-codes');
 
 * [Motivation](#motivation)
 * [Example](#example)
-    * [Group Authorization](#group-authorization)
+    * [Scenario](#scenario)
+    * [Smart Contracts](#smart-contracts)
 * [Name](#name)
 * [Ethereum Improvement Proposals](#ethereum-improvement-proposals)
 * [Resources](#resources)
@@ -63,15 +64,13 @@ We also see a desire for this [in transactions](http://eips.ethereum.org/EIPS/ei
 
 # Example
 
-## Group Authorization
-
-### Scenario
+## Scenario
 
 It's common for one group of users to make use of several contracts. It would be useful to register this information once, and share it among many different contracts, rather than duplicating this information across many places (with potential inconsistencies).
 
 For instance, if a teammate is promoted to admin status, this should be reflected across all of the shared contracts. Likewise, if someone is banned, it is much easier to make this change once and rest assured that it covers all of our contracts.
 
-### Contract
+## Smart Contracts
 
 Here we create a contract `Auth` which consolodates this information. It returns a common set of permissions codes from FISSION as a simple way of communicating with other contracts.
 
@@ -107,8 +106,6 @@ contract SimpleAuth {
     }
 }
 ```
-
-### Collaborator
 
 There may be many collaborator contracts. Below is a portfolio controlled by the `SimpleAuth` members.
 
