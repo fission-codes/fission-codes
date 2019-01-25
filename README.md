@@ -39,11 +39,11 @@ const FISSION = require('fission-codes');
 
 ```html
 <!-- website.html -->
-<img src="https://github.com/fission-suite/fission-codes/raw/b9e44e6f7556e00c64d7fc500adc26c4fffafcdf/static/FISSION-logomark.svg?sanitize=true" alt="" style="max-width:100%;">
+<a href = <img src="https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true" alt="" style="max-width:100%;">
 <img src="https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg" alt="" style="max-width:100%;">
 ```
 
-<img src="https://github.com/fission-suite/fission-codes/raw/b9e44e6f7556e00c64d7fc500adc26c4fffafcdf/static/FISSION-logomark.svg?sanitize=true" alt="" style="max-width:100%;">
+<a href=""><img src="https://github.com/fission-suite/fission-codes/raw/b9e44e6f7556e00c64d7fc500adc26c4fffafcdf/static/FISSION-logomark.svg?sanitize=true" alt="" style="max-width:100%;"></a>
 <img src="https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg" alt="" style="max-width:100%;">
 
 # Table of Contents
