@@ -66,7 +66,7 @@ FISSION helps us understand and build interoperable smart contract communication
 
 The very essence and power of having a shared platform like a programmable blockchain is how it facilitates the flow of information. We pay for this abstraction with a speed penalty, but at the application layer there is no need to worry about the common issues in distributed systems: availability, stale state, locked data, and so on. This is an oft-overlooked advantage of this technology, so let’s make the most of it!
 
-"FISSION" stands for the **F**luid **I**nterface for **S**calable **S**mart Contract **I**nter**o**perable **N**etworks. Not to be confused with a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface), FISSION can be seen as a _fluid_ interface — an common interface flowing between nodes. This stands in contrast to the concrete interfaces that we commonly see today on Ethereum: method signatures. These are not mutually exclusive concepts, but rather two halves of a very powerful whole!
+Not to be confused with a [fluent interface](https://en.wikipedia.org/wiki/Fluent_interface), FISSION can be seen as a _fluid_ interface — an common interface flowing between nodes. This stands in contrast to the concrete interfaces that we commonly see today on Ethereum: method signatures. These are not mutually exclusive concepts, but rather two halves of a very powerful whole!
 
 The core of the FISSION is status codes. These provide the common interface to build messages, flows, and protocols from. This strategy isn’t limited projects under the FISSION umbrella; everyone is encouraged to build robust protocols from these building blocks!
 
@@ -232,7 +232,11 @@ They're similar, but more structured, and designed for smart contract use cases.
 
 Not at all! FISSION _fully supports_ `revert` and `revert`-with-reason, and this library has several functions that make it easy to combine the two.
 
-Sometimes it makes sense to return a regular status code, and let the caller decide if it should `revert`. Of course you should immediately revert if there’s an overflow, or find ourselves with nonsensical state.
+Sometimes it makes sense to return a regular status code, and let the caller decide if it should `revert**. Of course you should immediately revert if there’s an overflow, or find ourselves with nonsensical state.
+
+**Is FISSION an acronym? What does "FISSION" stand for?**
+
+"FISSION" stands for the **F**luid **I**nterface for **S**calable **S**mart Contract **I**nter**o**perable **N**etworks.
 
 # Badge
 
