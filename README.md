@@ -27,7 +27,7 @@ import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 
 ```js
 // JavaScript
-const * as fission = require('fission-codes');
+const fission = require('fission-codes');
 ```
 
 # Table of Contents
@@ -44,9 +44,9 @@ const * as fission = require('fission-codes');
 * [Resources](#resources)
     * [Documentation](#documentation)
     * [Standards](#standards)
-    * [Presentations](#presentations)
     * [Articles](#articles)
     * [Discussions](#discussions)
+    * [Presentations](#presentations)
 * [Badge](#badge)
 * [Featured On](#featured-on)
 * [Sponsors](#sponsors)
@@ -201,15 +201,6 @@ This library contains implementations of these standards:
 
 * [ECIP-1050: Status Codes](https://github.com/ethereumclassic/ECIPs/blob/master/ECIPs/ECIP-1050.md)
 
-## Presentations
-
-* [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
-* [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
-
-<img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.jpg?raw=true" />
-
-> [@expede](https://github.com/expede) presenting FISSION at Devcon IV
-
 ## Articles
 
 * [A Vision of FISSION](https://medium.com/spadebuilders/vision-of-fission-b4f9e00c6cb3)
@@ -220,6 +211,15 @@ This library contains implementations of these standards:
 
 * [Ethereum Magicians: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
 * [Ethereum Magicians: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
+
+## Presentations
+
+* [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
+* [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
+
+<img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.jpg?raw=true" />
+
+> [@expede](https://github.com/expede) presenting FISSION at Devcon IV
 
 # Badge
 
