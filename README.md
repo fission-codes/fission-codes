@@ -77,7 +77,7 @@ Here we create a contract `Auth` which consolodates this information. It returns
 ```solidity
 pragma solidity ^0.5.0;
 
-import { FISSION } from "../FISSION.sol";
+import { FISSION } from "fission-codes/contracts/FISSION.sol";
 
 contract SimpleAuth {
     enum Level {
