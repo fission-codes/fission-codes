@@ -28,6 +28,24 @@ import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 const FISSION = require('fission-codes');
 ```
 
+## Badge
+
+```md
+<!-- README.md -->
+[![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg)](https://fission.codes)
+```
+
+[![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg)](https://fission.codes)
+
+```html
+<!-- website.html -->
+<img src="https://github.com/fission-suite/fission-codes/raw/b9e44e6f7556e00c64d7fc500adc26c4fffafcdf/static/FISSION-logomark.svg?sanitize=true" alt="" style="max-width:100%;">
+<img src="https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg" alt="" style="max-width:100%;">
+```
+
+<img src="https://github.com/fission-suite/fission-codes/raw/b9e44e6f7556e00c64d7fc500adc26c4fffafcdf/static/FISSION-logomark.svg?sanitize=true" alt="" style="max-width:100%;">
+<img src="https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg" alt="" style="max-width:100%;">
+
 # Table of Contents
 
 * [Example](#example)
