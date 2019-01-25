@@ -1,7 +1,7 @@
 const { expect } = require('chai');
 
-const { randomInRange } = require('../helpers');
-const { CATEGORY, toHexString, toId, toNumber } = require('../../lib/category');
+const { randomInRange } = require('../../helpers');
+const { CATEGORY, toHexString, toId, toNumber } = require('../../../lib/fission/category');
 
 const hexRegex = /0x[0-9A-F]0/;
 

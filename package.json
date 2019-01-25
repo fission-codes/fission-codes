@@ -1,7 +1,7 @@
 {
   "name": "fission-codes",
   "version": "1.0.0-rc1",
-  "description": "Ethereum status codes and helpers",
+  "description": "Smart contract status codes and helpers",
   "keywords": [
     "ethereum",
     "solidity",
@@ -16,7 +16,7 @@
     "type": "git",
     "url": "git+https://github.com/fission-suite/fission-codes.git"
   },
-  "main": "lib/status.js",
+  "main": "lib/fission.js",
   "license": "Apache-2.0",
   "scripts": {
     "pretest": "./ensure-ganache-running.sh || (npm run start:testrpc &)",
