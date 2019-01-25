@@ -32,20 +32,20 @@ const FISSION = require('fission-codes');
 
 ### Markdown
 
-[![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/logo/static/FISSION-badge.svg)](https://fission.codes)
+[![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/f3378ea096a042a71b72d2a7ee453b4487c6d3bf/static/FISSION-badge.svg)](https://fission.codes)
 
 ```markdown
 <!-- README.md -->
-[![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/logo/static/FISSION-badge.svg)](https://fission.codes)
+[![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/f3378ea096a042a71b72d2a7ee453b4487c6d3bf/static/FISSION-badge.svg)](https://fission.codes)
 ```
 
 ### HTML
 
-<a href="https://fission.codes"><img src="https://raw.githubusercontent.com/fission-suite/fission-codes/logo/static/FISSION-badge.svg" alt="FISSION compatible" style="max-width:100%;"></a>
+<a href="https://fission.codes"><img src="https://raw.githubusercontent.com/fission-suite/fission-codes/f3378ea096a042a71b72d2a7ee453b4487c6d3bf/static/FISSION-badge.svg" alt="FISSION compatible" style="max-width:100%;"></a>
 
 ```html
 <!-- website.html -->
-<a href="https://fission.codes""><img src="https://raw.githubusercontent.com/fission-suite/fission-codes/logo/static/FISSION-badge.svg" alt="FISSION compatible" style="max-width:100%;"></a>
+<a href="https://fission.codes""><img src="https://raw.githubusercontent.com/fission-suite/fission-codes/f3378ea096a042a71b72d2a7ee453b4487c6d3bf/static/FISSION-badge.svg" alt="FISSION compatible" style="max-width:100%;"></a>
 ```
 
 # Table of Contents
