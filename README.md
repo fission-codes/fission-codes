@@ -171,12 +171,12 @@ contract Portfolio {
 
     function isHeld(address token) external view returns (byte status, bool held) {
         byte permission = auth.min(SimpleAuth.Level.Unregistered);
-        if (isBlocking(permission)) { return (permission, false); }
+        if (FISSION.isBlocking(permission)) { return (permission, false); }
         return (FISSION.code(FISSION.Status.Found_Equal_InRange), holdings[token]);
     }
 
     function setTracking(address token, bool track) external returns (byte status) {
-        requireSuccess(auth.min(SimpleAuth.Level.Member));
+        FISSION.requireSuccess(auth.min(SimpleAuth.Level.Member));
         holdings[token] = track;
         return FISSION.code(FISSION.Status.Success);
     }
