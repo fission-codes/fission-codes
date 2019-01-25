@@ -33,6 +33,7 @@ const FISSION = require('fission-codes');
 * [Motivation](#motivation)
 * [Example](#example)
     * [Group Authorization](#group-authorization)
+* [Name](#name)
 * [Ethereum Improvement Proposals](#ethereum-improvement-proposals)
 * [Resources](#resources)
     * [Documentation](#documentation)
@@ -76,55 +77,65 @@ Here we create a contract `Auth` which consolodates this information. It returns
 
 ```solidity
 pragma solidity ^0.5.0;
-import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 
-contract Auth {
-    enum Authority {
+import { FISSION } from "../FISSION.sol";
+
+contract SimpleAuth {
+    enum Level {
         Banned,
         Unregistered,
         Member,
         Admin
     }
 
-    mapping(address => Authority) public auth;
+    mapping (address => Level) private auth;
 
     constructor() public {
-        auth[msg.sender] = Authority.Admin;
+        auth[tx.origin] = Level.Admin;
     }
 
-    function ban(address who) external returns (byte status) {
-        auth[who] = Authority.Banned;
-        return FISSION.code(FISSION.Status.GenericSuccess);
-    }
-
-    function induct(address who) external returns (byte status) {
-        FISSION.requireSuccess(minAuth(who, Authority.Member));
-        auth[who] = Authority.Member;
-        return FISSION.code(FISSION.Status.GenericSuccess);
-    }
-
-    function promote(address who) external returns (byte status) {
-        if (FISSION.isSuccess(minAuth(who, Authority.Admin))) {
-            return FISSION.code(FISSION.Status.Revoked_Banned);
-        }
-
-        auth[who] = Authority.Admin;
-        return FISSION.code(FISSION.Status.GenericSuccess);
-    }
-
-    function minAuth(address who, Authority minLevel) public view returns (byte status) {
-        if (auth[who] == Authority.Banned) { return FISSION.code(FISSION.Status.Revoked_Banned); }
-        if (auth[who] < minLevel) { return FISSION.code(FISSION.Status.Disallowed_Stop); }
+    function min(Level minLevel) public view returns (byte status) {
+        if (auth[tx.origin] == Level.Banned) { return FISSION.code(FISSION.Status.Revoked); }
+        if (auth[tx.origin] < minLevel) { return FISSION.code(FISSION.Status.Disallowed_Stop); }
         return FISSION.code(FISSION.Status.Allowed_Go);
+    }
+
+    function set(address who, Level level) public nonpayable returns (byte status) {
+        require(auth[tx.origin] == Level.Admin, "Must be an admin");
+        auth[who] = level;
+        return FISSION.code(FISSION.Status.Success)
     }
 }
 ```
 
-### Upshot
+### Collaborator
 
+There may be many collaborator contracts. Below is a portfolio controlled by the `SimpleAuth` members.
 
+```solidity
+contract Portfolio {
+    address private auth;
+    mapping (address => bool) private holdings;
 
-## DeferredETH (DETH)
+    constructor (address control) public {
+        auth = control;
+    }
+
+    function isHeld(address token) external view returns (byte status, bool held) {
+        byte permission = auth.min(SimpleAuth.Level.Unregistered);
+        if (isBlocking(permission)) { return (permission, false); }
+        return (FISSION.code(FISSION.Status.Found_Equal_InRange), holdings[token)];
+    }
+
+    function setTracking(address token, bool track) external nonpayable returns (byte status) {
+        requireSuccess(auth.min(SimpleAuth.Level.Member));
+        holdings[token] = track;
+        return FISSION.code(FISSION.Status.Success);
+    }
+}
+```
+
+# Name
 
 # Ethereum Improvement Proposals
 

@@ -53,22 +53,22 @@ library FISSION {
     }
 
     enum Status {
-        GenericFailure,
-        GenericSuccess,
-        GenericAwatingOthers,
-        GenericAccepted,
-        GenericLowerLimit,
-        GenericRecieverActionRequested,
-        GenericUpperLimit,
+        Failure,
+        Success,
+        AwatingOthers,
+        Accepted,
+        LowerLimit,
+        RecieverActionRequested,
+        UpperLimit,
         RESERVEDx07,
-        Generic_Duplicate_Unnessesary_Inapplicable,
+        Inapplicable,
         RESERVEDx09,
         RESERVEDx0A,
         RESERVEDx0B,
         RESERVEDx0C,
         RESERVEDx0D,
         RESERVEDx0E,
-        GenericInformational,
+        Informational,
 
         Disallowed_Stop,
         Allowed_Go,
@@ -76,7 +76,7 @@ library FISSION {
         PermissionRequested,
         TooOpen_Insecure,
         NeedsYourPermission_RequestForContinuation,
-        Revoked_Banned,
+        Revoked,
         RESERVEDx17,
         NotApplicatableToCurrentState,
         RESERVEDx19,
@@ -88,7 +88,7 @@ library FISSION {
         PermissionDetails_ControlConditions,
 
         NotFound_Unequal_OutOfRange,
-        FoundOrAEqualOrInRange,
+        Found_Equal_InRange,
         AwaitingMatch,
         MatchRequestSent,
         BelowRange_Underflow,
@@ -231,7 +231,7 @@ library FISSION {
         ApplicationSpecificRecieverActionRequested,
         ApplicationSpecificUpperLimit,
         RESERVEDxA7,
-        ApplicationSpecific_Duplicate_Unnessesary_Inapplicable,
+        ApplicationSpecific_Inapplicable,
         RESERVEDxA9,
         RESERVEDxAA,
         RESERVEDxAB,
@@ -384,7 +384,7 @@ library FISSION {
     // `require`s
 
     function requireOk(byte status) public pure {
-        require(isOk(status));
+        require(isOk(status), "Blocking sttaus code"); // TODO: use translation singleton
     }
 
     function requireOk(byte status, string memory message) public pure {
@@ -397,7 +397,7 @@ library FISSION {
     }
 
     function requireSuccess(byte status) public pure {
-        require(isSuccess(status));
+        require(isSuccess(status), "Unsuccessful status code reason");
     }
 
     function requireSuccess(byte status, string memory message) public pure {

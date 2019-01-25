@@ -24,6 +24,6 @@ contract InsuranceValidator {
             return (ageValidationResult, address(financialValidator));
         }
 
-        return (FISSION.code(FISSION.Status.GenericSuccess), address(this));
+        return (FISSION.code(FISSION.Status.Success), address(this));
     }
 }

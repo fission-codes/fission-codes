@@ -3,42 +3,60 @@ pragma solidity ^0.5.0;
 import { FISSION } from "../FISSION.sol";
 
 contract Auth {
-    enum Authority {
+    enum Level {
         Banned,
         Unregistered,
         Member,
         Admin
     }
 
-    mapping(address => Authority) public auth;
+    mapping(address => Level) public auth;
 
     constructor() public {
-        auth[msg.sender] = Authority.Admin;
+        auth[tx.origin] = Level.Admin;
     }
 
-    function ban(address who) external returns (byte status) {
-        auth[who] = Authority.Banned;
-        return FISSION.code(FISSION.Status.GenericSuccess);
+    // Anyone
+
+    function minAuth(address who, Level minLevel) public view returns (byte status) {
+      if (auth[who] == Level.Banned) { return FISSION.code(FISSION.Status.Revoked_Banned); }
+      if (auth[who] < minLevel) { return FISSION.code(FISSION.Status.Disallowed_Stop); }
+      return FISSION.code(FISSION.Status.Allowed_Go);
     }
 
-    function induct(address who) external returns (byte status) {
-        FISSION.requireSuccess(minAuth(who, Authority.Member));
-        auth[who] = Authority.Member;
-        return FISSION.code(FISSION.Status.GenericSuccess);
+    // Member
+
+    function induct(address who) external onlyMembers returns (byte status) {
+        require(
+            (auth[who] != Level.Banned || auth[tx.origin] == Level.Admin),
+            "Only admins can re-induct a banned member"
+        );
+
+        auth[who] = Level.Member;
+        return FISSION.code(FISSION.Status.Success);
     }
 
-    function promote(address who) external returns (byte status) {
-        if (FISSION.isSuccess(minAuth(who, Authority.Admin))) {
-          return FISSION.code(FISSION.Status.Revoked_Banned);
-        }
+    // Admin
 
-        auth[who] = Authority.Admin;
-        return FISSION.code(FISSION.Status.GenericSuccess);
+    function promote(address who) external onlyAdmins returns (byte status) {
+        auth[who] = Level.Admin;
+        return FISSION.code(FISSION.Status.Success);
     }
 
-    function minAuth(address who, Authority minLevel) public view returns (byte status) {
-        if (auth[who] == Authority.Banned) { return FISSION.code(FISSION.Status.Revoked_Banned); }
-        if (auth[who] < minLevel) { return FISSION.code(FISSION.Status.Disallowed_Stop); }
-        return FISSION.code(FISSION.Status.Allowed_Go);
+    function ban(address who) external onlyAdmins returns (byte status) {
+        auth[who] = Level.Banned;
+        return FISSION.code(FISSION.Status.Success);
+    }
+
+    // Modifiers
+
+    modifier onlyMembers {
+        require(auth[tx.origin] >= Level.Member, "Must be a member");
+        _;
+    }
+
+    modifier onlyAdmins {
+        require(auth[tx.origin] == Level.Admin, "Must be an admin");
+        _;
     }
 }
