@@ -1,7 +1,7 @@
 {
   "name": "fission-codes",
-  "version": "0.4.1",
-  "description": "Ethereum status codes and helpers",
+  "version": "1.0.0-rc1",
+  "description": "Smart contract status codes and helpers",
   "keywords": [
     "ethereum",
     "solidity",
@@ -16,28 +16,18 @@
     "type": "git",
     "url": "git+https://github.com/fission-suite/fission-codes.git"
   },
-  "main": "lib/status.js",
+  "main": "lib/fission.js",
   "license": "Apache-2.0",
   "scripts": {
-    "postinstall": "echo \"\n\n\n\ncontracts included in this project require compilation on a fresh checkout: npm run truffle:compile\n\n\n\n\"",
     "pretest": "./ensure-ganache-running.sh || (npm run start:testrpc &)",
     "test": "truffle test",
     "test:lint": "eslint -c .eslintrc . --color=true --quiet",
     "test:lint:fix": "eslint -c .eslintrc . --color=true --quiet --fix",
     "truffle:compile": "truffle compile",
+    "truffle:debug": "truffle debug",
     "truffle:migrate": "truffle migrate",
     "start:testrpc": "ganache-cli -u 0",
-    "coverage": "./node_modules/.bin/solidity-coverage",
-    "watch": "npm-watch"
-  },
-  "watch": {
-    "test": "contracts/*,test/*",
-    "test:truffle": {
-      "patterns": [
-        "truffle"
-      ],
-      "extensions": "js,json,sol"
-    }
+    "coverage": "./node_modules/.bin/solidity-coverage"
   },
   "bugs": {
     "url": "https://github.com/fission-suite/fission-codes/issues"
@@ -47,19 +37,18 @@
   },
   "devDependencies": {
     "chai": "^4.1.2",
-    "eslint": "^5.5.0",
+    "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
     "eslint-plugin-chai-friendly": "^0.4.1",
-    "eslint-plugin-import": "^2.14.0",
+    "eslint-plugin-import": "^2.15.0",
     "ethereum-localized-messaging": "^1.1.1",
-    "ganache-cli": "^6.1.8",
+    "ganache-cli": "^6.2.5",
     "mocha": "^5.2.0",
-    "npm-watch": "^0.3.0",
-    "solhint": "^1.2.1",
+    "solhint": "^1.5.0",
     "solidity-coverage": "^0.5.11",
-    "truffle": "^5.0.0-beta.1"
+    "truffle": "^5.0.2"
   },
   "dependencies": {
-    "ethereum-localized-messaging": "^1.1.0"
+    "ethereum-localized-messaging": "^2.1.4"
   }
 }

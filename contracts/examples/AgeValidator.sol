@@ -1,6 +1,6 @@
-pragma solidity ^0.4.23;
+pragma solidity ^0.5.0;
 
-import "../Status.sol";
+import { FISSION } from "../FISSION.sol";
 
 contract AgeValidator {
     enum AgeStatus {
@@ -18,19 +18,19 @@ contract AgeValidator {
     }
 
     // This is not an awesome mapper, but Solidity is limited
-    function toCode(AgeStatus _ageStatus) internal pure returns (byte) {
-        Status.Reason reason = Status.Reason.Success;
+    function code(AgeStatus _ageStatus) internal pure returns (byte status) {
+        FISSION.Reason reason = FISSION.Reason.Success;
 
         if (_ageStatus == AgeStatus.TooOld) {
-            reason = Status.Reason.Expired;
+            reason = FISSION.Reason.UpperLimit;
         } else if (_ageStatus == AgeStatus.TooYoung) {
-            reason = Status.Reason.Before;
+            reason = FISSION.Reason.LowerLimit;
         }
 
-        return Status.toCode(Status.Category.AppCategory, reason);
+        return FISSION.code(FISSION.Category.ApplicationSpecific, reason);
     }
 
-    function check(int _age) public pure returns (byte) {
-        return toCode(checkAge(_age));
+    function check(int _age) public pure returns (byte status) {
+        return code(checkAge(_age));
     }
 }

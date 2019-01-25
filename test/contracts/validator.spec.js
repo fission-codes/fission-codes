@@ -1,21 +1,21 @@
 const { expect } = require('chai');
 
 /* eslint-disable no-undef */
-const Status = artifacts.require('Status');
+const FISSION = artifacts.require('FISSION');
 const AgeValidator = artifacts.require('AgeValidator');
 const FinancialValidator = artifacts.require('FinancialValidator');
 const InsuranceValidator = artifacts.require('InsuranceValidator');
 /* eslint-enable no-undef */
 
 contract('Validators', async () => { // eslint-disable-line no-undef
-  let status;
+  let fission;
   let ageValidator;
 
   let isOk;
   let category;
 
   before(async () => {
-    status = await Status.new();
+    fission = await FISSION.new();
     ageValidator = await AgeValidator.new();
   });
 
@@ -27,8 +27,8 @@ contract('Validators', async () => { // eslint-disable-line no-undef
         validAge = await ageValidator.check(33);
 
         [isOk, category] = await Promise.all([
-          status.isOk(validAge),
-          status.categoryOf(validAge)
+          fission.isOk(validAge),
+          fission.categoryOf(validAge)
         ]);
       });
 
@@ -41,8 +41,8 @@ contract('Validators', async () => { // eslint-disable-line no-undef
         validAge = await ageValidator.check(10);
 
         [isOk, category] = await Promise.all([
-          status.isOk(validAge),
-          status.categoryOf(validAge)
+          fission.isOk(validAge),
+          fission.categoryOf(validAge)
         ]);
       });
 
@@ -75,7 +75,7 @@ contract('Validators', async () => { // eslint-disable-line no-undef
       });
 
       it('has the `App` category', async () => expect(Number(category)).to.be.equal(10));
-      it('is okay', async () => expect(await status.isOk(code)).to.be.true);
+      it('is okay', async () => expect(await fission.isOk(code)).to.be.true);
 
       it('has the insurance validator address in the trace', () => {
         expect(trace).to.be.equal(insuranceValidator.address);
@@ -90,8 +90,8 @@ contract('Validators', async () => { // eslint-disable-line no-undef
         trace = t;
 
         [isOk, category] = await Promise.all([
-          status.isOk(code),
-          status.categoryOf(code)
+          fission.isOk(code),
+          fission.categoryOf(code)
         ]);
       });
 
