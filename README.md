@@ -34,14 +34,14 @@ const FISSION = require('fission-codes');
 
 [![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg)](https://fission.codes)
 
-```md
+```markdown
 <!-- README.md -->
 [![FISSION compatible](https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg)](https://fission.codes)
 ```
 
 ### HTML
 
-<a href="https://fission.codes""><img src="https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg" alt="FISSION compatible" style="max-width:100%;"></a>
+<a href="https://fission.codes"><img src="https://raw.githubusercontent.com/fission-suite/fission-codes/master/static/FISSION-badge.svg" alt="FISSION compatible" style="max-width:100%;"></a>
 
 ```html
 <!-- website.html -->
