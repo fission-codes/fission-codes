@@ -152,8 +152,8 @@ This library contains implementations of these EIPs:
 
 ## Presentations
 
-* [devcon iv](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
-* [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
+* [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
+* [Ethereum Magicians -- Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
 ## Discussions
 
