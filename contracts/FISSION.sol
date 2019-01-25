@@ -1,9 +1,9 @@
 pragma solidity ^0.5.0;
 
-import "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
-import "./localization/FissionLocalization.sol";
+import { LocalizationPreferences} from "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
+import { FissionLocalization } from "./localization/FissionLocalization.sol";
 
-library Status {
+library FISSION {
     enum Category {
         Generic,
         Permission,
@@ -52,7 +52,7 @@ library Status {
         Informational
     }
 
-    enum Code {
+    enum Status {
         GenericFailure,
         GenericSuccess,
         GenericAwatingOthers,
@@ -327,80 +327,84 @@ library Status {
         OffChainInformation
     }
 
-    function toCode(bytes1 category, bytes1 reason) public pure returns (bytes1 code) {
-        return (category << 4) | (bytes1(0x0F) & reason);
+    function code(Status statusEnum) public pure returns (byte status) {
+        return byte(uint8(statusEnum));
     }
 
-    function toCode(uint8 category, uint8 reason) public pure returns (bytes1 code) {
-        return bytes1(uint8((category << 4) + reason));
+    function code(byte category, byte reason) public pure returns (byte status) {
+        return (category << 4) | (byte(0x0F) & reason);
     }
 
-    function toCode(Category category, Reason reason) public pure returns (bytes1 code) {
-        return toCode(uint8(category), uint8(reason));
+    function code(uint8 category, uint8 reason) public pure returns (byte status) {
+        return byte(uint8((category << 4) + reason));
     }
 
-    function appCode(uint8 appReason) public pure returns (byte code) {
-        return bytes1(uint8(160 + appReason));
+    function code(Category category, Reason reason) public pure returns (byte status) {
+        return code(uint8(category), uint8(reason));
+    }
+
+    function appCode(uint8 appReason) public pure returns (byte status) {
+        return byte(uint8(160 + appReason));
     }
 
     // Get nibbles
 
-    function categoryOf(bytes1 status) public pure returns (uint8 category) {
+    function categoryOf(byte status) public pure returns (uint8 category) {
         return (uint8(status >> 4));
     }
 
-    function reasonOf(bytes1 status) public pure returns (uint8 reason) {
+    function reasonOf(byte status) public pure returns (uint8 reason) {
         return uint8(status & 0x0F);
     }
 
     // Localization
 
-    function localizeBy(bytes1 status, LocalizationPreferences prefs) view public returns (bool found, string memory _msg) {
+    function localizeBy(byte status, LocalizationPreferences prefs) view public returns (bool found, string memory _msg) {
         return prefs.textFor(status);
     }
 
     // Check common statuses
 
-    function isOk(bytes1 status) public pure returns (bool) {
+    function isOk(byte status) public pure returns (bool) {
       return (uint8(status) % 2) == 1;
     }
 
-    function isBlocking(bytes1 status) public pure returns (bool) {
+    function isBlocking(byte status) public pure returns (bool) {
         return !isOk(status);
     }
 
-    function isSuccess(bytes1 status) public pure returns (bool) {
+    function isSuccess(byte status) public pure returns (bool) {
         return reasonOf(status) == 1;
     }
 
-    function isFailure(bytes1 status) public pure returns (bool) {
+    function isFailure(byte status) public pure returns (bool) {
         return reasonOf(status) == 0;
     }
 
     // `require`s
 
-    function requireOk(bytes1 status) public pure {
+    function requireOk(byte status) public pure {
         require(isOk(status));
     }
 
-    function requireOk(bytes1 status, string memory message) public pure {
+    function requireOk(byte status, string memory message) public pure {
         require(isOk(status), message);
     }
 
-    function requireOk(bytes1 status, LocalizationPreferences prefs) public view {
+    function requireOk(byte status, LocalizationPreferences prefs) public view {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireOk(status, message);
     }
 
-    function requireSuccess(bytes1 status) public pure {
+    function requireSuccess(byte status) public pure {
         require(isSuccess(status));
     }
 
-    function requireSuccess(bytes1 status, string memory message) public pure {
+    function requireSuccess(byte status, string memory message) public pure {
         require(isSuccess(status), message);
     }
 
-    function requireSuccess(bytes1 status, LocalizationPreferences prefs) public view {
+    function requireSuccess(byte status, LocalizationPreferences prefs) public view {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireSuccess(status, message);
     }

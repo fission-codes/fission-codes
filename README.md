@@ -20,12 +20,12 @@ npm install --save fission-codes
 ```solidity
 // Solidity
 pragma solidity ^0.5.0;
-import "/fission-codes/contracts/Status.sol";
+import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 ```
 
 ```js
 // JS
-const fission = require('fission-codes');
+const FISSION = require('fission-codes');
 ```
 
 # Table of Contents

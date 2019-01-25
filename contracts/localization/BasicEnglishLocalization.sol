@@ -1,6 +1,6 @@
 pragma solidity ^0.5.0;
 
-import "./FissionLocalization.sol";
+import { FissionLocalization } from "./FissionLocalization.sol";
 
 contract BasicEnglishLocalization is FissionLocalization {
     constructor() public {

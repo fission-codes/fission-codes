@@ -1,7 +1,7 @@
 /* eslint-disable no-undef */
 const Migrations = artifacts.require('./Migrations.sol');
 
-const Status = artifacts.require('Status.sol');
+const FISSION = artifacts.require('FISSION.sol');
 const AgeValidator = artifacts.require('examples/AgeValidator.sol');
 const FinancialValidator = artifacts.require('examples/FinancialValidator.sol');
 const InsuranceValidator = artifacts.require('examples/InsuranceValidator.sol');
@@ -10,9 +10,9 @@ const Phone = artifacts.require('examples/Phone.sol');
 
 module.exports = function (deployer) {
   deployer.deploy(Migrations);
-  deployer.deploy(Status);
+  deployer.deploy(FISSION);
 
-  deployer.link(Status, [
+  deployer.link(FISSION, [
     AgeValidator,
     FinancialValidator,
     InsuranceValidator,

@@ -1,6 +1,6 @@
 {
   "name": "fission-codes",
-  "version": "1.0.0-beta",
+  "version": "1.0.0-rc1",
   "description": "Ethereum status codes and helpers",
   "keywords": [
     "ethereum",
