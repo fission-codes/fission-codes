@@ -136,10 +136,10 @@ contract SimpleAuth {
         return FISSION.code(FISSION.Status.Allowed_Go);
     }
 
-    function set(address who, Level level) public nonpayable returns (byte status) {
+    function set(address who, Level level) public returns (byte status) {
         require(auth[tx.origin] == Level.Admin, "Must be an admin");
         auth[who] = level;
-        return FISSION.code(FISSION.Status.Success)
+        return FISSION.code(FISSION.Status.Success);
     }
 }
 ```
@@ -163,10 +163,10 @@ contract Portfolio {
     function isHeld(address token) external view returns (byte status, bool held) {
         byte permission = auth.min(SimpleAuth.Level.Unregistered);
         if (isBlocking(permission)) { return (permission, false); }
-        return (FISSION.code(FISSION.Status.Found_Equal_InRange), holdings[token)];
+        return (FISSION.code(FISSION.Status.Found_Equal_InRange), holdings[token]);
     }
 
-    function setTracking(address token, bool track) external nonpayable returns (byte status) {
+    function setTracking(address token, bool track) external returns (byte status) {
         requireSuccess(auth.min(SimpleAuth.Level.Member));
         holdings[token] = track;
         return FISSION.code(FISSION.Status.Success);
