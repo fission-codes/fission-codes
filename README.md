@@ -1,4 +1,4 @@
-![](./static/FISSION-logomark.svg)
+![](https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-logomark.svg?sanitize=true)
 
 ## Powering Mircoservices for Web3
 
