@@ -218,7 +218,7 @@ This library contains implementations of these standards:
 * [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
 * [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
-<img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.jpg?raw=true" />
+<img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/master/static/photos/devcon-iv.jpg?raw=true" />
 
 > [@expede](https://github.com/exped) presenting FISSION at Devcon IV
 
@@ -240,16 +240,16 @@ Not at all! FISSION _fully supports_ `revert` and `revert`-with-reason, and this
 
 Feel free to put this badge on your FISSION-compatible projects to let others know that they can interop easily with your contracts!
 
-[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
+[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
 
 ```markdown
 <!-- README.md -->
-[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
+[![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
 ```
 
 ```html
 <!-- website.html -->
-<a href="https://fission.codes"><img alt="FISSION compatible" src="https://github.com/fission-suite/fission-codes/raw/logo/static/FISSION-badge.svg?sanitize=true"/></a>
+<a href="https://fission.codes"><img alt="FISSION compatible" src="https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true"/></a>
 ```
 
 # Featured On
