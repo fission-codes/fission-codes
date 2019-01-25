@@ -220,7 +220,7 @@ This library contains implementations of these standards:
 
 <img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/logo/static/photos/devcon-iv.jpg?raw=true" />
 
-> [@expede](https://github.com/expede** presenting FISSION at Devcon IV
+> [@expede](https://github.com/exped) presenting FISSION at Devcon IV
 
 # FAQ
 
