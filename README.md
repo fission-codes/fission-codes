@@ -97,7 +97,7 @@ This is complementary to concrete interfaces (like ERC20). method interfaces are
 
 ![](./static/diagrams/fission-network.png)
 
-In the above diagram, the dotted arrows are requests (or calls). The rest are responses (or returns) that contain FISSION codes; green arrows are success responses, and orange arrows are neither successes nor errors. By convention, the code is the first value in a request or multiple return.
+In the above diagram, the dotted arrows are requests (or calls). The rest are responses (or returns) that contain FISSION codes: green arrows are success responses, and orange arrows are neither successes nor errors. By convention, the code is the first value in a request or multiple return.
 
 # Example
 
