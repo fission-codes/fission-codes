@@ -37,7 +37,7 @@ const * as fission = require('fission-codes');
     * [Contract Autonomy](#contract-autonomy)
     * [Semantically Rich](#semantically-rich)
     * [User Feedback](#user-feedback)
-    * [Shared State](#shared-state)
+    * [Web3 Microservices](#web3-microservices)
 * [Example](#example)
     * [Scenario](#scenario)
     * [Smart Contracts](#smart-contracts)
@@ -93,7 +93,7 @@ Since status codes are finite and known in advance, we can provide global, human
 
 We also see a desire for this [in transactions](http://eips.ethereum.org/EIPS/eip-658), and there's no reason that FISSIONs couldn't be used by the EVM itself.
 
-## Shared State
+## Web3 Microservices
 
 Shared multi-user systems like Ethereum should lend themselves to easily sharing data. Data is decentralized in the sense that we don’t have one giant database with open access. Unlike how we can use on-chain libraries to share functionality (rather than redeploying the same classes over and over), the true value of most applications is the data that they contain. Unfortunately, the majority of bespoke architectures silo data behind access control and programmatic interfaces with only brittle and limited options for requesting this data. We need a way to help data flow between these silos.
 
