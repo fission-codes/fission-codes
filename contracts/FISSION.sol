@@ -362,19 +362,19 @@ library FISSION {
     /**
      * @dev Coerce a status enum into a standard status byte
      *
-     * @param Status enum tag
-     * @return Binary ERC-1066 status code
+     * @param statusEnum Status enum tag
+     * @return status Binary ERC-1066 status code
      */
     function code(Status statusEnum) public pure returns (byte status) {
         return byte(uint8(statusEnum));
     }
 
     /**
-     * @dev Construct a status code from a category and reason
+     * @dev Construct a status code from a category and reason.
      *
-     * @param Category nibble
-     * @param Reason nibble
-     * @return Binary ERC-1066 status code
+     * @param category Category nibble
+     * @param reason Reason nibble
+     * @return status Binary ERC-1066 status code
      */
     function code(byte category, byte reason)
         public
@@ -385,11 +385,11 @@ library FISSION {
     }
 
     /**
-     * @dev Construct a status code from a category and reason
+     * @dev Construct a status code from a category and reason.
      *
-     * @param Category
-     * @param Reason
-     * @return Binary ERC-1066 status code
+     * @param category The category
+     * @param reason The reason
+     * @return status Binary ERC-1066 status code
      */
     function code(uint8 category, uint8 reason)
         public
@@ -402,9 +402,9 @@ library FISSION {
     /**
      * @dev Construct a status code from category and reason enums
      *
-     * @param Category nibble
-     * @param Reason nibble
-     * @return Binary ERC-1066 status code
+     * @param category Category nibble
+     * @param reason Reason nibble
+     * @return status Binary ERC-1066 status code
      */
     function code(Category category, Reason reason)
         public
@@ -417,11 +417,11 @@ library FISSION {
     /**
      * @dev Construct an application-specific status code
      *
-     * @param Application-specific reason nibble
-     * @return Binary ERC-1066 status code
+     * @param appReason Application-specific reason nibble
+     * @return status Binary ERC-1066 status code
      */
     function appCode(byte appReason) public pure returns (byte status) {
-        return 0xA0 | appReason;
+        return (byte(0xA0) | appReason);
     }
 
     /**
@@ -545,7 +545,7 @@ library FISSION {
      * @return A boolean representing if the status code represents success
      */
     function isSuccess(byte status) public pure returns (bool) {
-        return reasonOf(status) == 0x1;
+        return reasonOf(status) == 0x01;
     }
 
     /**
@@ -555,7 +555,7 @@ library FISSION {
      * @return A boolean representing if the status code represents failure
      */
     function isFailure(byte status) public pure returns (bool) {
-        return reasonOf(status) == 0x0;
+        return reasonOf(status) == 0x00;
     }
 
     /**
