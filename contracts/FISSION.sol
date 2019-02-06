@@ -490,8 +490,10 @@ library FISSION {
      * @dev Decompose a status code into its category and reason nibbles
      *
      * @param status Binary ERC-1066 status code
-     * @return category Category nibble
-     * @return reason Reason nibble
+     * @return {
+     *   "category": "Category nibble",
+     *   "reason": "Reason nibble"
+     * }
      */
     function split(byte status) public returns (byte category, byte reason) {
         return (categoryOf(status), reasonOf(status));
@@ -504,9 +506,10 @@ library FISSION {
      *
      * @param status Binary ERC-1066 status code
      * @param prefs The localization registry / proxy contract
-     * @return found If the loicalization string was found
-               (`false` if a fallback was used)
-     * @return message The localization string
+     * @return {
+     *   "found": "If the loicalization string was found (`false` if a fallback was used)",
+     *   "message": "The localization string"
+     * }
      */
     function localizeBy(byte status, LocalizationPreferences prefs)
         view
