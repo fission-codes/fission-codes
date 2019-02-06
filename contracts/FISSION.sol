@@ -4,10 +4,10 @@ import { LocalizationPreferences} from "/ethereum-localized-messaging/contracts/
 import { FissionLocalization } from "./localization/FissionLocalization.sol";
 
 /**
- * @title FISSION status code library
+ * @title The FISSION Status Code Library
  *
  * @dev Implementation of broadly applicable status codes for smart contracts.
- * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1066.md
+ *      https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1066.md
  */
 library FISSION {
 
@@ -65,7 +65,9 @@ library FISSION {
 
     //////////////////////////// Simple Status Enum ////////////////////////////
 
+    /// @dev ERC-1066 status codes encoded as human-readable enums
     enum Status {
+
         // 0x0*
         Failure,
         Success,
