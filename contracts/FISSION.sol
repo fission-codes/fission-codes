@@ -567,7 +567,7 @@ library FISSION {
      *         the target category
      */
     function isCategory(byte status, byte category) public pure returns (bool) {
-        returns categoryOf(status) == category;
+        return categoryOf(status) == category;
     }
 
     /**
@@ -579,7 +579,7 @@ library FISSION {
      *         the target category
      */
     function isCategory(byte status, Category category) public pure returns (bool) {
-      returns categoryOf(status) == byte(uint8(category));
+        return categoryOf(status) == byte(uint8(category));
     }
 
     /**
@@ -591,7 +591,7 @@ library FISSION {
      *         the target category
      */
     function isCategory(Status status, Category category) public pure returns (bool) {
-        returns categoryOf(status) == byte(uint8(category));
+        return categoryOf(status) == byte(uint8(category));
     }
 
     /**
@@ -602,7 +602,7 @@ library FISSION {
      * @return A boolean representing if the status code has the target reason
      */
     function isReason(byte status, byte reason) public pure returns (bool) {
-        returns reasonOf(status) == reason;
+        return reasonOf(status) == reason;
     }
 
     /**
@@ -613,7 +613,7 @@ library FISSION {
      * @return A boolean representing if the status code has the target reason
      */
     function isReason(byte status, Reason reason) public pure returns (bool) {
-        returns reasonOf(status) == byte(uint8(reason));
+        return reasonOf(status) == byte(uint8(reason));
     }
 
     /**
@@ -624,7 +624,7 @@ library FISSION {
      * @return A boolean representing if the status code has the target reason
      */
     function isReason(Status status, Reason reason) public pure returns (bool) {
-        returns reasonOf(status) == byte(uint8(reason));
+        return reasonOf(status) == byte(uint8(reason));
     }
 
     ///////////////////////////////// Requires /////////////////////////////////
