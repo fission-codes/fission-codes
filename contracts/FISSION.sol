@@ -384,7 +384,7 @@ library FISSION {
     // `require`s
 
     function requireOk(byte status) public pure {
-        require(isOk(status), "Blocking sttaus code"); // TODO: use translation singleton
+        require(isOk(status), "Blocking status code"); // TODO: use translation singleton
     }
 
     function requireOk(byte status, string memory message) public pure {
