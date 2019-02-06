@@ -3,7 +3,16 @@ pragma solidity ^0.5.0;
 import { LocalizationPreferences} from "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
 import { FissionLocalization } from "./localization/FissionLocalization.sol";
 
+/**
+ * @title FISSION status code library
+ *
+ * @dev Implementation of broadly applicable status codes for smart contracts.
+ * https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1066.md
+ */
 library FISSION {
+
+    ///////////////////////////// Decomposed Enums /////////////////////////////
+
     enum Category {
         Generic,
         Permission,
@@ -51,6 +60,8 @@ library FISSION {
 
         Informational
     }
+
+    //////////////////////////// Simple Status Enum ////////////////////////////
 
     enum Status {
         Failure,
@@ -327,39 +338,153 @@ library FISSION {
         OffChainInformation
     }
 
+    ////////////////////////////// Construction ////////////////////////////////
+
+    /**
+     * @dev Coerce a status enum into a standard status byte
+     *
+     * @param Status enum tag
+     * @return Binary ERC-1066 status code
+     */
     function code(Status statusEnum) public pure returns (byte status) {
         return byte(uint8(statusEnum));
     }
 
-    function code(byte category, byte reason) public pure returns (byte status) {
+    /**
+     * @dev Construct a status code from a category and reason (ie: an inclusion)
+     *
+     * @param Category nibble
+     * @param Reason nibble
+     * @return Binary ERC-1066 status code
+     */
+    function code(byte category, byte reason)
+        public
+        pure
+        returns (byte status)
+    {
         return (category << 4) | (byte(0x0F) & reason);
     }
 
-    function code(uint8 category, uint8 reason) public pure returns (byte status) {
+    /**
+     * @dev Construct a status code from a category and reason (ie: an inclusion)
+     *
+     * @param Category
+     * @param Reason
+     * @return Binary ERC-1066 status code
+     */
+    function code(uint8 category, uint8 reason)
+        public
+        pure
+        returns (byte status)
+    {
         return byte(uint8((category << 4) + reason));
     }
 
-    function code(Category category, Reason reason) public pure returns (byte status) {
+    /**
+     * @dev Construct a status code from category and reason enums (ie: an inclusion)
+     *
+     * @param Category nibble
+     * @param Reason nibble
+     * @return Binary ERC-1066 status code
+     */
+    function code(Category category, Reason reason)
+        public
+        pure
+        returns (byte status)
+    {
         return code(uint8(category), uint8(reason));
     }
 
-    function appCode(uint8 appReason) public pure returns (byte status) {
-        return byte(uint8(160 + appReason));
+    /**
+     * @dev Construct an application-specific status code
+     *
+     * @param Application-specific reason nibble
+     * @return Binary ERC-1066 status code
+     */
+    function appCode(byte appReason) public pure returns (byte status) {
+        return 0xA0 | appReason;
     }
 
-    // Get nibbles
+    /**
+     * @dev Construct an application-specific status code
+     *
+     * @param Application-specific reason
+     * @return Binary ERC-1066 status code
+     */
+    function appCode(uint8 appReason) public pure returns (byte status) {
+        return byte(160 + appReason);
+    }
 
+    /**
+     * @dev Construct an application-specific status code
+     *
+     * @param Application-specific reason enum
+     * @return Binary ERC-1066 status code
+     */
+    function appCode(Reason appReason) public pure returns (byte status) {
+        return appCode(uint8(appReason));
+    }
+
+    /////////////////////////////// Get Nibbles ////////////////////////////////
+
+    /**
+     * @dev Extract the category from a status code
+     *
+     * @param Binary ERC-1066 status code
+     * @return Category nibble
+     */
     function categoryOf(byte status) public pure returns (byte category) {
         return status >> 4;
     }
 
+    /**
+     * @dev Extract the category from a status code enum
+     *
+     * @param Status enum
+     * @return Category nibble
+     */
+    function categoryOf(Status status) public pure returns (byte category) {
+        return categoryOf(byte(uint8(status)));
+    }
+
+    /**
+     * @dev Extract the reason from a status code
+     *
+     * @param Binary ERC-1066 status code
+     * @return Reason nibble
+     */
     function reasonOf(byte status) public pure returns (byte reason) {
         return status & 0x0F;
     }
 
-    // Localization
+    /**
+     * @dev Extract the reason from a status code enum
+     *
+     * @param Status enum
+     * @return Reason nibble
+     */
+    function reasonOf(Status status) public pure returns (byte reason) {
+        return reasonOf(byte(uint8(status)));
+    }
 
-    function localizeBy(byte status, LocalizationPreferences prefs) view public returns (bool found, string memory _msg) {
+    /**
+     * @dev Decompose a status code into its category and reason nibbles
+     *
+     * @param Binary ERC-1066 status code
+     * @return Category nibble
+     * @return Reason nibble
+     */
+    function split(byte status) public returns (byte category, byte reason) {
+        return (categoryOf(status), reasonOf(status));
+    }
+
+    ////////////////////////////// Localization ////////////////////////////////
+
+    function localizeBy(byte status, LocalizationPreferences prefs)
+        view
+        public
+        returns (bool found, string memory _msg)
+    {
         return prefs.textFor(status);
     }
 
@@ -386,7 +511,7 @@ library FISSION {
     }
 
     function isReason(byte status, byte reason) public pure returns (bool) {
-      returns categoryOf(status) == reason;
+        returns categoryOf(status) == reason;
     }
 
     // `require`s
@@ -412,7 +537,10 @@ library FISSION {
         require(isSuccess(status), message);
     }
 
-    function requireSuccess(byte status, LocalizationPreferences prefs) public view {
+    function requireSuccess(byte status, LocalizationPreferences prefs)
+        public
+        view
+    {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireSuccess(status, message);
     }
@@ -421,11 +549,21 @@ library FISSION {
         require(isCategory(status, category));
     }
 
-    function requireCategory(byte status, byte category, string memory message) public view {
+    function requireCategory(byte status, byte category, string memory message)
+        public
+        view
+    {
         require(isCategory(status, category), message);
     }
 
-    function requireCategory(byte status, byte category, LocalizationPreferences prefs) public view {
+    function requireCategory(
+        byte status,
+        byte category,
+        LocalizationPreferences prefs
+    )
+        public
+        view
+    {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireCategory(status, category, message);
     }
@@ -434,11 +572,21 @@ library FISSION {
         require(isReason(status, reason));
     }
 
-    function requireReason(byte status, byte reason, string memory message) public view {
+    function requireReason(byte status, byte reason, string memory message)
+        public
+        view
+    {
         require(isReason(status, reason), message);
     }
 
-    function requireReason(byte status, byte reason, LocalizationPreferences prefs) public view {
+    function requireReason(
+        byte status,
+        byte reason,
+        LocalizationPreferences prefs
+    )
+        public
+        view
+    {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireReason(status, reason, message);
     }
