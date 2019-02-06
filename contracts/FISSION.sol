@@ -349,12 +349,12 @@ library FISSION {
 
     // Get nibbles
 
-    function categoryOf(byte status) public pure returns (uint8 category) {
-        return (uint8(status >> 4));
+    function categoryOf(byte status) public pure returns (byte category) {
+        return status >> 4;
     }
 
-    function reasonOf(byte status) public pure returns (uint8 reason) {
-        return uint8(status & 0x0F);
+    function reasonOf(byte status) public pure returns (byte reason) {
+        return status & 0x0F;
     }
 
     // Localization
@@ -374,11 +374,19 @@ library FISSION {
     }
 
     function isSuccess(byte status) public pure returns (bool) {
-        return reasonOf(status) == 1;
+        return reasonOf(status) == 0x1;
     }
 
     function isFailure(byte status) public pure returns (bool) {
-        return reasonOf(status) == 0;
+        return reasonOf(status) == 0x0;
+    }
+
+    function isCategory(byte status, byte category) public pure returns (bool) {
+        returns categoryOf(status) == category;
+    }
+
+    function isReason(byte status, byte reason) public pure returns (bool) {
+      returns categoryOf(status) == reason;
     }
 
     // `require`s
@@ -407,5 +415,31 @@ library FISSION {
     function requireSuccess(byte status, LocalizationPreferences prefs) public view {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireSuccess(status, message);
+    }
+
+    function requireCategory(byte status, byte category) public view {
+        require(isCategory(status, category));
+    }
+
+    function requireCategory(byte status, byte category, string memory message) public view {
+        require(isCategory(status, category), message);
+    }
+
+    function requireCategory(byte status, byte category, LocalizationPreferences prefs) public view {
+        (bool _, string memory message) = localizeBy(status, prefs);
+        requireCategory(status, category, message);
+    }
+
+    function requireReason(byte status, byte reason) public view {
+        require(isReason(status, reason));
+    }
+
+    function requireReason(byte status, byte reason, string memory message) public view {
+        require(isReason(status, reason), message);
+    }
+
+    function requireReason(byte status, byte reason, LocalizationPreferences prefs) public view {
+        (bool _, string memory message) = localizeBy(status, prefs);
+        requireReason(status, reason, message);
     }
 }
