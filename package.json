@@ -19,15 +19,15 @@
   "main": "lib/fission.js",
   "license": "Apache-2.0",
   "scripts": {
+    "coverage": "./node_modules/.bin/solidity-coverage",
     "pretest": "./ensure-ganache-running.sh || (npm run start:testrpc &)",
+    "start:testrpc": "ganache-cli -u 0",
     "test": "truffle test",
     "test:lint": "eslint -c .eslintrc . --color=true --quiet",
     "test:lint:fix": "eslint -c .eslintrc . --color=true --quiet --fix",
     "truffle:compile": "truffle compile",
     "truffle:debug": "truffle debug",
-    "truffle:migrate": "truffle migrate",
-    "start:testrpc": "ganache-cli -u 0",
-    "coverage": "./node_modules/.bin/solidity-coverage"
+    "truffle:migrate": "truffle migrate"
   },
   "bugs": {
     "url": "https://github.com/fission-suite/fission-codes/issues"
@@ -36,7 +36,6 @@
     "node": "10.11"
   },
   "devDependencies": {
-    "@digix/doxity": "^0.5.2",
     "chai": "^4.1.2",
     "eslint": "^5.12.1",
     "eslint-config-airbnb-base": "^13.1.0",
