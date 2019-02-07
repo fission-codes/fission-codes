@@ -15,7 +15,7 @@ const {
 
 const hexFormat = /0x[0-9A-F]{2}/;
 
-describe('status.js', () => {
+describe('fission.js', () => {
   describe('#combine', () => {
     it('generates a number', () => {
       expect(combine({categoryId: 1, reasonId: 2})).to.be.a('number');
@@ -55,8 +55,8 @@ describe('status.js', () => {
   });
 
   describe('#humanize', () => {
-    const categoryId = randomInRange(0, 15);
-    const reasonId = randomInRange(0, 15);
+    const categoryId = randomInRange(0x0, 0xF);
+    const reasonId = randomInRange(0x0, 0xF);
 
     const ids = { categoryId, reasonId };
 
@@ -88,21 +88,21 @@ describe('status.js', () => {
   });
 
   describe('#toNumber', () => {
-    const categoryId = randomInRange(0, 15);
-    const reasonId = randomInRange(0, 15);
+    const categoryId = randomInRange(0x0, 0xF);
+    const reasonId = randomInRange(0x0, 0xF);
 
     const decomposed = {
-      category: CATEGORY[categoryId],
-      reason: REASON[reasonId]
+      category: Object.values(CATEGORY)[categoryId],
+      reason: Object.values(REASON)[reasonId]
     };
 
     const code = toNumber(decomposed);
 
     it('is a number', () => expect(code).to.be.a('number'));
-    it('is a single byte', () => expect(code).to.be.within(0, 255));
+    it('is a single byte', () => expect(code).to.be.within(0x00, 0xFF));
 
     it('places the nibbles side-by-side', () => {
-      expect(code).to.equal(categoryId * 16 + reasonId);
+      expect(code).to.equal(categoryId * 0x10 + reasonId);
     });
 
     context('invalid category', () => {
@@ -118,8 +118,8 @@ describe('status.js', () => {
 
   describe('#toHexString', () => {
     const decomposed = {
-      category: CATEGORY[randomInRange(0, 15)],
-      reason: REASON[randomInRange(0, 15)]
+      category: Object.values(CATEGORY)[randomInRange(0x0, 0xF)],
+      reason: Object.values(REASON)[randomInRange(0x0, 0xF)]
     };
 
     it('formats correctly', () => {
@@ -138,7 +138,7 @@ describe('status.js', () => {
   });
 
   describe('#hexifyCode', () => {
-    const code = randomInRange(0, 255);
+    const code = randomInRange(0x00, 0xFF);
 
     it('formats correctly', () => {
       expect(hexifyCode(code)).to.match(hexFormat);
