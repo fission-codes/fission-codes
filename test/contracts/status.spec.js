@@ -48,14 +48,28 @@ contract('fission', () => { // eslint-disable-line no-undef
   });
 
   describe('#reasonOf', () => {
-    it('retuns the upper nibble', async () => {
-      const cat = await fission.reasonOf('0x01');
-      expect(Number(cat)).to.equal(1);
+    describe('#reasonOf(byte)', () => {
+      it('retuns the upper nibble', async () => {
+        const cat = await fission.methods['reasonOf(byte)']('0x01');
+        expect(Number(cat)).to.equal(1);
+      });
+
+      it('retuns nibbles above 9', async () => {
+        const cat = await fission.methods['reasonOf(byte)']('0x3B');
+        expect(Number(cat)).to.equal(11);
+      });
     });
 
-    it('retuns nibbles above 9', async () => {
-      const cat = await fission.reasonOf('0x3B');
-      expect(Number(cat)).to.equal(11);
+    describe('#reasonOf(Status)', () => {
+      it('retuns the upper nibble', async () => {
+        const cat = await fission.methods['reasonOf(FISSION.Status)'](fission.Status.Success);
+        expect(Number(cat)).to.equal(1);
+      });
+
+      it('retuns nibbles above 9', async () => {
+        const cat = await fission.methods['reasonOf(FISSION.Status)'](fission.Status.Allowed_Go);
+        expect(Number(cat)).to.equal(11);
+      });
     });
   });
 
