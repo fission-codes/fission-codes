@@ -3,7 +3,17 @@ pragma solidity ^0.5.0;
 import { LocalizationPreferences} from "/ethereum-localized-messaging/contracts/LocalizationPreferences.sol";
 import { FissionLocalization } from "./localization/FissionLocalization.sol";
 
+/**
+ * @title The FISSION Status Code Library
+ *
+ * @dev Implementation of broadly applicable status codes for smart contracts.
+ *      https://github.com/ethereum/EIPs/blob/master/EIPS/eip-1066.md
+ */
 library FISSION {
+
+    ///////////////////////////// Decomposed Enums /////////////////////////////
+
+    /// @dev The category component of an ERC-1066 status code (ie: the columns)
     enum Category {
         Generic,
         Permission,
@@ -27,6 +37,7 @@ library FISSION {
         OffChain
     }
 
+    /// @dev The reason component of an ERC-1066 status code (ie: the rows)
     enum Reason {
         Failure,
         Success,
@@ -52,7 +63,12 @@ library FISSION {
         Informational
     }
 
+    //////////////////////////// Simple Status Enum ////////////////////////////
+
+    /// @dev ERC-1066 status codes encoded as human-readable enums
     enum Status {
+
+        // 0x0*
         Failure,
         Success,
         AwatingOthers,
@@ -70,6 +86,7 @@ library FISSION {
         RESERVEDx0E,
         Informational,
 
+        // 0x1*
         Disallowed_Stop,
         Allowed_Go,
         AwaitingOthersPermission,
@@ -87,6 +104,7 @@ library FISSION {
         RESERVEDx1E,
         PermissionDetails_ControlConditions,
 
+        // 0x2*
         NotFound_Unequal_OutOfRange,
         Found_Equal_InRange,
         AwaitingMatch,
@@ -104,6 +122,7 @@ library FISSION {
         RESERVEDx2E,
         MatchingInformation,
 
+        // 0x3*
         SenderDisagrees_Nay,
         SenderAgrees_Yea,
         AwaitingRatification,
@@ -121,6 +140,7 @@ library FISSION {
         RESERVEDx3E,
         NegotiationRules_ParticipationInformation,
 
+        // 0x4*
         Unavailable,
         Available,
         Paused,
@@ -138,6 +158,7 @@ library FISSION {
         RESERVEDx4E,
         AvailabilityRules_Information,
 
+        // 0x5*
         TransferFailed,
         TransferSuccessful,
         AwaitingPaymentFromOthers,
@@ -155,6 +176,7 @@ library FISSION {
         RESERVEDx5E,
         FinancialInformation,
 
+        // 0x6*
         RESERVEDx60,
         RESERVEDx61,
         RESERVEDx62,
@@ -172,6 +194,7 @@ library FISSION {
         RESERVEDx6E,
         RESERVEDx6F,
 
+        // 0x7*
         RESERVEDx70,
         RESERVEDx71,
         RESERVEDx72,
@@ -189,6 +212,7 @@ library FISSION {
         RESERVEDx7E,
         RESERVEDx7F,
 
+        // 0x8*
         RESERVEDx80,
         RESERVEDx81,
         RESERVEDx82,
@@ -206,6 +230,7 @@ library FISSION {
         RESERVEDx8E,
         RESERVEDx8F,
 
+        // 0x9*
         RESERVEDx90,
         RESERVEDx91,
         RESERVEDx92,
@@ -223,6 +248,7 @@ library FISSION {
         RESERVEDx9E,
         RESERVEDx9F,
 
+        // 0xA*
         ApplicationSpecificFailure,
         ApplicationSpecificSuccess,
         ApplicationSpecificAwatingOthers,
@@ -240,6 +266,7 @@ library FISSION {
         RESERVEDxAE,
         ApplicationSpecificInformational,
 
+        // 0xB*
         RESERVEDxB0,
         RESERVEDxB1,
         RESERVEDxB2,
@@ -257,6 +284,7 @@ library FISSION {
         RESERVEDxBE,
         RESERVEDxBF,
 
+        // 0xC*
         RESERVEDxC0,
         RESERVEDxC1,
         RESERVEDxC2,
@@ -274,6 +302,7 @@ library FISSION {
         RESERVEDxCE,
         RESERVEDxCF,
 
+        // 0xD*
         RESERVEDxD0,
         RESERVEDxD1,
         RESERVEDxD2,
@@ -291,6 +320,7 @@ library FISSION {
         RESERVEDxDE,
         RESERVEDxDF,
 
+        // 0xE*
         DecryptFailure,
         DecryptSuccess,
         AwaitingOtherSignaturesOrKeys,
@@ -308,7 +338,7 @@ library FISSION {
         RESERVEDxEE,
         Cryptography_ID_ProofMetadata,
 
-
+        // 0xF*
         OffChainFailure,
         OffChainSuccess,
         AwatingOffChainProcess,
@@ -327,85 +357,467 @@ library FISSION {
         OffChainInformation
     }
 
+    ////////////////////////////// Construction ////////////////////////////////
+
+    /**
+     * @dev Coerce a status enum into a standard status byte
+     *
+     * @param statusEnum Status enum tag
+     * @return status Binary ERC-1066 status code
+     */
     function code(Status statusEnum) public pure returns (byte status) {
         return byte(uint8(statusEnum));
     }
 
-    function code(byte category, byte reason) public pure returns (byte status) {
+    /**
+     * @dev Construct a status code from a category and reason.
+     *
+     * @param category Category nibble
+     * @param reason Reason nibble
+     * @return status Binary ERC-1066 status code
+     */
+    function code(byte category, byte reason)
+        public
+        pure
+        returns (byte status)
+    {
         return (category << 4) | (byte(0x0F) & reason);
     }
 
-    function code(uint8 category, uint8 reason) public pure returns (byte status) {
+    /**
+     * @dev Construct a status code from a category and reason.
+     *
+     * @param category The category
+     * @param reason The reason
+     * @return status Binary ERC-1066 status code
+     */
+    function code(uint8 category, uint8 reason)
+        public
+        pure
+        returns (byte status)
+    {
         return byte(uint8((category << 4) + reason));
     }
 
-    function code(Category category, Reason reason) public pure returns (byte status) {
+    /**
+     * @dev Construct a status code from category and reason enums
+     *
+     * @param category Category nibble
+     * @param reason Reason nibble
+     * @return status Binary ERC-1066 status code
+     */
+    function code(Category category, Reason reason)
+        public
+        pure
+        returns (byte status)
+    {
         return code(uint8(category), uint8(reason));
     }
 
+    /**
+     * @dev Construct an application-specific status code
+     *
+     * @param appReason Application-specific reason nibble
+     * @return status Binary ERC-1066 status code
+     */
+    function appCode(byte appReason) public pure returns (byte status) {
+        return (byte(0xA0) | appReason);
+    }
+
+    /**
+     * @dev Construct an application-specific status code
+     *
+     * @param appReason Application-specific reason
+     * @return status Binary ERC-1066 status code
+     */
     function appCode(uint8 appReason) public pure returns (byte status) {
-        return byte(uint8(160 + appReason));
+        return byte(160 + appReason);
     }
 
-    // Get nibbles
-
-    function categoryOf(byte status) public pure returns (uint8 category) {
-        return (uint8(status >> 4));
+    /**
+     * @dev Construct an application-specific status code
+     *
+     * @param appReason Application-specific reason enum
+     * @return status Binary ERC-1066 status code
+     */
+    function appCode(Reason appReason) public pure returns (byte status) {
+        return appCode(uint8(appReason));
     }
 
-    function reasonOf(byte status) public pure returns (uint8 reason) {
-        return uint8(status & 0x0F);
+    /////////////////////////////// Get Nibbles ////////////////////////////////
+
+    /**
+     * @dev Extract the category from a status code
+     *
+     * @param status Binary ERC-1066 status code
+     * @return category Category nibble
+     */
+    function categoryOf(byte status) public pure returns (byte category) {
+        return status >> 4;
     }
 
-    // Localization
+    /**
+     * @dev Extract the category from a status code enum
+     *
+     * @param status Status enum
+     * @return category Category nibble
+     */
+    function categoryOf(Status status) public pure returns (byte category) {
+        return categoryOf(byte(uint8(status)));
+    }
 
-    function localizeBy(byte status, LocalizationPreferences prefs) view public returns (bool found, string memory _msg) {
+    /**
+     * @dev Extract the reason from a status code
+     *
+     * @param status Binary ERC-1066 status code
+     * @return reason Reason nibble
+     */
+    function reasonOf(byte status) public pure returns (byte reason) {
+        return status & 0x0F;
+    }
+
+    /**
+     * @dev Extract the reason from a status code enum
+     *
+     * @param status Status enum
+     * @return reason Reason nibble
+     */
+    function reasonOf(Status status) public pure returns (byte reason) {
+        return reasonOf(byte(uint8(status)));
+    }
+
+    /**
+     * @dev Decompose a status code into its category and reason nibbles
+     *
+     * @param status Binary ERC-1066 status code
+     * @return {
+     *   "category": "Category nibble",
+     *   "reason": "Reason nibble"
+     * }
+     */
+    function split(byte status) public returns (byte category, byte reason) {
+        return (categoryOf(status), reasonOf(status));
+    }
+
+    ////////////////////////////// Localization ////////////////////////////////
+
+    /**
+     * @dev Lookup an ERC-1444 localization for a particular status code
+     *
+     * @param status Binary ERC-1066 status code
+     * @param prefs The localization registry / proxy contract
+     * @return {
+     *   "found": "If the loicalization string was found (`false` if a fallback was used)",
+     *   "message": "The localization string"
+     * }
+     */
+    function localizeBy(byte status, LocalizationPreferences prefs)
+        view
+        public
+        returns (bool found, string memory message)
+    {
         return prefs.textFor(status);
     }
 
-    // Check common statuses
+    ////////////////////////// Check Common Statuses ///////////////////////////
 
-    function isOk(byte status) public pure returns (bool) {
+    /**
+     * @dev Check if a status code is non-blocking (ie: an odd number)
+     *
+     * @param status Binary ERC-1066 status code
+     * @return okay A boolean representing if the status code
+     *         is okay / nonblocking
+     */
+    function isOk(byte status) public pure returns (bool okay) {
         return (uint8(status) % 2) == 1;
     }
 
-    function isBlocking(byte status) public pure returns (bool) {
+    /**
+     * @dev Check if a status code is blocking (ie: an even number)
+     *
+     * @param status Binary ERC-1066 status code
+     * @return blocking A boolean representing if the status code is blocking
+     */
+    function isBlocking(byte status) public pure returns (bool blocking) {
         return !isOk(status);
     }
 
-    function isSuccess(byte status) public pure returns (bool) {
-        return reasonOf(status) == 1;
+    /**
+     * @dev Check if a status code represents success (ie: 0x*1)
+     *
+     * @param status Binary ERC-1066 status code
+     * @return successful A boolean representing if the status code
+     *         represents success
+     */
+    function isSuccess(byte status) public pure returns (bool successful) {
+        return reasonOf(status) == 0x01;
     }
 
-    function isFailure(byte status) public pure returns (bool) {
-        return reasonOf(status) == 0;
+    /**
+     * @dev Check if a status code represents failure (ie: 0x*0)
+     *
+     * @param status Binary ERC-1066 status code
+     * @return failure A boolean representing if the status code
+     *         represents failure
+     */
+    function isFailure(byte status) public pure returns (bool failure) {
+        return reasonOf(status) == 0x00;
     }
 
-    // `require`s
+    /**
+     * @dev Check if a status code belongs to a particular category
+     *
+     * @param status Binary ERC-1066 status code
+     * @param category Category nibble
+     * @return belongs A boolean representing if the status code belongs to
+     *         the target category
+     */
+    function isCategory(byte status, byte category)
+        public
+        pure
+        returns (bool belongs)
+    {
+        return categoryOf(status) == category;
+    }
 
+    /**
+     * @dev Check if a status code belongs to a particular category
+     *
+     * @param status Binary ERC-1066 status code
+     * @param category Category enum
+     * @return belongs A boolean representing if the status code belongs to
+     *         the target category
+     */
+    function isCategory(byte status, Category category)
+        public
+        pure
+        returns (bool belongs)
+    {
+        return categoryOf(status) == byte(uint8(category));
+    }
+
+    /**
+     * @dev Check if a Status enum belongs to a particular category
+     *
+     * @param status Status enum
+     * @param category Category enum
+     * @return belongs A boolean representing if the status enum belongs to
+     *         the target category
+     */
+    function isCategory(Status status, Category category)
+        public
+        pure
+        returns (bool belongs)
+    {
+        return categoryOf(status) == byte(uint8(category));
+    }
+
+    /**
+     * @dev Check if a status code has a particular reason
+     *
+     * @param status Binary ERC-1066 status code
+     * @param reason Reason nibble
+     * @return belongs A boolean representing if the status code has
+     *         the target reason
+     */
+    function isReason(byte status, byte reason)
+        public
+        pure
+        returns (bool belongs)
+    {
+        return reasonOf(status) == reason;
+    }
+
+    /**
+     * @dev Check if a status code belongs to a particular category
+     *
+     * @param status Binary ERC-1066 status code
+     * @param reason Reason enum
+     * @return belongs A boolean representing if the status code has
+     *         the target reason
+     */
+    function isReason(byte status, Reason reason)
+        public
+        pure
+        returns (bool belongs)
+    {
+        return reasonOf(status) == byte(uint8(reason));
+    }
+
+    /**
+     * @dev Check if a Status enum has a particular reason
+     *
+     * @param status Status enum
+     * @param reason Reason enum
+     * @return belongs A boolean representing if the status code has
+     *         the target reason
+     */
+    function isReason(Status status, Reason reason)
+        public
+        pure
+        returns (bool belongs)
+    {
+        return reasonOf(status) == byte(uint8(reason));
+    }
+
+    ///////////////////////////////// Requires /////////////////////////////////
+
+    /**
+     * @dev Require that a status code be nonblocking, otherwise `revert`
+     *
+     * @param status Binary ERC-1066 status code
+     */
     function requireOk(byte status) public pure {
         require(isOk(status), "Blocking status code"); // TODO: use translation singleton
     }
 
+    /**
+     * @dev Require that a status code be nonblocking,
+     *      otherwise `revert` with message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param message Revert message
+     */
     function requireOk(byte status, string memory message) public pure {
         require(isOk(status), message);
     }
 
+    /**
+     * @dev Require that a status code be nonblocking,
+     *      otherwise `revert` with an ERC-1444 automatically localized message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param prefs Localization preference registry
+     */
     function requireOk(byte status, LocalizationPreferences prefs) public view {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireOk(status, message);
     }
 
+    /**
+     * @dev Require that a status code represent success, otherwise `revert`
+     *
+     * @param status Binary ERC-1066 status code
+     */
     function requireSuccess(byte status) public pure {
         require(isSuccess(status), "Unsuccessful status code reason");
     }
 
+    /**
+     * @dev Require that a status code represent success,
+     *      otherwise `revert` with message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param message Revert message
+     */
     function requireSuccess(byte status, string memory message) public pure {
         require(isSuccess(status), message);
     }
 
-    function requireSuccess(byte status, LocalizationPreferences prefs) public view {
+    /**
+     * @dev Require that a status code represent success,
+     *      otherwise `revert` with an ERC-1444 automatically localized message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param prefs Localization preference registry
+     */
+    function requireSuccess(byte status, LocalizationPreferences prefs)
+        public
+        view
+    {
         (bool _, string memory message) = localizeBy(status, prefs);
         requireSuccess(status, message);
+    }
+
+    /**
+     * @dev Require that a status code belongs to a particular category,
+     *      otherwise `revert`
+     *
+     * @param status Binary ERC-1066 status code
+     * @param category Required category nibble
+     */
+    function requireCategory(byte status, byte category) public view {
+        require(isCategory(status, category));
+    }
+
+    /**
+     * @dev Require that a status code belongs to a particular category,
+     *      otherwise `revert` with message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param category Required category nibble
+     * @param message Revert message
+     */
+    function requireCategory(byte status, byte category, string memory message)
+        public
+        view
+    {
+        require(isCategory(status, category), message);
+    }
+
+    /**
+     * @dev Require that a status code belongs to a particular category,
+     *      otherwise `revert` with an ERC-1444 automatically localized message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param category Required category nibble
+     * @param prefs Localization preference registry
+     */
+    function requireCategory(
+        byte status,
+        byte category,
+        LocalizationPreferences prefs
+    )
+        public
+        view
+    {
+        (bool _, string memory message) = localizeBy(status, prefs);
+        requireCategory(status, category, message);
+    }
+
+    /**
+     * @dev Require that a status code has a particular reason,
+     *      otherwise `revert`
+     *
+     * @param status Binary ERC-1066 status code
+     * @param reason Required reason nibble
+     */
+    function requireReason(byte status, byte reason) public view {
+        require(isReason(status, reason));
+    }
+
+    /**
+     * @dev Require that a status code has a particular reason,
+     *      otherwise `revert` with message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param reason Required reason nibble
+     * @param message Revert message
+     */
+    function requireReason(byte status, byte reason, string memory message)
+        public
+        view
+    {
+        require(isReason(status, reason), message);
+    }
+
+    /**
+     * @dev Require that a status code has a particular reason,
+     *      otherwise `revert` with an ERC-1444 automatically localized message
+     *
+     * @param status Binary ERC-1066 status code
+     * @param reason Required reason nibble
+     * @param prefs Localization preference registry
+     */
+    function requireReason(
+        byte status,
+        byte reason,
+        LocalizationPreferences prefs
+    )
+        public
+        view
+    {
+        (bool _, string memory message) = localizeBy(status, prefs);
+        requireReason(status, reason, message);
     }
 }

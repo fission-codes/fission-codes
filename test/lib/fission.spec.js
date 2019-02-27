@@ -3,11 +3,18 @@ const { expect } = require('chai');
 const { randomInRange } = require('../helpers');
 
 const {
-  CATEGORY,
-  REASON,
+  CATEGORIES,
+  CATEGORY_NAMES,
+  REASONS,
+  REASON_NAMES,
+  categoryOf,
+  categoryIdOf,
   combine,
+  dehumanize,
   hexifyCode,
   humanize,
+  reasonOf,
+  reasonIdOf,
   split,
   toHexString,
   toNumber
@@ -15,7 +22,18 @@ const {
 
 const hexFormat = /0x[0-9A-F]{2}/;
 
-describe('status.js', () => {
+describe('fission.js', () => {
+  const categoryId = randomInRange(0x0, 0xF);
+  const reasonId = randomInRange(0x0, 0xF);
+
+  const decomposed = {categoryId, reasonId};
+  const code = combine(decomposed);
+
+  const names = {
+    category: CATEGORY_NAMES[categoryId],
+    reason: REASON_NAMES[reasonId]
+  };
+
   describe('#combine', () => {
     it('generates a number', () => {
       expect(combine({categoryId: 1, reasonId: 2})).to.be.a('number');
@@ -31,115 +49,149 @@ describe('status.js', () => {
   });
 
   describe('#split', () => {
-    const decomposed = split(randomInRange(0, 256));
-
     it('has the correct keys', () => {
       expect(decomposed).to.have.all.keys('categoryId', 'reasonId');
     });
 
     describe('categoryId', () => {
-      const { categoryId } = decomposed;
-
       it('is a single hex number', () => {
         expect(categoryId).to.be.within(0, 15);
       });
     });
 
     describe('reasonId', () => {
-      const { reasonId } = decomposed;
-
       it('is a single hex number', () => {
         expect(reasonId).to.be.within(0, 15);
       });
     });
   });
 
-  describe('#humanize', () => {
-    const categoryId = randomInRange(0, 15);
-    const reasonId = randomInRange(0, 15);
+  describe('projections', () => {
+    describe('reason', () => {
+      describe('#reasonOf', () => {
+        it('extracts the reason\'s name', () => {
+          expect(reasonOf(code)).to.equal(REASON_NAMES[reasonId]);
+        });
+      });
 
-    const ids = { categoryId, reasonId };
-
-    it('has a category string', () => {
-      expect(humanize(ids)).to.include.all.keys('category', 'reason');
+      describe('#reasonIdOf', () => {
+        it('extracts the reason nibble', () => {
+          expect(reasonIdOf(code)).to.equal(reasonId);
+        });
+      });
     });
 
     describe('category', () => {
-      const { category } = humanize(ids);
+      describe('#categoryOf', () => {
+        it('extracts the category\'s name', () => {
+          expect(categoryOf(code)).to.equal(CATEGORY_NAMES[categoryId]);
+        });
+      });
+
+      describe('#categoryIdOf', () => {
+        it('extracts the reason nibble', () => {
+          expect(categoryIdOf(code)).to.equal(categoryId);
+        });
+      });
+    });
+  });
+
+  describe('#humanize', () => {
+    const humanized = humanize(decomposed);
+
+    it('has a category string', () => {
+      expect(humanized).to.include.all.keys('category', 'reason');
+    });
+
+    describe('category', () => {
+      const { category } = humanized;
 
       it('is a string', () => {
         expect(category).to.be.a('string');
       });
 
       it('is the corresponding category enum', () => {
-        expect(category).to.equal(CATEGORY[categoryId]);
+        expect(category).to.equal(CATEGORY_NAMES[categoryId]);
       });
     });
 
     describe('reason', () => {
-      const { reason } = humanize(ids);
+      const { reason } = humanized;
 
       it('is a string', () => expect(reason).to.be.a('string'));
 
       it('is the corresponding reason enum', () => {
-        expect(reason).to.equal(REASON[reasonId]);
+        expect(reason).to.equal(REASON_NAMES[reasonId]);
+      });
+    });
+  });
+
+  describe('#dehumanize', () => {
+    const humanized = humanize(decomposed);
+    const {category, reason} = humanized;
+
+    const dehumanized = dehumanize(humanize(decomposed));
+    const {categoryId, reasonId} = dehumanized;
+
+    it('has a category string', () => {
+      expect(dehumanized).to.include.all.keys('categoryId', 'reasonId');
+    });
+
+    describe('categoryId', () => {
+      it('is a number', () => {
+        expect(categoryId).to.be.a('number');
+      });
+
+      it('is the corresponding category ID', () => {
+        expect(categoryId).to.equal(CATEGORIES[category]);
+      });
+    });
+
+    describe('reason', () => {
+      it('is a number', () => expect(reasonId).to.be.a('number'));
+
+      it('is the corresponding reason enum', () => {
+        expect(reasonId).to.equal(REASONS[reason]);
       });
     });
   });
 
   describe('#toNumber', () => {
-    const categoryId = randomInRange(0, 15);
-    const reasonId = randomInRange(0, 15);
-
-    const decomposed = {
-      category: CATEGORY[categoryId],
-      reason: REASON[reasonId]
-    };
-
-    const code = toNumber(decomposed);
-
     it('is a number', () => expect(code).to.be.a('number'));
-    it('is a single byte', () => expect(code).to.be.within(0, 255));
+    it('is a single byte', () => expect(code).to.be.within(0x00, 0xFF));
 
     it('places the nibbles side-by-side', () => {
-      expect(code).to.equal(categoryId * 16 + reasonId);
+      expect(code).to.equal(categoryId * 0x10 + reasonId);
     });
 
     context('invalid category', () => {
-      const badCat = Object.assign({}, decomposed, { category: 'bad!' });
+      const badCat = Object.assign({}, names, { category: 'bad!' });
       it('throws', () => expect(() => toNumber(badCat)).to.throw(Error));
     });
 
     context('invalid reason', () => {
-      const badReason = Object.assign({}, decomposed, { reason: 'bad!' });
+      const badReason = Object.assign({}, names, { reason: 'bad!' });
       it('throws', () => expect(() => toNumber(badReason)).to.throw(Error));
     });
   });
 
   describe('#toHexString', () => {
-    const decomposed = {
-      category: CATEGORY[randomInRange(0, 15)],
-      reason: REASON[randomInRange(0, 15)]
-    };
-
     it('formats correctly', () => {
       expect(toHexString(decomposed)).to.match(hexFormat);
     });
 
     context('invalid category', () => {
-      const badCat = Object.assign({}, decomposed, { category: 'bad!' });
+      const badCat = Object.assign({}, names, { category: 'bad!' });
       it('throws', () => expect(() => toHexString(badCat)).to.throw(Error));
     });
 
     context('invalid reason', () => {
-      const badReason = Object.assign({}, decomposed, { reason: 'bad!' });
+      const badReason = Object.assign({}, names, { reason: 'bad!' });
       it('throws', () => expect(() => toHexString(badReason)).to.throw(Error));
     });
   });
 
   describe('#hexifyCode', () => {
-    const code = randomInRange(0, 255);
-
     it('formats correctly', () => {
       expect(hexifyCode(code)).to.match(hexFormat);
     });

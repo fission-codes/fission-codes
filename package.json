@@ -1,6 +1,6 @@
 {
   "name": "fission-codes",
-  "version": "1.0.0-rc1",
+  "version": "1.0.0-rc.2",
   "description": "Smart contract status codes and helpers",
   "keywords": [
     "ethereum",
@@ -19,15 +19,15 @@
   "main": "lib/fission.js",
   "license": "Apache-2.0",
   "scripts": {
+    "coverage": "./node_modules/.bin/solidity-coverage",
     "pretest": "./ensure-ganache-running.sh || (npm run start:testrpc &)",
+    "start:testrpc": "ganache-cli -u 0",
     "test": "truffle test",
     "test:lint": "eslint -c .eslintrc . --color=true --quiet",
     "test:lint:fix": "eslint -c .eslintrc . --color=true --quiet --fix",
     "truffle:compile": "truffle compile",
     "truffle:debug": "truffle debug",
-    "truffle:migrate": "truffle migrate",
-    "start:testrpc": "ganache-cli -u 0",
-    "coverage": "./node_modules/.bin/solidity-coverage"
+    "truffle:migrate": "truffle migrate"
   },
   "bugs": {
     "url": "https://github.com/fission-suite/fission-codes/issues"

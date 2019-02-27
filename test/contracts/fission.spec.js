@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { expectRevert } = require('../helpers');
+const fissionJS = require('../../lib/fission');
 
 /* eslint-disable no-undef */
 const FISSION = artifacts.require('FISSION');
@@ -19,14 +20,42 @@ contract('fission', () => { // eslint-disable-line no-undef
     registry = await LocalizationPreferences.new(localization.address);
   });
 
-  // Having issues with overloaded functions
-  //
-  // describe('#code', () => {
-  //   it('constructs a code out of numbers', async () => {
-  //     const code = await fission.code(10, 6);
-  //     expect(Number(code)).to.equal(0xA6);
-  //   });
-  // });
+  describe('#code', () => {
+    describe('#code(bytes1,bytes1)', () => {
+      it('constructs a code out of numbers', async () => {
+        const code = await fission.methods['code(bytes1,bytes1)']('0x0A', '0x06');
+        expect(Number(code)).to.equal(0xA6);
+      });
+    });
+
+    describe('#code(uint8,uint8)', () => {
+      it('constructs a code out of numbers', async () => {
+        const code = await fission.methods['code(uint8,uint8)'](10, 6);
+        expect(Number(code)).to.equal(0xA6);
+      });
+    });
+
+    // FIXME: Truffle seems to be struggling with enums in any representation
+    //
+    // describe('#code(Status)', () => {
+    //   it('constructs a code out of a Status enum', async () => {
+    //     const code = await fission.methods['code(FISSION.Status)'].call(0x08);
+    //     console.log(JSON.stringify(code));
+    //     expect(Number(code)).to.equal(0x08);
+    //   });
+    // });
+
+    // describe('#code(Category,Reason)', () => {
+    //   it('constructs a code out of Category and Reason enums', async () => {
+    //     const code = await fission.methods['code(FISSION.Category,FISSION.Reason)'](
+    //       fissionJS.CATEGORIES.FIND,
+    //       fissionJS.REASONS.UPPER_LIMIT
+    //     );
+
+    //     expect(Number(code)).to.equal(0x26);
+    //   });
+    // });
+  });
 
   describe('#appCode', () => {
     it('prepends "A" to the reason', async () => {
@@ -48,25 +77,32 @@ contract('fission', () => { // eslint-disable-line no-undef
   });
 
   describe('#reasonOf', () => {
-    it('retuns the upper nibble', async () => {
-      const cat = await fission.reasonOf('0x01');
-      expect(Number(cat)).to.equal(1);
+    describe('#reasonOf(bytes1)', () => {
+      it('retuns the upper nibble', async () => {
+        const cat = await fission.methods['reasonOf(bytes1)']('0x01');
+        expect(Number(cat)).to.equal(1);
+      });
+
+      it('retuns nibbles above 9', async () => {
+        const cat = await fission.methods['reasonOf(bytes1)']('0x3B');
+        expect(Number(cat)).to.equal(11);
+      });
     });
 
-    it('retuns nibbles above 9', async () => {
-      const cat = await fission.reasonOf('0x3B');
-      expect(Number(cat)).to.equal(11);
-    });
+    // FIXME: Truffle seems to be struggling with enums in any representation
+    //
+    // describe('#reasonOf(Status)', () => {
+    //   it('retuns the upper nibble', async () => {
+    //     const cat = await fission.methods['reasonOf(FISSION.Status)'](fissionJS.STATUSES.SUCCESS);
+    //     expect(Number(cat)).to.equal(1);
+    //   });
+
+    //   it('retuns nibbles above 9', async () => {
+    //     const cat = await fission.methods['reasonOf(uint8)'](fissionJS.STATUSES.ALLOWED_GO);
+    //     expect(Number(cat)).to.equal(11);
+    //   });
+    // });
   });
-
-  // Having issues with overloaded functions
-  //
-  // describe('#localizeBy', () => {
-  //   it('looks up a translation', async () => {
-  //     const [found, text] = await fission.localizeBy('0x14', registry.address);
-  //     expect(text).to.equal('');
-  //   });
-  // });
 
   describe('#isOk', () => {
     context('lower nibble is odd', () => {

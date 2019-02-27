@@ -1,13 +1,18 @@
 const { expect } = require('chai');
 
 const { randomInRange } = require('../../helpers');
-const { CATEGORY, toHexString, toId, toNumber } = require('../../../lib/fission/category');
+const {
+  CATEGORIES,
+  CATEGORY_NAMES,
+  toHexString,
+  toNumber
+} = require('../../../lib/fission/category');
 
 const hexRegex = /0x[0-9A-F]0/;
 
 describe('category', () => {
   const index = randomInRange(0, 15);
-  const cat = CATEGORY[index];
+  const cat = CATEGORY_NAMES[index];
 
   describe('#toHexString', () => {
     context('with hex value 0-9', () => {
@@ -45,30 +50,6 @@ describe('category', () => {
     context('with decimal', () => {
       it('throws', () => {
         expect(() => toHexString(3.14159)).to.throw(TypeError);
-      });
-    });
-  });
-
-  describe('#toId', () => {
-    it('translates the category name into its uint8 enum equivalent', () => {
-      expect(toId(cat)).to.equal(index);
-    });
-
-    context('not a valid category', () => {
-      it('throws', () => {
-        expect(() => toId('foo')).to.throw(Error);
-      });
-    });
-
-    context('not a string', () => {
-      it('throws', () => {
-        expect(() => toId(42)).to.throw(Error);
-      });
-    });
-
-    context('wrong case', () => {
-      it('throws', () => {
-        expect(() => toId('generic')).to.throw(Error);
       });
     });
   });
