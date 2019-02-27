@@ -29,10 +29,6 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
       });
 
       it('starts the call', () => {
-        console.log(">>>>>>>>>>>>>>>");
-        console.log(reason);
-        console.log(message);
-
         expect(reason).to.equal(1);
       });
 
