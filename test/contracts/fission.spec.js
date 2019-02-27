@@ -74,7 +74,7 @@ contract('fission', () => { // eslint-disable-line no-undef
   });
 
   describe('#reasonOf', () => {
-    describe('#reasonOf(byte)', () => {
+    describe('#reasonOf(bytes1)', () => {
       it('retuns the upper nibble', async () => {
         const cat = await fission.methods['reasonOf(bytes1)']('0x01');
         expect(Number(cat)).to.equal(1);

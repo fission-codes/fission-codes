@@ -1,4 +1,5 @@
 const { expect } = require('chai');
+const fissionJS = require('../../lib/fission');
 
 const Phone = artifacts.require('Phone'); // eslint-disable-line no-undef
 const FISSION = artifacts.require('FISSION'); // eslint-disable-line no-undef
@@ -24,11 +25,15 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         const { 0: code, 1: msg } = await alice.incoming.call('Hey');
 
         message = msg;
-        reason = await fission.reasonOf(code);
+        reason = fissionJS.reasonIdOf(Number(code));
       });
 
       it('starts the call', () => {
-        expect(Number(reason)).to.equal(1);
+        console.log(">>>>>>>>>>>>>>>");
+        console.log(reason);
+        console.log(message);
+
+        expect(reason).to.equal(1);
       });
 
       it('returns a friendly message', () => {
@@ -39,15 +44,13 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
     context('not on contact list', () => {
       before(async () => {
         const { 0: code, 1: msg } = await bob.incoming.call('Hey');
-        console.log(code);
-        console.log(msg);
 
         message = msg;
-        reason = await fission.reasonOf(code);
+        reason = fissionJS.reasonIdOf(Number(code));
       });
 
       it('goes to voicemail', () => {
-        expect(Number(reason)).to.equal(2);
+        expect(reason).to.equal(2);
       });
 
       it('includes the voicemail message', () => {
@@ -62,11 +65,11 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         const { 0: code, 1: msg } = await alice.outgoing.call(bob.address, 'hello');
 
         message = msg;
-        reason = await fission.reasonOf(code);
+        reason = fissionJS.reasonIdOf(Number(code));
       });
 
       it('does not start the call', () => {
-        expect(Number(reason)).to.equal(0);
+        expect(reason).to.equal(0);
       });
 
       it('records a message', () => {
@@ -80,12 +83,11 @@ contract('Phone', async (addresses) => { // eslint-disable-line no-undef
         const { 0: code, 1: msg } = await alice.outgoing.call(alice.address, 'hello');
 
         message = msg;
-        reason = await fission.reasonOf(code);
+        reason = fissionJS.reasonIdOf(Number(code));
       });
 
-
       it('starts the call', () => {
-        expect(Number(reason)).to.equal(1);
+        expect(reason).to.equal(1);
       });
 
       it('returns a friendly message', () => {
