@@ -1,5 +1,6 @@
 const { expect } = require('chai');
 const { expectRevert } = require('../helpers');
+const fissionJS = require('../../lib/fission');
 
 /* eslint-disable no-undef */
 const FISSION = artifacts.require('FISSION');
@@ -19,14 +20,39 @@ contract('fission', () => { // eslint-disable-line no-undef
     registry = await LocalizationPreferences.new(localization.address);
   });
 
-  // Having issues with overloaded functions
-  //
-  // describe('#code', () => {
-  //   it('constructs a code out of numbers', async () => {
-  //     const code = await fission.code(10, 6);
-  //     expect(Number(code)).to.equal(0xA6);
-  //   });
-  // });
+  describe('#code', () => {
+    describe('#code(bytes1,bytes1)', () => {
+      it('constructs a code out of numbers', async () => {
+        const code = await fission.methods['code(bytes1,bytes1)']('0x0A', '0x06');
+        expect(Number(code)).to.equal(0xA6);
+      });
+    });
+
+    describe('#code(uint8,uint8)', () => {
+      it('constructs a code out of numbers', async () => {
+        const code = await fission.methods['code(uint8,uint8)'](10, 6);
+        expect(Number(code)).to.equal(0xA6);
+      });
+    });
+
+    describe('#code(Status)', () => {
+      it('constructs a code out of a Status enum', async () => {
+        const code = await fission.methods['code(uint8)'](fissionJS.STATUSES.UPPER_LIMIT);
+        expect(Number(code)).to.equal(0xA6);
+      });
+    });
+
+    describe('#code(Category,Reason)', () => {
+      it('constructs a code out of a Status enum', async () => {
+        const code = await fission.methods['code(uint8,uint8)'](
+          fissionJS.CATEGORIES.FIND,
+          fissionJS.REASONS.UPPER_LIMIT
+        );
+
+        expect(Number(code)).to.equal(0x26);
+      });
+    });
+  });
 
   describe('#appCode', () => {
     it('prepends "A" to the reason', async () => {
@@ -50,37 +76,35 @@ contract('fission', () => { // eslint-disable-line no-undef
   describe('#reasonOf', () => {
     describe('#reasonOf(byte)', () => {
       it('retuns the upper nibble', async () => {
-        const cat = await fission.methods['reasonOf(byte)']('0x01');
+        const cat = await fission.methods['reasonOf(bytes1)']('0x01');
         expect(Number(cat)).to.equal(1);
       });
 
       it('retuns nibbles above 9', async () => {
-        const cat = await fission.methods['reasonOf(byte)']('0x3B');
+        const cat = await fission.methods['reasonOf(bytes1)']('0x3B');
         expect(Number(cat)).to.equal(11);
       });
     });
 
     describe('#reasonOf(Status)', () => {
       it('retuns the upper nibble', async () => {
-        const cat = await fission.methods['reasonOf(FISSION.Status)'](fission.Status.Success);
+        const cat = await fission.methods['reasonOf(uint8)'](fissionJS.STATUSES.SUCCESS);
         expect(Number(cat)).to.equal(1);
       });
 
       it('retuns nibbles above 9', async () => {
-        const cat = await fission.methods['reasonOf(FISSION.Status)'](fission.Status.Allowed_Go);
+        const cat = await fission.methods['reasonOf(uint8)'](fissionJS.STATUSES.ALLOWED_GO);
         expect(Number(cat)).to.equal(11);
       });
     });
   });
 
-  // Having issues with overloaded functions
-  //
-  // describe('#localizeBy', () => {
-  //   it('looks up a translation', async () => {
-  //     const [found, text] = await fission.localizeBy('0x14', registry.address);
-  //     expect(text).to.equal('');
-  //   });
-  // });
+  describe('#localizeBy', () => {
+    it('looks up a translation', async () => {
+      const [found, text] = await fission.localizeBy('0x14', registry.address);
+      expect(text).to.equal('');
+    });
+  });
 
   describe('#isOk', () => {
     context('lower nibble is odd', () => {

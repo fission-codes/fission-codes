@@ -1,13 +1,19 @@
 const { expect } = require('chai');
 
 const { randomInRange } = require('../../helpers');
-const { REASON, toHexString, toId, toNumber } = require('../../../lib/fission/reason');
+const {
+  REASONS,
+  REASON_NAMES,
+  toHexString,
+  toId,
+  toNumber
+} = require('../../../lib/fission/reason');
 
 const hexRegex = /0x0[0-9A-F]/;
 
 describe('reason', () => {
   const index = randomInRange(0, 15);
-  const rsn = REASON[index];
+  const rsn = REASON_NAMES[index];
 
   describe('#toHexString', () => {
     context('with hex value 0-9', () => {
@@ -45,30 +51,6 @@ describe('reason', () => {
     context('with decimal', () => {
       it('throws', () => {
         expect(() => toHexString(3.14159)).to.throw(TypeError);
-      });
-    });
-  });
-
-  describe('#toId', () => {
-    it('translates the reason name into its uint8 enum equivalent', () => {
-      expect(toId(rsn)).to.equal(index);
-    });
-
-    context('not a valid reason', () => {
-      it('throws', () => {
-        expect(() => toId('foo')).to.throw(Error);
-      });
-    });
-
-    context('not a string', () => {
-      it('throws', () => {
-        expect(() => toId(42)).to.throw(Error);
-      });
-    });
-
-    context('wrong case', () => {
-      it('throws', () => {
-        expect(() => toId('success')).to.throw(Error);
       });
     });
   });
