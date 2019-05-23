@@ -1,8 +1,8 @@
 ![](https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-logomark.svg?sanitize=true)
 
-## Powering Mircoservices for Web3
+## Powering Microservices for Web3
 
-[`FISSION`](https://fission.codes) is a set of useful status codes and translated messages to connect smart contracts of all kinds 🔌
+[`FISSION`](https://docs.fission.codes/fission-codes/) is a set of useful status codes and translated messages to connect smart contracts of all kinds 🔌
 
 [![Build Status](https://travis-ci.org/fission-suite/fission-codes.svg?branch=master)](https://travis-ci.org/fission-suite/fission-codes)
 [![Maintainability](https://api.codeclimate.com/v1/badges/a1ef619028bc0786c327/maintainability)](https://codeclimate.com/github/expede/ethereum-status-codes/maintainability)
@@ -70,7 +70,7 @@ Not to be confused with a [fluent interface](https://en.wikipedia.org/wiki/Fluen
 
 The core of the FISSION is status codes. These provide the common interface to build messages, flows, and protocols from. This strategy isn’t limited projects under the FISSION umbrella; everyone is encouraged to build robust protocols from these building blocks!
 
-The idea is very simple: [256 codes](https://fission.codes/fission-codes/codes) organized as a [16x16 table](https://fission.codes/fission-codes/grid). The columns are categories (ex. [permissions](https://fission.codes/fission-codes/codes#0x1-permission--control), [time](https://fission.codes/fission-codes/codes#0x4-availability--time), [off-chain](https://fission.codes/fission-codes/codes#0xf-off-chain), etc), and the rows are reasons (ex. [failure, success, informational, required action](https://fission.codes/fission-codes/codes#0x0-generic)). They are passed around as the first value in a multi-value return, or as an argument to a function.
+The idea is very simple: [256 codes](https://docs.fission.codes/fission-codes/codes) organized as a [16x16 table](https://docs.fission.codes/fission-codes/grid). The columns are categories (ex. [permissions](https://fission.codes/fission-codes/codes#0x1-permission--control), [time](https://fission.codes/fission-codes/codes#0x4-availability--time), [off-chain](https://docs.fission.codes/fission-codes/codes#0xf-off-chain), etc), and the rows are reasons (ex. [failure, success, informational, required action](https://fission.codes/fission-codes/codes#0x0-generic)). They are passed around as the first value in a multi-value return, or as an argument to a function.
 
 This library makes it easy to construct codes, inspect them for conditions, automatically revert on failures, retrieve human-readable localizations, and so on.
 
@@ -215,7 +215,7 @@ This library contains implementations of these standards:
 
 ## Presentations
 
-* [Devcon IV (Prague)](https://slideslive.ch/38911936/erc1066-better-ux-dx-in-just-one-byte)
+* [Devcon IV (Prague)](https://blog.fission.codes/erc1066-better-ux-dx-one-byte-devcon4/)
 * [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
 <img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/master/static/photos/devcon-iv.jpg?raw=true" />
@@ -249,7 +249,7 @@ Feel free to put this badge on your FISSION-compatible projects to let others kn
 
 ```html
 <!-- website.html -->
-<a href="https://fission.codes"><img alt="FISSION compatible" src="https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true"/></a>
+<a href="https://docs.fission.codes/fission-codes/"><img alt="FISSION compatible" src="https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true"/></a>
 ```
 
 # Featured On
