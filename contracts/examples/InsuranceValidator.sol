@@ -1,4 +1,4 @@
-pragma solidity ^0.5.0;
+pragma solidity ^0.5.8;
 
 import { AgeValidator } from "./AgeValidator.sol";
 import { FinancialValidator } from "./FinancialValidator.sol";

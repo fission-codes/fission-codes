@@ -1,6 +1,6 @@
 {
   "name": "fission-codes",
-  "version": "1.0.0-rc.2",
+  "version": "1.0.0",
   "description": "Smart contract status codes and helpers",
   "keywords": [
     "ethereum",
