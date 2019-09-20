@@ -495,7 +495,7 @@ library FISSION {
      *   "reason": "Reason nibble"
      * }
      */
-    function split(byte status) public returns (byte category, byte reason) {
+    function split(byte status) public pure returns (byte category, byte reason) {
         return (categoryOf(status), reasonOf(status));
     }
 
@@ -690,7 +690,7 @@ library FISSION {
      * @param prefs Localization preference registry
      */
     function requireOk(byte status, LocalizationPreferences prefs) public view {
-        (bool _, string memory message) = localizeBy(status, prefs);
+        (, string memory message) = localizeBy(status, prefs);
         requireOk(status, message);
     }
 
@@ -725,7 +725,7 @@ library FISSION {
         public
         view
     {
-        (bool _, string memory message) = localizeBy(status, prefs);
+        (, string memory message) = localizeBy(status, prefs);
         requireSuccess(status, message);
     }
 
@@ -736,7 +736,7 @@ library FISSION {
      * @param status Binary ERC-1066 status code
      * @param category Required category nibble
      */
-    function requireCategory(byte status, byte category) public view {
+    function requireCategory(byte status, byte category) public pure {
         require(isCategory(status, category));
     }
 
@@ -750,7 +750,7 @@ library FISSION {
      */
     function requireCategory(byte status, byte category, string memory message)
         public
-        view
+        pure
     {
         require(isCategory(status, category), message);
     }
@@ -771,7 +771,7 @@ library FISSION {
         public
         view
     {
-        (bool _, string memory message) = localizeBy(status, prefs);
+        (, string memory message) = localizeBy(status, prefs);
         requireCategory(status, category, message);
     }
 
@@ -782,7 +782,7 @@ library FISSION {
      * @param status Binary ERC-1066 status code
      * @param reason Required reason nibble
      */
-    function requireReason(byte status, byte reason) public view {
+    function requireReason(byte status, byte reason) public pure {
         require(isReason(status, reason));
     }
 
@@ -796,7 +796,7 @@ library FISSION {
      */
     function requireReason(byte status, byte reason, string memory message)
         public
-        view
+        pure
     {
         require(isReason(status, reason), message);
     }
@@ -817,7 +817,7 @@ library FISSION {
         public
         view
     {
-        (bool _, string memory message) = localizeBy(status, prefs);
+        (, string memory message) = localizeBy(status, prefs);
         requireReason(status, reason, message);
     }
 }
