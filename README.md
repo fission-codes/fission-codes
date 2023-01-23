@@ -1,6 +1,7 @@
-![](https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-logomark.svg?sanitize=true)
+<div align="center">
+<img src="https://github.com/fission-codes/kit/blob/main/images/logo-icon-coloured.png?raw=true" width="100" />
 
-## Powering Microservices for Web3
+<h1>Powering Microservices for Web3</h1>
 
 [`FISSION`](https://docs.fission.codes/fission-codes/) is a set of useful status codes and translated messages to connect smart contracts of all kinds 🔌
 
@@ -12,6 +13,8 @@
 [![ERC-1444](https://img.shields.io/badge/♢%20ERC-1444-414.svg)](https://github.com/ethereum/EIPs/blob/56f86922bbd3777174cdbf2e0d01d38c6306b9c0/EIPS/eip-1444.md)
 [![ECIP-1050](https://img.shields.io/badge/♦%20ECIP-1050-41A.svg)](https://github.com/ethereumclassic/ECIPs/blob/1562567351ee0c2f163beac65b73fc6872313c6b/ECIPs/ECIP-1050.md)
 [![Built with ❤ by SPADE Co](https://img.shields.io/badge/built%20with%20%F0%9F%92%96%20by-SPADE%20Co-purple.svg)](https://spade.builders)
+
+</div>
 
 # Quickstart
 
@@ -27,30 +30,30 @@ import { FISSION } from "/fission-codes/contracts/FISSION.sol";
 
 ```js
 // JavaScript
-const fission = require('fission-codes');
+const fission = require("fission-codes");
 ```
 
 # Table of Contents
 
-* [TL;DR](#tldr)
-* [Motivation](#motivation)
-    * [Contract Autonomy](#contract-autonomy)
-    * [Semantically Rich](#semantically-rich)
-    * [User Feedback](#user-feedback)
-    * [Web3 Microservices](#web3-microservices)
-* [Example](#example)
-    * [Scenario](#scenario)
-    * [Smart Contracts](#smart-contracts)
-* [Resources](#resources)
-    * [Documentation](#documentation)
-    * [Standards](#standards)
-    * [Articles](#articles)
-    * [Discussions](#discussions)
-    * [Presentations](#presentations)
-* [FAQ](#faq)
-* [Badge](#badge)
-* [Featured On](#featured-on)
-* [Sponsors](#sponsors)
+- [TL;DR](#tldr)
+- [Motivation](#motivation)
+  - [Contract Autonomy](#contract-autonomy)
+  - [Semantically Rich](#semantically-rich)
+  - [User Feedback](#user-feedback)
+  - [Web3 Microservices](#web3-microservices)
+- [Example](#example)
+  - [Scenario](#scenario)
+  - [Smart Contracts](#smart-contracts)
+- [Resources](#resources)
+  - [Documentation](#documentation)
+  - [Standards](#standards)
+  - [Articles](#articles)
+  - [Discussions](#discussions)
+  - [Presentations](#presentations)
+- [FAQ](#faq)
+- [Badge](#badge)
+- [Featured On](#featured-on)
+- [Sponsors](#sponsors)
 
 # TL;DR
 
@@ -187,7 +190,7 @@ contract Portfolio {
 
 ## Documentation
 
-* [Official Website](https://fission.codes)
+- [Official Website](https://fission.codes)
 
 ## Standards
 
@@ -195,28 +198,28 @@ This library contains implementations of these standards:
 
 ### Ethereum Improvement Proposals (EIP)
 
-* [ERC-1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
-* [ERC-1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
+- [ERC-1066: Status Codes](https://eips.ethereum.org/EIPS/eip-1066)
+- [ERC-1444: Signal Translations](https://github.com/ethereum/EIPs/pull/1444)
 
 ### Ethereum Classic Improvement Proposals (ECIP)
 
-* [ECIP-1050: Status Codes](https://github.com/ethereumclassic/ECIPs/blob/master/ECIPs/ECIP-1050.md)
+- [ECIP-1050: Status Codes](https://github.com/ethereumclassic/ECIPs/blob/master/ECIPs/ECIP-1050.md)
 
 ## Articles
 
-* [A Vision of FISSION](https://medium.com/spadebuilders/vision-of-fission-b4f9e00c6cb3)
-* [Introducing FISSION Translate](https://medium.com/spadebuilders/introducing-fission-translate-a-global-translation-layer-for-smart-contract-communication-bacd61110e82)
-* [A Smarter Contract Protocol](https://spade.builders/esc/)
+- [A Vision of FISSION](https://medium.com/spadebuilders/vision-of-fission-b4f9e00c6cb3)
+- [Introducing FISSION Translate](https://medium.com/spadebuilders/introducing-fission-translate-a-global-translation-layer-for-smart-contract-communication-bacd61110e82)
+- [A Smarter Contract Protocol](https://spade.builders/esc/)
 
 ## Discussions
 
-* [Ethereum Magicians: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
-* [Ethereum Magicians: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
+- [Ethereum Magicians: `erc-1066`](https://ethereum-magicians.org/tags/erc-1066)
+- [Ethereum Magicians: `erc-1444`](https://ethereum-magicians.org/tags/erc-1444)
 
 ## Presentations
 
-* [Devcon IV (Prague)](https://blog.fission.codes/erc1066-better-ux-dx-one-byte-devcon4/)
-* [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
+- [Devcon IV (Prague)](https://blog.fission.codes/erc1066-better-ux-dx-one-byte-devcon4/)
+- [Ethereum Magicians: Council of Berlin](https://view.ly/v/eljSU6DKXpyC)
 
 <img style="max-width=50%;" src="https://github.com/fission-suite/fission-codes/raw/master/static/photos/devcon-iv.jpg?raw=true" />
 
@@ -244,12 +247,17 @@ Feel free to put this badge on your FISSION-compatible projects to let others kn
 
 ```markdown
 <!-- README.md -->
+
 [![FISSION compatible](https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true)](https://fission.codes)
 ```
 
 ```html
 <!-- website.html -->
-<a href="https://docs.fission.codes/fission-codes/"><img alt="FISSION compatible" src="https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true"/></a>
+<a href="https://docs.fission.codes/fission-codes/"
+  ><img
+    alt="FISSION compatible"
+    src="https://github.com/fission-suite/fission-codes/raw/master/static/FISSION-badge.svg?sanitize=true"
+/></a>
 ```
 
 # Featured On
